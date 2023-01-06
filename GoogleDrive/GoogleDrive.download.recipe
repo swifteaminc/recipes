@@ -46,7 +46,6 @@
 				<dict>
 					<key>input_path</key>
 					<string>%pathname%/GoogleDrive.app</string>
-				dict>
 			</dict>
             <dict>
                 <key>Processor</key>
