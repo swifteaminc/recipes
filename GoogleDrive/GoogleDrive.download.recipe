@@ -48,27 +48,6 @@
 					<string>%pathname%/GoogleDrive.pkg</string>
 				</dict>
 			</dict>
-            <dict>
-                <key>Processor</key>
-                <string>PathDeleter</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>path_list</key>
-                    <array>
-                        <string>%RECIPE_CACHE_DIR%/unpack</string>
-                    </array>
-                </dict>
-            </dict>
-            <dict>
-				<key>Processor</key>
-				<string>com.github.haircut.processors/AppIconExtractor</string>
-				<key>Arguments</key>
-				<dict>
-					<key>source_app</key>
-					<string>%RECIPE_CACHE_DIR%/GoogleDrive.pkg</string>
-                    <key>source_app</key>
-					<string>~/Icon-%NAME%.png</string>
-				</dict>
 			</dict>
 		</array>
 	</dict>
