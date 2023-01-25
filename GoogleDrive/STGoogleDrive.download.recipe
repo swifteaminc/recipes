@@ -5,11 +5,11 @@
 		<key>Description</key>
 		<string>Downloads the latest verison of Google Drive</string>
 		<key>Identifier</key>
-		<string>github.com.swifteaminc.recipes.download.GoolgeDrive</string>
+		<string>github.com.swifteaminc.recipes.download.STGoolgeDrive</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>
-			<string>GoogleDrive</string>
+			<string>STGoogleDrive</string>
 			<key>DOWNLOAD_URL</key>
 			<string>https://dl.google.com/drive-file-stream/GoogleDrive.dmg</string>
 			<key>USER_AGENT</key>
