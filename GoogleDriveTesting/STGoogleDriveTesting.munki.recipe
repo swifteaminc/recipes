@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest verison of Google Drive and imports it into Munki2.</string>
+    <key>Identifier</key>
+    <string>github.com.swifteaminc.recipes.download.munki.GoolgeDrive</string>
+    <key>Input</key>
+    <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/googledrive</string>
+        <key>NAME</key>
+        <string>STGoogleDrive</string>
+    	<key>pkginfo</key>
+    	<dict>
+    		<key>catalogs</key>
+    		<array>
+    			<string>testing</string>
+    		</array>
+                      <key>display_name</key>
+                      <string>STGoogleDriveTesting</string>
+                      <key>category</key>
+                      <string>Drive</string>
+                      <key>developer</key>
+                      <string>Google</string>
+    		<key>description</key>
+    		<string>Safely store your files and access them from any device</string>
+    		<key>name</key>
+    		<string>%NAME%</string>
+    		<key>unattended_install</key>
+    		<true/>
+    	</dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.0.1</string>
+    <key>ParentRecipe</key>
+    <string>github.com.swifteaminc.recipes.download.GoolgeDrive</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>
