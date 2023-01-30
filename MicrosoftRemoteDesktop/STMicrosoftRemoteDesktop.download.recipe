@@ -11,7 +11,7 @@
       <key>Input</key>
       <dict>
          <key>NAME</key>
-         <string>Microsoft Remote Desktop</string>
+         <string>Microsoft_Remote_Desktop</string>
          <key>VENDOR</key>
          <string>Microsoft</string>
          <key>SOFTWARETITLE</key>
