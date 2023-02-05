@@ -39,15 +39,6 @@
 				<key>Processor</key>
 				<string>EndOfCheckPhase</string>
 			</dict>
-            <dict>
-				<key>Processor</key>
-				<string>CodeSignatureVerifier</string>
-				<key>Arguments</key>
-				<dict>
-					<key>input_path</key>
-					<string>%pathname%/AvastAntivirus.pkg</string>
-				</dict>
-			</dict>
 		</array>
 	</dict>
 </plist>
