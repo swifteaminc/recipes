@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest verison of Avast Antivirus and imports it into Munki2.</string>
+    <string>Downloads the latest verison of Zoom.</string>
     <key>Identifier</key>
     <string>github.com.swifteaminc.recipes.munki.Zoom</string>
     <key>Input</key>
@@ -25,7 +25,7 @@
                       <key>developer</key>
                       <string>Zoom</string>
     		<key>description</key>
-    		<string>oom is a video conferencing platform that can be used through a computer desktop or mobile app, and allows users to connect online for video conference meetings, webinars and live chat</string>
+    		<string>zoom is a video conferencing platform that can be used through a computer desktop or mobile app, and allows users to connect online for video conference meetings, webinars and live chat</string>
     		<key>name</key>
     		<string>%NAME%</string>
     		<key>unattended_install</key>

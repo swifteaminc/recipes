@@ -3,7 +3,7 @@
 <plist version="1.0">
 	<dict>
 		<key>Description</key>
-		<string>Downloads the latest verison of Falcon Sensor</string>
+		<string>Downloads the latest verison of Zoom</string>
 		<key>Identifier</key>
 		<string>github.com.swifteaminc.recipes.download.Zoom</string>
 		<key>Input</key>
