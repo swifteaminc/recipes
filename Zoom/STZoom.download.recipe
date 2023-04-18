@@ -3,9 +3,9 @@
 <plist version="1.0">
 	<dict>
 		<key>Description</key>
-		<string>Downloads the latest verison of Zoom</string>
+		<string>Downloads the latest version of Zoom</string>
 		<key>Identifier</key>
-		<string>github.com.swifteaminc.recipes.download.Zoom</string>
+		<string>github.com.swifteaminc.recipes.download.STZoom</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>
