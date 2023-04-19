@@ -3,40 +3,40 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest verison of Rewind.</string>
+    <string>Downloads the latest verison of Rewind AI</string>
     <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.munki.Rewind</string>
+    <string>github.com.swifteaminc.recipes.munki.RewindAI</string>
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/Rewind</string>
+        <string>apps</string>
         <key>NAME</key>
-        <string>Rewind</string>
-    	<key>pkginfo</key>
-    	<dict>
-    		<key>catalogs</key>
-    		<array>
-    			<string>Productivity</string>
+        <string>RewindAI</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>Productivity</string>
                 <string>Document Management</string>
-    		</array>
+            </array>
                       <key>display_name</key>
-                      <string>Rewind</string>
+                      <string>Rewind AI</string>
                       <key>category</key>
                       <string>Productivity</string>
                       <key>developer</key>
-                      <string>Rewind Software</string>
-    		<key>description</key>
-    		<string>Rewind</string>
-    		<key>name</key>
-    		<string>%NAME%</string>
-    		<key>unattended_install</key>
-    		<true/>
-    	</dict>
+                      <string>Rewind AI</string>
+            <key>description</key>
+            <string>Rewind AI, What if you had perfect memory</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
     </dict>
     <key>MinimumVersion</key>
     <string>0.0.1</string>
     <key>ParentRecipe</key>
-    <string>github.com.swifteaminc.recipes.download.Rewind</string>
+    <string>github.com.swifteaminc.recipes.download.RewindAI</string>
     <key>Process</key>
     <array>
         <dict>

@@ -3,9 +3,9 @@
 <plist version="1.0">
 	<dict>
 		<key>Description</key>
-		<string>Downloads the latest verison of Rewind</string>
+		<string>Downloads the latest verison of RewindAI</string>
 		<key>Identifier</key>
-		<string>github.com.swifteaminc.recipes.download.Rewind</string>
+		<string>github.com.swifteaminc.recipes.download.RewindAI</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>
