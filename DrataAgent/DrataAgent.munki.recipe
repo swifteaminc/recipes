@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Drata Agent Recipe</string>
+    <key>Identifier</key>
+    <string>github.com.swifteaminc.recipes.munki.DrataAgent</string>
+    <key>Input</key>
+    <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps</string>
+        <key>NAME</key>
+        <string>DrataAgent</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>Compliance Automation</string>
+            </array>
+                      <key>display_name</key>
+                      <string>Rewind AI</string>
+                      <key>category</key>
+                      <string>Compliance Automation</string>
+                      <key>developer</key>
+                      <string>Drata Inc</string>
+            <key>description</key>
+            <string>Drata is a security and compliance automation platform that continuously monitors and collects evidence of a company’s security controls, while streamlining workflows to ensure audit-readiness.</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.0.1</string>
+    <key>ParentRecipe</key>
+    <string>github.com.swifteaminc.recipes.download.DrataAgent</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>
