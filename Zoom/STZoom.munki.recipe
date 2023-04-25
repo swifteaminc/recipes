@@ -12,25 +12,27 @@
         <string>apps</string>
         <key>NAME</key>
         <string>Zoom</string>
-    	<key>pkginfo</key>
-    	<dict>
-    		<key>catalogs</key>
-    		<array>
-    			<string>Communication</string>
-    		</array>
+        <key>PACKAGEID</key>
+        <string>us.zoom.pkg.zoomit</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>Communication</string>
+            </array>
                       <key>display_name</key>
                       <string>Zoom</string>
                       <key>category</key>
                       <string>Communication</string>
                       <key>developer</key>
                       <string>Zoom</string>
-    		<key>description</key>
-    		<string>Zoom is a video conferencing platform that can be used through a computer desktop or mobile app, and allows users to connect online for video conference meetings, webinars and live chat</string>
-    		<key>name</key>
-    		<string>%NAME%</string>
-    		<key>unattended_install</key>
-    		<true/>
-    	</dict>
+            <key>description</key>
+            <string>Zoom is a video conferencing platform that can be used through a computer desktop or mobile app, and allows users to connect online for video conference meetings, webinars and live chat</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
     </dict>
     <key>MinimumVersion</key>
     <string>0.0.1</string>
@@ -49,6 +51,30 @@
             <key>Processor</key>
             <string>MunkiImporter</string>
         </dict>
+
+        <dict>
+            <key>Comment</key>
+            <string>Create a receipt based on the Maya core PKG, since this is the only place the major and minor versions are listed. Also write blank installs array to avoid undesirably having the installer app serve as an indicator of the item being installed.</string>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>installs</key>
+                    <array/>
+                    <key>receipts</key>
+                    <array>
+                        <dict>
+                            <key>packageid</key>
+                            <string>%PACKAGEID%</string>
+                        </dict>
+                    </array>
+                </dict>
+            </dict>
+
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
+
     </array>
 </dict>
 </plist>
