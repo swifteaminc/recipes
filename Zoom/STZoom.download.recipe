@@ -11,9 +11,11 @@
 			<key>NAME</key>
 			<string>Zoom</string>
 			<key>DOWNLOAD_URL</key>
-			<string>https://zoom.us/client/latest/ZoomInstallerIT.pkg</string>
+			<string>https://tools.swifteam.com/ZoomInstallerIT.pkg</string>
 			<key>USER_AGENT</key>
 			<string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15</string>
+        <key>PACKAGEID</key>
+        <string>us.zoom.pkg.zoomit</string>
 		</dict>
 		<key>MinimumVersion</key>
 		<string>0.0.1</string>
@@ -35,6 +37,26 @@
 					<string>%NAME%.pkg</string>
 				</dict>
 			</dict>
+
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>receipts</key>
+                    <array>
+                        <dict>
+                            <key>packageid</key>
+                            <string>%PACKAGEID%</string>
+                        </dict>
+                    </array>
+                </dict>
+            </dict>
+
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
+
 			<dict>
 				<key>Processor</key>
 				<string>EndOfCheckPhase</string>
