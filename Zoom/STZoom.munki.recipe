@@ -12,8 +12,6 @@
         <string>apps</string>
         <key>NAME</key>
         <string>Zoom</string>
-        <key>PACKAGEID</key>
-        <string>us.zoom.pkg.zoomit</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -51,25 +49,6 @@
             </dict>
             <key>Processor</key>
             <string>MunkiImporter</string>
-        </dict>
-
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>additional_pkginfo</key>
-                <dict>
-                    <key>receipts</key>
-                    <array>
-                        <dict>
-                            <key>packageid</key>
-                            <string>%PACKAGEID%</string>
-                        </dict>
-                    </array>
-                </dict>
-            </dict>
-
-            <key>Processor</key>
-            <string>MunkiPkginfoMerger</string>
         </dict>
     </array>
 </dict>
