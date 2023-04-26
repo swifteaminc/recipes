@@ -1,55 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-    <key>Description</key>
-    <string>Downloads the latest verison of Zoom.</string>
-    <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.munki.STZoom</string>
-    <key>Input</key>
     <dict>
+      <key>Description</key>
+      <string>Downloads the latest verison of Zoom.</string>
+      <key>Identifier</key>
+      <string>github.com.swifteaminc.recipes.munki.STZoom</string>
+      <key>Input</key>
+      <dict>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps</string>
         <key>NAME</key>
         <string>Zoom</string>
         <key>pkginfo</key>
         <dict>
-            <key>catalogs</key>
-            <array>
-                <string>Communication</string>
-            </array>
-                      <key>display_name</key>
-                      <string>Zoom</string>
-                      <key>category</key>
-                      <string>Communication</string>
-                      <key>developer</key>
-                      <string>Zoom</string>
-
-            <key>description</key>
-            <string>Zoom is a video conferencing platform that can be used through a computer desktop or mobile app, and allows users to connect online for video conference meetings, webinars and live chat</string>
-            <key>name</key>
-            <string>%NAME%</string>
-            <key>unattended_install</key>
-            <true/>
+          <key>catalogs</key>
+          <array>
+            <string>Communication</string>
+          </array>
+          <key>display_name</key>
+          <string>Zoom</string>
+          <key>category</key>
+          <string>Communication</string>
+          <key>developer</key>
+          <string>Zoom</string>
+          <key>description</key>
+          <string>Zoom is a video conferencing platform that can be used through a computer desktop or mobile app, and allows users to connect online for video conference meetings, webinars and live chat</string>
+          <key>name</key>
+          <string>%NAME%</string>
+          <key>unattended_install</key>
+          <true/>
         </dict>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>0.0.1</string>
-    <key>ParentRecipe</key>
-    <string>github.com.swifteaminc.recipes.download.STZoom</string>
-    <key>Process</key>
-    <array>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>0.0.1</string>
+      <key>ParentRecipe</key>
+      <string>github.com.swifteaminc.recipes.download.STZoom</string>
+      <key>Process</key>
+      <array>
         <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>pkg_path</key>
-                <string>%pathname%</string>
-                <key>repo_subdirectory</key>
-                <string>%MUNKI_REPO_SUBDIR%</string>
-            </dict>
-            <key>Processor</key>
-            <string>MunkiImporter</string>
+          <key>Arguments</key>
+          <dict>
+            <key>pkg_path</key>
+            <string>%pathname%</string>
+            <key>repo_subdirectory</key>
+            <string>%MUNKI_REPO_SUBDIR%</string>
+          </dict>
+          <key>Processor</key>
+          <string>MunkiImporter</string>
         </dict>
-    </array>
-</dict>
+      </array>
+    </dict>
 </plist>
