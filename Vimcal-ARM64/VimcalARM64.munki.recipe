@@ -16,12 +16,12 @@
         <dict>
           <key>catalogs</key>
           <array>
-            <string>Communication</string>
+            <string>Productivity</string>
           </array>
           <key>display_name</key>
           <string>VimcalARM64</string>
           <key>category</key>
-          <string>Communication</string>
+          <string>Productivity</string>
           <key>developer</key>
           <string>Vimcal</string>
           <key>description</key>
