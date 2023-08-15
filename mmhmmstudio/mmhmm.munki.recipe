@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>mmhmm recipes</string>
+    <string>mmhmmstudio recipes</string>
     <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.munki.mmhmm</string>
+    <string>github.com.swifteaminc.recipes.munki.mmhmmstudio</string>
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps</string>
         <key>NAME</key>
-        <string>mmhmm</string>
+        <string>mmhmmstudio</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -19,13 +19,13 @@
                 <string>Compliance Automation</string>
             </array>
                       <key>display_name</key>
-                      <string>mmhmm</string>
+                      <string>mmhmmstudio</string>
                       <key>category</key>
                       <string>Compliance Automation</string>
                       <key>developer</key>
                       <string>mmhmm</string>
             <key>description</key>
-            <string>Mmhmm is a virtual presentation software that allows users to create, present, and record interactive presentations with a range of dynamic features</string>
+            <string>mmhmm studio is a virtual presentation software that allows users to create, present, and record interactive presentations with a range of dynamic features</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>
@@ -35,7 +35,7 @@
     <key>MinimumVersion</key>
     <string>0.0.1</string>
     <key>ParentRecipe</key>
-    <string>github.com.swifteaminc.recipes.download.mmhmm</string>
+    <string>github.com.swifteaminc.recipes.download.mmhmmstudio</string>
     <key>Process</key>
     <array>
         <dict>
