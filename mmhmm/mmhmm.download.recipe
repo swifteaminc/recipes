@@ -3,7 +3,7 @@
 <plist version="1.0">
 	<dict>
 		<key>Description</key>
-		<string>Downloads the latest verison of mmhmm</string>
+		<string>Downloads the latest verison of Mmhmm</string>
 		<key>Identifier</key>
 		<string>github.com.swifteaminc.recipes.download.mmhmm</string>
 		<key>Input</key>

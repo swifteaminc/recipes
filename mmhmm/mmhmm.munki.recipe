@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>mmhmm recipes</string>
+    <string>Mmhmm recipes</string>
     <key>Identifier</key>
     <string>github.com.swifteaminc.recipes.munki.mmhmm</string>
     <key>Input</key>
