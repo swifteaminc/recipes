@@ -3,13 +3,13 @@
 <plist version="1.0">
 	<dict>
 		<key>Description</key>
-		<string>Downloads the latest verison of mmhmmstudio</string>
+		<string>Downloads the latest verison of Mmhmm Studio</string>
 		<key>Identifier</key>
 		<string>github.com.swifteaminc.recipes.download.mmhmmstudio</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>
-			<string>mmhmmstudio</string>
+			<string>Mmhmm Studio</string>
 			<key>DOWNLOAD_URL</key>
 			<string>https://updates.mmhmm.app/mac/mmhmmStudio.pkg</string>
 			<key>USER_AGENT</key>

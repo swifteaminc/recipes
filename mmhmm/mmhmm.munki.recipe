@@ -11,7 +11,7 @@
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps</string>
         <key>NAME</key>
-        <string>mmhmm</string>
+        <string>Mmhmm</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -19,11 +19,11 @@
                 <string>Compliance Automation</string>
             </array>
                       <key>display_name</key>
-                      <string>mmhmm</string>
+                      <string>Mmhmm</string>
                       <key>category</key>
                       <string>Compliance Automation</string>
                       <key>developer</key>
-                      <string>mmhmm</string>
+                      <string>Mmhmm</string>
             <key>description</key>
             <string>Mmhmm is a virtual presentation software that allows users to create, present, and record interactive presentations with a range of dynamic features</string>
             <key>name</key>

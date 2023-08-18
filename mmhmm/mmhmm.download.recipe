@@ -9,7 +9,7 @@
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>
-			<string>mmhmm</string>
+			<string>Mmhmm</string>
 			<key>DOWNLOAD_URL</key>
 			<string>https://updates.mmhmm.app/mac/hybrid/beta/mmhmm.pkg</string>
 			<key>USER_AGENT</key>
