@@ -16,7 +16,10 @@
 		<dict>
 			<key>catalogs</key>
 			<array>
-				<string>testing</string>
+				<string>communication</string>
+				<string>collaboration</string>
+				<string>messaging</string>
+				<string>team-tools</string>
 			</array>
 			<key>description</key>
 			<string>Slack is a platform for team communication: everything in one place, instantly searchable, available wherever you go.</string>
