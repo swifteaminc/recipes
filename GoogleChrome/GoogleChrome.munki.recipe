@@ -35,7 +35,7 @@
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.swifteaminc.recipes.download.googlechrome</string>
+    <string>com.github.swifteaminc.recipes.download.google-chrome</string>
     <key>Process</key>
     <array>
         <dict>
