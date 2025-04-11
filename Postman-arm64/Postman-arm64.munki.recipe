@@ -31,7 +31,7 @@ For Apple Silicon set both DOWNLOAD_ARCH and SUPPORTED_ARCH to "arm64"</string>
             <key>developer</key>
             <string>Postdot Technologies, Inc.</string>
             <key>display_name</key>
-            <string>Postman</string>
+            <string>Postman-arm64</string>
             <key>name</key>
             <string>%NAME%-%SUPPORTED_ARCH%</string>
             <key>supported_architectures</key>
