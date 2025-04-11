@@ -54,7 +54,7 @@ For Apple Silicon set both DOWNLOAD_ARCH and SUPPORTED_ARCH to "arm64"</string>
             </dict>
         </dict>
         <dict>
-            <key>Processor</key>
+            <!-- <key>Processor</key> -->
             <!-- <string>CodeSignatureVerifier</string> -->
             <key>Arguments</key>
             <dict>
