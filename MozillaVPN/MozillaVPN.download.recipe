@@ -5,7 +5,7 @@
 		<key>Description</key>
 		<string>Downloads the latest verison of MozillaVPN</string>
 		<key>Identifier</key>
-		<string>github.com.swifteaminc.recipes.download.MozillaVPN</string>
+		<string>com.github.swifteaminc.recipes.download.MozillaVPN</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>

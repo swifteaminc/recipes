@@ -5,7 +5,7 @@
 		<key>Description</key>
 		<string>Downloads the latest verison of Avast Antivirus</string>
 		<key>Identifier</key>
-		<string>github.com.swifteaminc.recipes.download.AvastAntivirus</string>
+		<string>com.github.swifteaminc.recipes.download.AvastAntivirus</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>

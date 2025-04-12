@@ -5,7 +5,7 @@
 	  <key>Description</key>
 	  <string>Downloads the latest version of Vimcal</string>
 	  <key>Identifier</key>
-	  <string>github.com.swifteaminc.recipes.download.VimcalARM64</string>
+	  <string>com.github.swifteaminc.recipes.download.VimcalARM64</string>
 	  <key>Input</key>
 	  <dict>
 	    <key>NAME</key>

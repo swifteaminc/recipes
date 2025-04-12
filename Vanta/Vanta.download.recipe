@@ -5,7 +5,7 @@
 		<key>Description</key>
 		<string>Downloads the latest verison of Vanta</string>
 		<key>Identifier</key>
-		<string>github.com.swifteaminc.recipes.download.Vanta</string>
+		<string>com.github.swifteaminc.recipes.download.Vanta</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>

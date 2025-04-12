@@ -5,9 +5,9 @@
     <key>Description</key>
     <string>Downloads the latest Microsoft OneDrive installer and imports into Munki.</string>
     <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.munki.microsoftonedrive</string>
+    <string>com.github.swifteaminc.recipes.munki.microsoftonedrive</string>
     <key>ParentRecipe</key>
-    <string>github.com.swifteaminc.recipes.download.microsoftonedrive</string>
+    <string>com.github.swifteaminc.recipes.download.microsoftonedrive</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

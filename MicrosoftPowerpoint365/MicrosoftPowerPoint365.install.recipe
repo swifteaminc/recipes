@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the current release version of the Microsoft PowerPoint installer package for Office 365 and installs it.</string>
     <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.install.microsoftpowerpoint365</string>
+    <string>com.github.swifteaminc.recipes.install.microsoftpowerpoint365</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -14,7 +14,7 @@
     <key>MinimumVersion</key>
     <string>1.0.0</string>
     <key>ParentRecipe</key>
-    <string>github.com.swifteaminc.recipes.pkg.microsoftpowerpoint365</string>
+    <string>com.github.swifteaminc.recipes.pkg.microsoftpowerpoint365</string>
     <key>Process</key>
     <array>
         <dict>

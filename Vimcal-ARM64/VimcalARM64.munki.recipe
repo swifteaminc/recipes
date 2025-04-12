@@ -5,7 +5,7 @@
       <key>Description</key>
       <string>Downloads the latest verison of VimcalARM64.</string>
       <key>Identifier</key>
-      <string>github.com.swifteaminc.recipes.munki.VimcalARM64</string>
+      <string>com.github.swifteaminc.recipes.munki.VimcalARM64</string>
       <key>Input</key>
       <dict>
         <key>MUNKI_REPO_SUBDIR</key>
@@ -35,7 +35,7 @@
       <key>MinimumVersion</key>
       <string>0.0.1</string>
       <key>ParentRecipe</key>
-      <string>github.com.swifteaminc.recipes.download.VimcalARM64</string>
+      <string>com.github.swifteaminc.recipes.download.VimcalARM64</string>
       <key>Process</key>
       <array>
         <dict>

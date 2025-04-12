@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Drata Agent Recipe</string>
     <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.munki.DrataAgent</string>
+    <string>com.github.swifteaminc.recipes.munki.DrataAgent</string>
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
@@ -19,7 +19,7 @@
                 <string>Compliance Automation</string>
             </array>
                       <key>display_name</key>
-                      <string>Rewind AI</string>
+                      <string>DrataAgent</string>
                       <key>category</key>
                       <string>Compliance Automation</string>
                       <key>developer</key>
@@ -35,7 +35,7 @@
     <key>MinimumVersion</key>
     <string>0.0.1</string>
     <key>ParentRecipe</key>
-    <string>github.com.swifteaminc.recipes.download.DrataAgent</string>
+    <string>com.github.swifteaminc.recipes.download.DrataAgent</string>
     <key>Process</key>
     <array>
         <dict>

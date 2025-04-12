@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest Microsoft SkypeForBusiness installer package for Office 365 and imports into Munki.</string>
     <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.munki.skypeforbusiness365</string>
+    <string>com.github.swifteaminc.recipes.munki.skypeforbusiness365</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -29,7 +29,7 @@
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>github.com.swifteaminc.recipes.download.skypeforbusiness365</string>
+    <string>com.github.swifteaminc.recipes.download.skypeforbusiness365</string>
     <key>Process</key>
     <array>
         <dict>

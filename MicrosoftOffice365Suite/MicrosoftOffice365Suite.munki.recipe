@@ -11,9 +11,9 @@ appends the version to the end of the filename, and imports into Munki.
       532572 for Europe
       532577 for Asia</string>
     <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.munki.MicrosoftOffice365Suite</string>
+    <string>com.github.swifteaminc.recipes.munki.MicrosoftOffice365Suite</string>
     <key>ParentRecipe</key>
-    <string>github.com.swifteaminc.recipes.download.MicrosoftOffice365Suite</string>
+    <string>com.github.swifteaminc.recipes.download.MicrosoftOffice365Suite</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

@@ -5,7 +5,7 @@
 		<key>Description</key>
 		<string>Downloads the latest verison of Google Drive</string>
 		<key>Identifier</key>
-		<string>github.com.swifteaminc.recipes.download.GoolgeDrive</string>
+		<string>com.github.swifteaminc.recipes.download.GoolgeDrive</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>

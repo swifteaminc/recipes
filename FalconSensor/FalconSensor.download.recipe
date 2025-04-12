@@ -5,7 +5,7 @@
 		<key>Description</key>
 		<string>Downloads the latest verison of Falcon Sensor</string>
 		<key>Identifier</key>
-		<string>github.com.swifteaminc.recipes.download.FalconSensor</string>
+		<string>com.github.swifteaminc.recipes.download.FalconSensor</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>

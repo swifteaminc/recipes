@@ -5,7 +5,7 @@
         <key>Description</key>
         <string>Downloads the current standalone Microsoft OneDrive installer, extracts version information and renames the installer package.</string>
         <key>Identifier</key>
-        <string>github.com.swifteaminc.recipes.pkg.microsoftonedrive</string>
+        <string>com.github.swifteaminc.recipes.pkg.microsoftonedrive</string>
         <key>Input</key>
         <dict>
             <key>NAME</key>
@@ -20,7 +20,7 @@
         <key>MinimumVersion</key>
         <string>0.6.0</string>
         <key>ParentRecipe</key>
-        <string>github.com.swifteaminc.recipes.download.microsoftonedrive</string>
+        <string>com.github.swifteaminc.recipes.download.microsoftonedrive</string>
         <key>Process</key>
         <array>
             <dict>

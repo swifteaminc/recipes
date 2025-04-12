@@ -5,7 +5,7 @@
 		<key>Description</key>
 		<string>Downloads the latest verison of RewindAI</string>
 		<key>Identifier</key>
-		<string>github.com.swifteaminc.recipes.download.RewindAI</string>
+		<string>com.github.swifteaminc.recipes.download.RewindAI</string>
 		<key>Input</key>
 		<dict>
 			<key>NAME</key>

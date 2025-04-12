@@ -5,7 +5,7 @@
       <key>Description</key>
       <string>Downloads the latest version of Microsoft's Remote Desktop installer package and renames the package.</string>
       <key>Identifier</key>
-      <string>github.com.swifteaminc.recipes.pkg.stmicrosoftremotedesktop</string>
+      <string>com.github.swifteaminc.recipes.pkg.stmicrosoftremotedesktop</string>
       <key>Input</key>
       <dict>
          <key>NAME</key>
@@ -24,7 +24,7 @@
       <key>MinimumVersion</key>
       <string>1.0.0</string>
       <key>ParentRecipe</key>
-      <string>github.com.swifteaminc.recipes.download.stmicrosoftremotedesktop</string>
+      <string>com.github.swifteaminc.recipes.download.stmicrosoftremotedesktop</string>
       <key>Process</key>
       <array>
          <dict>

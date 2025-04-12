@@ -6,9 +6,9 @@
     <string>Downloads the latest Microsoft Office 365 Business Pro Suite SKU-less installer package,
 appends the version to the end of the filename, and imports into Munki.</string>
     <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.munki.MicrosoftOffice365BusinessProSuite</string>
+    <string>com.github.swifteaminc.recipes.munki.MicrosoftOffice365BusinessProSuite</string>
     <key>ParentRecipe</key>
-    <string>github.com.swifteaminc.recipes.download.MicrosoftOffice365BusinessProSuite</string>
+    <string>com.github.swifteaminc.recipes.download.MicrosoftOffice365BusinessProSuite</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

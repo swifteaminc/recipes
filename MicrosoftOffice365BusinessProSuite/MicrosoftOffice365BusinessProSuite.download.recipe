@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest Microsoft Office 365 Business Pro Suite SKU-less installer package.</string>
     <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.download.MicrosoftOffice365BusinessProSuite</string>
+    <string>com.github.swifteaminc.recipes.download.MicrosoftOffice365BusinessProSuite</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -31,7 +31,7 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>github.com.swifteaminc.recipes.download.MicrosoftOffice365Suite/OfficeSuiteSKULessVersionProvider</string>
+            <string>com.github.swifteaminc.recipes.download.MicrosoftOffice365Suite/OfficeSuiteSKULessVersionProvider</string>
         </dict>
         <dict>
             <key>Processor</key>

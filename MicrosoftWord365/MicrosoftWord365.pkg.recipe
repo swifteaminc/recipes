@@ -5,7 +5,7 @@
       <key>Description</key>
       <string>Downloads the latest version of Microsoft's Word for Office 365 installer package and renames the package.</string>
       <key>Identifier</key>
-      <string>github.com.swifteaminc.recipes.pkg.microsoftword365</string>
+      <string>com.github.swifteaminc.recipes.pkg.microsoftword365</string>
       <key>Input</key>
       <dict>
          <key>NAME</key>
@@ -20,7 +20,7 @@
       <key>MinimumVersion</key>
       <string>1.0.0</string>
       <key>ParentRecipe</key>
-      <string>github.com.swifteaminc.recipes.download.microsoftword365</string>
+      <string>com.github.swifteaminc.recipes.download.microsoftword365</string>
       <key>Process</key>
       <array>
          <dict>

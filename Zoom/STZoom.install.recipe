@@ -5,14 +5,14 @@
     <key>Description</key>
     <string>Installs the latest version of Zoom</string>
     <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.install.STZoom</string>
+    <string>com.github.swifteaminc.recipes.install.STZoom</string>
     <key>Input</key>
     <dict>
     </dict>
     <key>MinimumVersion</key>
     <string>0.4.1</string>
     <key>ParentRecipe</key>
-    <string>github.com.swifteaminc.recipes.download.STZoom</string>
+    <string>com.github.swifteaminc.recipes.download.STZoom</string>
     <key>Process</key>
     <array>
         <dict>

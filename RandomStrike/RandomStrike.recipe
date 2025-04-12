@@ -5,14 +5,14 @@
     <key>Description</key>
     <string>Installs the latest version of RandomStrike</string>
     <key>Identifier</key>
-    <string>github.com.swifteaminc.recipes.install.RandomStrike</string>
+    <string>com.github.swifteaminc.recipes.install.RandomStrike</string>
     <key>Input</key>
     <dict>
     </dict>
     <key>MinimumVersion</key>
     <string>0.4.1</string>
     <key>ParentRecipe</key>
-    <string>github.com.swifteaminc.recipes.download.RandomStrike</string>
+    <string>com.github.swifteaminc.recipes.download.RandomStrike</string>
     <key>Process</key>
     <array>
         <dict>

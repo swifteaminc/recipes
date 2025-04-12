@@ -5,7 +5,7 @@
       <key>Description</key>
       <string>Downloads the latest Microsoft Remote Desktop installer pkg.</string>
       <key>Identifier</key>
-      <string>github.com.swifteaminc.recipes.download.stmicrosoftremotedesktop</string>
+      <string>com.github.swifteaminc.recipes.download.stmicrosoftremotedesktop</string>
       <key>MinimumVersion</key>
       <string>1.0.0</string>
       <key>Input</key>
