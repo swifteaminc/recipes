@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest version of DB Browser for SQLite and imports it into Munki.</string>
     <key>Identifier</key>
-    <string>com.github.swifteaminc.recipes.munki.DB Browser for SQLite</string>
+    <string>com.github.swifteaminc.recipes.munki.DBBrowserforSQLite</string>
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
@@ -36,7 +36,7 @@
     <key>MinimumVersion</key>
     <string>1.1</string>
     <key>ParentRecipe</key>
-    <string>com.github.swifteaminc.recipes.download.DB Browser for SQLite</string>
+    <string>com.github.swifteaminc.recipes.download.DBBrowserforSQLite</string>
     <key>Process</key>
     <array>
         <dict>

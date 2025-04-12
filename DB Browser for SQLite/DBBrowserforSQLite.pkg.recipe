@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of DB Browser for SQLite and creates a package.</string>
 	<key>Identifier</key>
-	<string>com.github.swifteaminc.recipes.pkg.DB Browser for SQLite</string>
+	<string>com.github.swifteaminc.recipes.pkg.DBBrowserforSQLite</string>
 	<key>Input</key>
 	<dict>
 		<key>BUNDLE_ID</key>
@@ -16,7 +16,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.swifteaminc.recipes.download.DB Browser for SQLite</string>
+	<string>com.github.swifteaminc.recipes.download.DBBrowserforSQLite</string>
 	<key>Process</key>
 	<array>
 		<dict>
