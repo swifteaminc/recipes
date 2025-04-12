@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Microsoft Edge for the specified branch.</string>
 	<key>Identifier</key>
-	<string>com.github.swifteaminc.recipes.download.MicrosoftEdge</string>
+	<string>com.github.n8felton.download.MicrosoftEdge</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
