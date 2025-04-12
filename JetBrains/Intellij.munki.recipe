@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Downloads the latest Intellij disk image and imports into Munki.</string>
+        <key>Identifier</key>
+        <string>com.github.swifteaminc.recipes.munki.Intellij</string>
+        <key>Input</key>
+        <dict>
+            <key>MUNKI_REPO_SUBDIR</key>
+            <string>apps/JetBrains/Intellij</string>
+            <key>NAME</key>
+            <string>Intellij</string>
+            <key>edition</key>
+            <string>C</string>
+            <key>pkginfo</key>
+            <dict>
+                <key>catalogs</key>
+                <array>
+                    <string>IDE</string>
+                    <string>Developer Tools</string>
+                </array>
+                <key>category</key>
+                <string>Productivity</string>
+                <key>description</key>
+                <string>Lightweight IDE for Java SE, Groovy and Scala development.</string>
+                <key>developer</key>
+                <string>JetBrains</string>
+                <key>display_name</key>
+                <string>Intellij Community Edition</string>
+                <key>name</key>
+                <string>%NAME%</string>
+                <key>unattended_install</key>
+                <true/>
+            </dict>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.2.0</string>
+        <key>ParentRecipe</key>
+        <string>com.github.swifteaminc.recipes.download.Intellij</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>pkg_path</key>
+                    <string>%pathname%</string>
+                    <key>repo_subdirectory</key>
+                    <string>%MUNKI_REPO_SUBDIR%</string>
+                </dict>
+                <key>Processor</key>
+                <string>MunkiImporter</string>
+            </dict>
+        </array>
+    </dict>
+</plist>
