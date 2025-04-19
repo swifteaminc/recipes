@@ -3,26 +3,26 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads updates for Adobe Acrobat Pro XI. MAJOR_VERSION is '11',
+    <string>Downloads updates for Adobe Acrobat Pro X or XI. MAJOR_VERSION can be '10', '11', corresponding to Pro X,
     Pro XI, etc. You can override this recipe multiple times for different values of MAJOR_VERSION.
 
 VERSION can be a specific update version, ie. '10.1.6', or the
 default, 'latest'.</string>
     <key>Identifier</key>
-    <string>com.github.swifteaminc.recipes.download.AdobeAcrobatProXIUpdate</string>
+    <string>com.github.swifteaminc.recipes.download.AdobeAcrobatProXUpdate</string>
     <key>Input</key>
     <dict>
         <key>MAJOR_VERSION</key>
-        <string>11</string>
+        <string>10</string>
         <key>NAME</key>
-        <string>AdobeAcrobatProXI_Update</string>
+        <string>AdobeAcrobatProX_Update</string>
         <key>TARGET_OS</key>
         <string>10.9</string>
         <key>VERSION</key>
         <string>latest</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.0</string>
+    <string>1.4</string>
     <key>Process</key>
     <array>
         <dict>
