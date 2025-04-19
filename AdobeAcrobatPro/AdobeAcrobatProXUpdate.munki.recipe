@@ -38,7 +38,8 @@ default, 'latest'.</string>
             </array>
             <key>catalogs</key>
             <array>
-                <string>testing</string>
+                <string>Productivity</string>
+				<string>PDF Tools</string>
             </array>
             <key>description</key>
             <string></string>
