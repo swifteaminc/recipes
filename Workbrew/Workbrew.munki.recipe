@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
+<plist version="1.0\">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest verison of Rewind AI</string>
+    <string>Downloads the latest version of Workbrew</string>
     <key>Identifier</key>
     <string>com.github.swifteaminc.recipes.munki.Workbrew</string>
     <key>Input</key>
@@ -19,18 +19,20 @@
                 <string>Productivity</string>
                 <string>Workflow Tools</string>
             </array>
-                      <key>display_name</key>
-                      <string>Workbrew</string>
-                      <key>category</key>
-                      <string>Productivity</string>
-                      <key>developer</key>
-                      <string>Workbrew</string>
+            <key>display_name</key>
+            <string>Workbrew</string>
+            <key>category</key>
+            <string>Productivity</string>
+            <key>developer</key>
+            <string>Workbrew</string>
             <key>description</key>
             <string>Workbrew, What if you had perfect memory</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>
             <true/>
+            <key>preinstall_script</key>
+            <string>#!/bin/bash\n\nif ! xcode-select -p &gt;/dev/null; then\n    echo \"Xcode Command Line Tools not found. Installing...\"\n    xcode-select --install\n\n    until xcode-select -p &gt;/dev/null; do\n        sleep 5\n    done\n\n    echo \"Xcode Command Line Tools installation completed.\"\nelse\n    echo \"Xcode Command Line Tools already installed.\"\nfi\n</string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
