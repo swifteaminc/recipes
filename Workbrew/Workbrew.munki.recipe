@@ -31,6 +31,18 @@
             <string>%NAME%</string>
             <key>unattended_install</key>
             <true/>
+            <key>installcheck_script</key>
+            <string>#!/bin/bash
+#
+# Munki installcheck for Workbrew only check that /opt/workbrew/bin/brew exists
+#
+
+if [ -x "/opt/workbrew/bin/brew" ]; then
+    exit 0
+else
+    exit 1
+fi
+            </string>
             <key>preinstall_script</key>
             <string>#!/bin/bash
 
