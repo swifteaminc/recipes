@@ -22,7 +22,7 @@
                 <string>Security</string>
             </array>
             <key>description</key>
-            <string>Light-footprint security against spyware, viruses and cross-platform infections.</string>
+            <string>Downloads the latest version of ESET Endpoint Anti-Virus for macOS. Currently, ESET Endpoint Anti-Virus only supports macOS versions 11 (Big Sur), 12 (Monterey), 13 (Ventura), and 14 (Sonoma). macOS 15 is not yet supported.</string>
             <key>display_name</key>
             <string>ESET Endpoint Anti-Virus</string>
             <key>name</key>

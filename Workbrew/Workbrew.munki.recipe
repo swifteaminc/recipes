@@ -34,12 +34,17 @@
             <key>preinstall_script</key>
             <string>#!/bin/bash
 
+CURRENT_USER=$(stat -f "%Su" /dev/console)
+USER_ID=$(id -u "$CURRENT_USER")
+
 CTL_PATH="/Library/Developer/CommandLineTools"
 
 if [ ! -d "$CTL_PATH" ]; then
     echo "Xcode Command Line Tools not found. Installing..."
-    xcode-select --install
 
+    /bin/launchctl asuser $USER_ID sudo xcode-select --install
+
+    # Wait until the directory exists
     until [ -d "$CTL_PATH" ]; do
         sleep 5
     done
