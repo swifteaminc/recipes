@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest version of Nmap and imports it into a Munki repository, verifying the GPG signature if possible.</string>
+
+    <key>Identifier</key>
+    <string>com.github.swifteaminc.recipes.nmap.munki</string>
+
+    <key>ParentRecipe</key>
+    <string>com.github.swifteaminc.recipes.download.nmap</string>
+
+    <key>Input</key>
+    <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/nmap</string>
+
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>Network-Scanner</string>
+                <string>Port-Scanner</string>
+            </array>
+            <key>description</key>
+            <string>Downloads the latest version of Nmap and verifies its GPG signature.</string>
+            <key>display_name</key>
+            <string>Nmap</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+            <key>developer</key>
+            <string>Nmap Project</string>
+        </dict>
+    </dict>
+
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
