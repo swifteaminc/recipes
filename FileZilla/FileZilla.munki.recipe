@@ -16,7 +16,8 @@
 		<dict>
 			<key>catalogs</key>
 			<array>
-				<string>testing</string>
+				<string>FTP-Client</string>
+				<string>File-Transfer</string>
 			</array>
 			<key>description</key>
 			<string>FileZilla is a fast and reliable cross-platform FTP, FTPS and SFTP client.</string>

@@ -16,7 +16,8 @@
 		<dict>
 			<key>catalogs</key>
 			<array>
-				<string>testing</string>
+				<string>Terminal-Emulator</string>
+				<string>CLI-Tool</string>
 			</array>
 			<key>description</key>
 			<string>Powerful alternative to Terminal.app.</string>

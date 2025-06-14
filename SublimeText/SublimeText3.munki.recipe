@@ -16,7 +16,9 @@
 		<dict>
 			<key>catalogs</key>
 			<array>
-				<string>production</string>
+				<string>SublimeText3-App</string>
+				<string>Code-Editor</string>
+				<string>Text-Editor</string>
 			</array>
 			<key>category</key>
 			<string>Developer Tools</string>
