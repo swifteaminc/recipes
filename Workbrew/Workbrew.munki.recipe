@@ -60,7 +60,7 @@ fi
 echo "Command Line Tools not found. Triggering background install…"
 
 # Launch the install in background and return immediately
-/bin/launchctl asuser "$USER_ID" sudo xcode-select --install &
+/bin/launchctl asuser "$USER_ID" sudo xcode-select --install &amp;
 
 echo "Background install of Command Line Tools initiated; exiting preinstall so Munki can proceed."
 exit 1
