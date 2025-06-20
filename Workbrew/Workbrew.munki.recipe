@@ -26,7 +26,7 @@
             <key>developer</key>
             <string>Workbrew</string>
             <key>description</key>
-            <string>Workbrew, What if you had perfect memory</string>
+            <string>Workbrew, What if you had perfect memory. Requires Xcode Command Line Tools; a popup will automatically appear prompting you to install them</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>
@@ -51,20 +51,19 @@ USER_ID=$(id -u "$CURRENT_USER")
 
 CTL_PATH="/Library/Developer/CommandLineTools"
 
-if [ ! -d "$CTL_PATH" ]; then
-    echo "Xcode Command Line Tools not found. Installing..."
-
-    /bin/launchctl asuser $USER_ID sudo xcode-select --install
-
-    # Wait until the directory exists
-    until [ -d "$CTL_PATH" ]; do
-        sleep 5
-    done
-
-    echo "Xcode Command Line Tools installation completed."
-else
-    echo "Xcode Command Line Tools already installed."
+# If either the CLI tools or full Xcode are already installed, do nothing
+if [ -d "$CTL_PATH" ]; then
+    echo "Developer tools already installed (CLI tools or Xcode)."
+    exit 0
 fi
+
+echo "Command Line Tools not found. Triggering background install…"
+
+# Launch the install in background and return immediately
+/bin/launchctl asuser "$USER_ID" sudo xcode-select --install &
+
+echo "Background install of Command Line Tools initiated; exiting preinstall so Munki can proceed."
+exit 1
             </string>
         </dict>
     </dict>
