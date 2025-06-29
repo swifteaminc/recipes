@@ -4,105 +4,37 @@
 <plist version="1.0">
 <dict>
   <key>Description</key>
-  <string>Downloads the latest Cursor IDE universal macOS DMG by parsing the official JSON manifest.</string>
+  <string>Downloads the specified Cursor IDE universal macOS DMG directly.</string>
   <key>Identifier</key>
   <string>com.github.swifteaminc.recipes.download.cursoride</string>
   <key>MinimumVersion</key>
-  <string>0.30</string>
+  <string>1.0.0</string>
 
   <key>Input</key>
   <dict>
-    <!-- JSON listing all published builds & versions -->
-    <key>JSON_URL</key>
-    <string>https://raw.githubusercontent.com/shuakami/cursor-deb-builder/main/cursor_downloads_all.json</string>
+    <!-- Point this at the exact DMG URL -->
+    <key>DOWNLOAD_URL</key>
+    <string>https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/darwin/universal/Cursor-darwin-universal.dmg</string>
+    <!-- Optional: set a static version if you care -->
+    <key>VERSION</key>
+    <string>1.0</string>
   </dict>
 
   <key>Process</key>
   <array>
 
-    <!-- 1) Fetch the JSON manifest -->
+    <!-- Simply download the DMG -->
     <dict>
       <key>Processor</key>
       <string>URLDownloader</string>
       <key>Arguments</key>
       <dict>
         <key>url</key>
-        <string>%JSON_URL%</string>
+        <string>%DOWNLOAD_URL%</string>
       </dict>
     </dict>
 
-    <!-- 2) Parse JSON to find latest semver & universal DMG URL -->
-    <dict>
-      <key>Processor</key>
-      <string>PythonScript</string>
-      <key>Arguments</key>
-      <dict>
-        <key>json_path</key>
-        <string>%RECIPE_CACHE_DIR%/downloads/cursor_downloads_all.json</string>
-        <key>script</key>
-        <string>
-from autopkglib import Processor, ProcessorError
-import json, re
-
-class CursorJSONProcessor(Processor):
-    input_variables = {
-        "json_path": {"required": True},
-    }
-    output_variables = {
-        "version": {"description": "Latest semantic version"},
-        "download_url": {"description": "URL for the universal macOS DMG"},
-    }
-    description = "Parses Cursor JSON manifest for the latest mac universal DMG"
-
-    def main(self):
-        try:
-            with open(self.env["json_path"], "r") as f:
-                data = json.load(f)
-        except Exception as e:
-            raise ProcessorError(f"Cannot load JSON: {e}")
-
-        # pick only semver-like keys
-        vers = [v for v in data.keys() if re.match(r"^\d+(\.\d+)+$", v)]
-        if not vers:
-            raise ProcessorError("No valid version keys found")
-        # semver sort
-        def sv(v): return tuple(int(x) for x in v.split("."))
-        latest = sorted(vers, key=sv)[-1]
-
-        # find the MAC UNIVERSAL entry
-        assets = data[latest]
-        url = None
-        for a in assets:
-            if a.get("platform") == "MACOS" and a.get("description") == "MAC UNIVERSAL":
-                url = a.get("url")
-                break
-        if not url:
-            raise ProcessorError("Universal macOS DMG not found for version " + latest)
-
-        self.env["version"] = latest
-        self.env["download_url"] = url
-        self.output(f"Found version: {latest}")
-        self.output(f"Download URL: {url}")
-
-if __name__ == "__main__":
-    PROCESSOR = CursorJSONProcessor()
-    PROCESSOR.execute_shell()
-        </string>
-      </dict>
-    </dict>
-
-    <!-- 3) Download the DMG -->
-    <dict>
-      <key>Processor</key>
-      <string>URLDownloader</string>
-      <key>Arguments</key>
-      <dict>
-        <key>url</key>
-        <string>%download_url%</string>
-      </dict>
-    </dict>
-
-    <!-- 4) End check phase -->
+    <!-- Mark end of the check phase -->
     <dict>
       <key>Processor</key>
       <string>EndOfCheckPhase</string>
