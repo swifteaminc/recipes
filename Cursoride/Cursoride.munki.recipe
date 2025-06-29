@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Description</key>
+  <string>Imports the latest Cursor IDE universal macOS DMG into a Munki repository.</string>
+  <key>Identifier</key>
+  <string>com.github.swifteaminc.recipes.munki.cursoride</string>
+  <key>ParentRecipe</key>
+  <string>com.github.swifteaminc.recipes.download.cursoride</string>
+  <key>MinimumVersion</key>
+  <string>0.30</string>
+
+  <key>Input</key>
+  <dict>
+    <key>MUNKI_REPO_SUBDIR</key>
+    <string>apps/cursor</string>
+    <key>pkginfo</key>
+    <dict>
+      <key>catalogs</key>
+      <array>
+        <string>Development</string>
+      </array>
+      <key>description</key>
+      <string>Cursor IDE is an AI-powered code editor for macOS (universal build).</string>
+      <key>display_name</key>
+      <string>Cursor IDE</string>
+      <key>name</key>
+      <string>Cursor</string>
+      <key>unattended_install</key>
+      <true/>
+      <key>developer</key>
+      <string>Cursor AI</string>
+    </dict>
+  </dict>
+
+  <key>Process</key>
+  <array>
+    <dict>
+      <key>Processor</key>
+      <string>MunkiImporter</string>
+      <key>Arguments</key>
+      <dict>
+        <key>pkg_path</key>
+        <string>%pathname%</string>
+        <key>repo_subdirectory</key>
+        <string>%MUNKI_REPO_SUBDIR%</string>
+      </dict>
+    </dict>
+  </array>
+</dict>
+</plist>
