@@ -32,7 +32,6 @@
       <true/>
       <key>developer</key>
       <string>Cursor AI</string>
-      <!-- validate that /Applications/Cursor.app exists after install -->
       <key>installcheck_script</key>
       <string>#!/bin/bash
 # Munki installcheck: verify the app bundle is present
