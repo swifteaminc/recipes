@@ -34,8 +34,7 @@
       <string>CodeiumData</string>
       <!-- validate that /Applications/Cursor.app exists after install -->
       <key>installcheck_script</key>
-      <string>
-#!/bin/bash
+      <string>#!/bin/bash
 # Munki installcheck: verify the app bundle is present
 if [[ -d "/Applications/Windsurf.app" ]]; then
     exit 0
