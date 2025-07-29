@@ -67,6 +67,36 @@ rm -f "$CLT_PLACEHOLDER"
 
 exit 0
             </string>
+            <key>postinstall_script</key>
+            <string>#!/bin/bash
+
+USER_HOME=$(eval echo ~${USER:-$SUDO_USER})
+
+# Path setup: ensure /opt/workbrew/bin is prioritized
+PROFILE_FILES=(".zprofile" ".zshrc" ".bash_profile" ".bashrc")
+
+for file in "${PROFILE_FILES[@]}"; do
+    TARGET="$USER_HOME/$file"
+    if [ -f "$TARGET" ]; then
+        grep -q '/opt/workbrew/bin' "$TARGET" || echo 'export PATH="/opt/workbrew/bin:$PATH"' >> "$TARGET"
+        grep -q 'HOMEBREW_BREW_WRAPPER' "$TARGET" || echo 'export HOMEBREW_BREW_WRAPPER="/opt/workbrew/bin/brew"' >> "$TARGET"
+    else
+        echo 'export PATH="/opt/workbrew/bin:$PATH"' >> "$TARGET"
+        echo 'export HOMEBREW_BREW_WRAPPER="/opt/workbrew/bin/brew"' >> "$TARGET"
+    fi
+done
+
+# Optional: apply brew shellenv if brew is available
+if [ -x "/opt/workbrew/bin/brew" ]; then
+    BREW_ENV=$(/opt/workbrew/bin/brew shellenv)
+    for file in "${PROFILE_FILES[@]}"; do
+        TARGET="$USER_HOME/$file"
+        echo "$BREW_ENV" >> "$TARGET"
+    done
+fi
+
+exit 0
+            </string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
