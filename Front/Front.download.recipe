@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Description</key>
+  <string>Downloads the specified Front macOS Universal DMG.</string>
+  <key>Identifier</key>
+  <string>com.github.swifteaminc.recipes.download.front</string>
+  <key>MinimumVersion</key>
+  <string>1.0.0</string>
+
+  <key>Input</key>
+  <dict>
+    <!-- Direct URL to the universal (Apple Silicon + Intel) DMG -->
+    <key>DOWNLOAD_URL</key>
+    <string>https://dl.frontapp.com/macos/Front-universal.dmg</string>
+    <!-- Optional static version (leave blank to let downstream tools derive from the app bundle) -->
+    <key>VERSION</key>
+    <string></string>
+  </dict>
+
+  <key>Process</key>
+  <array>
+    <!-- Download the DMG -->
+    <dict>
+      <key>Processor</key>
+      <string>URLDownloader</string>
+      <key>Arguments</key>
+      <dict>
+        <key>url</key>
+        <string>%DOWNLOAD_URL%</string>
+      </dict>
+    </dict>
+
+    <!-- End of the check phase -->
+    <dict>
+      <key>Processor</key>
+      <string>EndOfCheckPhase</string>
+    </dict>
+  </array>
+</dict>
+</plist>

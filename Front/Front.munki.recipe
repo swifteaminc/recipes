@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Description</key>
+  <string>Imports the Front macOS Universal DMG into a Munki repository.</string>
+  <key>Identifier</key>
+  <string>com.github.swifteaminc.recipes.munki.front</string>
+  <key>ParentRecipe</key>
+  <string>com.github.swifteaminc.recipes.download.front</string>
+  <key>MinimumVersion</key>
+  <string>1.0.0</string>
+
+  <key>Input</key>
+  <dict>
+    <key>MUNKI_REPO_SUBDIR</key>
+    <string>apps/front</string>
+    <key>pkginfo</key>
+    <dict>
+      <key>catalogs</key>
+      <array>
+        <string>Development</string>
+      </array>
+      <key>description</key>
+      <string>Front is a collaborative email and messaging platform for teams.</string>
+      <key>display_name</key>
+      <string>Front</string>
+      <key>name</key>
+      <string>Front</string>
+      <key>unattended_install</key>
+      <true/>
+      <key>developer</key>
+      <string>FrontApp, Inc.</string>
+      <key>installcheck_script</key>
+      <string>#!/bin/bash
+# Munki installcheck: verify the app bundle is present
+if [[ -d "/Applications/Front.app" ]]; then
+    exit 1
+else
+    exit 0
+fi
+      </string>
+    </dict>
+  </dict>
+
+  <key>Process</key>
+  <array>
+    <dict>
+      <key>Processor</key>
+      <string>MunkiImporter</string>
+      <key>Arguments</key>
+      <dict>
+        <key>pkg_path</key>
+        <string>%pathname%</string>
+        <key>repo_subdirectory</key>
+        <string>%MUNKI_REPO_SUBDIR%</string>
+      </dict>
+    </dict>
+  </array>
+</dict>
+</plist>
