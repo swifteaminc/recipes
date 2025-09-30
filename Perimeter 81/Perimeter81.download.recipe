@@ -12,27 +12,26 @@
     <key>NAME</key><string>Perimeter81</string>
   </dict>
 
-  <key>MinimumVersion</key>
-  <string>1.1</string>
+  <key>MinimumVersion</key><string>1.1</string>
 
   <key>Process</key>
   <array>
-    <!-- Find newest macOS agent version (topmost <h2> like 12.0.0.6063) -->
+    <!-- Find the first 4-part version anywhere on the page -->
     <dict>
       <key>Processor</key><string>URLTextSearcher</string>
       <key>Arguments</key>
       <dict>
         <key>url</key>
         <string>https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/SASE-Admin-Guide/Content/Topics-SASE-AG/Release-Notes/HS-Agent/MacOS.htm</string>
-        <!-- match a 4-part version inside an H2 -->
+        <!-- DOTALL inline flag (?s) so we match across newlines/tags -->
         <key>re_pattern</key>
-        <string>&lt;h2[^&gt;]*&gt;\s*([0-9]+(?:\.[0-9]+){3})\s*&lt;/h2&gt;</string>
+        <string>(?s)([0-9]+(?:\.[0-9]+){3})</string>
         <key>result_output_var_name</key>
         <string>version</string>
       </dict>
     </dict>
 
-    <!-- Download that exact version from the static CDN -->
+    <!-- Download the exact version from the static CDN -->
     <dict>
       <key>Processor</key><string>URLDownloader</string>
       <key>Arguments</key>
@@ -44,11 +43,9 @@
       </dict>
     </dict>
 
-    <dict>
-      <key>Processor</key><string>EndOfCheckPhase</string>
-    </dict>
+    <dict><key>Processor</key><string>EndOfCheckPhase</string></dict>
 
-    <!-- Signature check (skipped if you pass DISABLE_CODE_SIGNATURE_VERIFICATION=true) -->
+    <!-- Signature verify (respects -k DISABLE_CODE_SIGNATURE_VERIFICATION=true) -->
     <dict>
       <key>Processor</key><string>CodeSignatureVerifier</string>
       <key>Arguments</key>
