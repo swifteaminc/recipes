@@ -1,44 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-  <dict>
-    <key>Description</key>
-    <string>Downloads the latest version of Rewind for macOS and reads its version.</string>
-    <key>Identifier</key>
-    <string>com.github.swifteaminc.recipes.download.RewindAI</string>
+<dict>
+  <key>Description</key>
+  <string>Downloads the latest Rewind for macOS from the vendor and reads its version.</string>
+  <key>Identifier</key>
+  <string>com.github.swifteaminc.recipes.download.RewindAI</string>
 
-    <key>Input</key>
+  <key>Input</key>
+  <dict>
+    <key>NAME</key><string>RewindAI</string>
+    <key>DOWNLOAD_URL</key><string>https://download.rewind.ai/Rewind.dmg</string>
+    <key>UA</key>
+    <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15</string>
+    <key>REFERER</key><string>https://www.rewind.ai/install</string>
+  </dict>
+
+  <key>MinimumVersion</key><string>1.0</string>
+
+  <key>Process</key>
+  <array>
+    <!-- 0) Ensure we don't reuse a bad cached HTML file -->
     <dict>
-      <key>NAME</key><string>RewindAI</string>
-      <key>DOWNLOAD_URL</key><string>https://download.rewind.ai/Rewind.dmg</string>
+      <key>Processor</key><string>PathDeleter</string>
+      <key>Arguments</key>
+      <dict>
+        <key>path_list</key>
+        <array>
+          <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.dmg</string>
+        </array>
+      </dict>
     </dict>
 
-    <key>MinimumVersion</key><string>1.0</string>
-
-    <key>Process</key>
-    <array>
+    <!-- 1) Download from vendor with headers CDNs commonly require -->
+    <dict>
+      <key>Processor</key><string>URLDownloader</string>
+      <key>Arguments</key>
       <dict>
-        <key>Processor</key><string>URLDownloader</string>
-        <key>Arguments</key>
+        <key>url</key><string>%DOWNLOAD_URL%</string>
+        <key>filename</key><string>%NAME%.dmg</string>
+        <key>request_headers</key>
         <dict>
-          <key>url</key><string>%DOWNLOAD_URL%</string>
-          <key>filename</key><string>%NAME%.dmg</string>
+          <key>User-Agent</key><string>%UA%</string>
+          <key>Referer</key><string>%REFERER%</string>
+          <key>Accept</key><string>application/octet-stream</string>
         </dict>
+        <!-- Extra curl toughness -->
+        <key>curl_opts</key>
+        <array>
+          <string>--location</string>
+          <string>--fail</string>
+          <string>--retry</string><string>3</string>
+          <string>--retry-delay</string><string>3</string>
+        </array>
       </dict>
+    </dict>
 
-      <dict><key>Processor</key><string>EndOfCheckPhase</string></dict>
+    <dict><key>Processor</key><string>EndOfCheckPhase</string></dict>
 
-      <!-- Pull CFBundleShortVersionString from Rewind.app inside the DMG -->
+    <!-- 2) Mount the DMG and set %version% from Rewind.app -->
+    <dict>
+      <key>Processor</key><string>AppDmgVersioner</string>
+      <key>Arguments</key>
       <dict>
-        <key>Processor</key><string>AppDmgVersioner</string>
-        <key>Arguments</key>
-        <dict>
-          <key>dmg_path</key><string>%pathname%</string>
-        </dict>
+        <key>dmg_path</key><string>%pathname%</string>
       </dict>
+    </dict>
 
-      <!-- Optional (respects -k DISABLE_CODE_SIGNATURE_VERIFICATION=true):
-           If you want, we can add CodeSignatureVerifier here later. -->
-    </array>
-  </dict>
+    <!-- (Optional) add CodeSignatureVerifier later if you want -->
+  </array>
+</dict>
 </plist>
