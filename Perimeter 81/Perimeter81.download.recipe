@@ -17,22 +17,22 @@
 
   <key>Process</key>
   <array>
-    <!-- 1) Read the newest version from the official macOS release notes -->
+    <!-- Find newest macOS agent version (topmost <h2> like 12.0.0.6063) -->
     <dict>
       <key>Processor</key><string>URLTextSearcher</string>
       <key>Arguments</key>
       <dict>
         <key>url</key>
         <string>https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/SASE-Admin-Guide/Content/Topics-SASE-AG/Release-Notes/HS-Agent/MacOS.htm</string>
-        <!-- capture the first 4-part version heading like "## 12.0.0.6063" -->
+        <!-- match a 4-part version inside an H2 -->
         <key>re_pattern</key>
-        <string>##\s*([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)</string>
+        <string>&lt;h2[^&gt;]*&gt;\s*([0-9]+(?:\.[0-9]+){3})\s*&lt;/h2&gt;</string>
         <key>result_output_var_name</key>
         <string>version</string>
       </dict>
     </dict>
 
-    <!-- 2) Download that version from the static CDN -->
+    <!-- Download that exact version from the static CDN -->
     <dict>
       <key>Processor</key><string>URLDownloader</string>
       <key>Arguments</key>
@@ -48,7 +48,7 @@
       <key>Processor</key><string>EndOfCheckPhase</string>
     </dict>
 
-    <!-- 3) Verify the installer signature (skipped if you pass DISABLE_CODE_SIGNATURE_VERIFICATION=true) -->
+    <!-- Signature check (skipped if you pass DISABLE_CODE_SIGNATURE_VERIFICATION=true) -->
     <dict>
       <key>Processor</key><string>CodeSignatureVerifier</string>
       <key>Arguments</key>
