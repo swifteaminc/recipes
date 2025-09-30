@@ -2,60 +2,66 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads the current release version of Perimeter81.</string>
-    <key>Identifier</key>
-    <string>com.github.swifteaminc.recipes.download.Perimeter81</string>
-    <key>Input</key>
+  <key>Description</key>
+  <string>Downloads the current macOS Harmony SASE (Perimeter 81) agent .pkg by reading the latest version from Check Point release notes.</string>
+  <key>Identifier</key>
+  <string>com.github.swifteaminc.recipes.download.Perimeter81</string>
+
+  <key>Input</key>
+  <dict>
+    <key>NAME</key><string>Perimeter81</string>
+  </dict>
+
+  <key>MinimumVersion</key>
+  <string>1.1</string>
+
+  <key>Process</key>
+  <array>
+    <!-- 1) Read the newest version from the official macOS release notes -->
     <dict>
-        <key>NAME</key>
-        <string>Perimeter81</string>
+      <key>Processor</key><string>URLTextSearcher</string>
+      <key>Arguments</key>
+      <dict>
+        <key>url</key>
+        <string>https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/SASE-Admin-Guide/Content/Topics-SASE-AG/Release-Notes/HS-Agent/MacOS.htm</string>
+        <!-- capture the first 4-part version heading like "## 12.0.0.6063" -->
+        <key>re_pattern</key>
+        <string>##\s*([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)</string>
+        <key>result_output_var_name</key>
+        <string>version</string>
+      </dict>
     </dict>
-    <key>MinimumVersion</key>
-    <string>1.1</string>
-    <key>Process</key>
-    <array>
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>re_pattern</key>
-                <string>href=\/\/static\.perimeter81\.com/agents/mac/Harmony_SASE_([0-9]+(\.[0-9]+)+)\.pkg</string>
-                <key>result_output_var_name</key>
-                <string>version1</string>
-                <key>url</key>
-                <string>https://support.perimeter81.com/v1/docs/downloading-the-agent</string>
-            </dict>
-            <key>Processor</key>
-            <string>URLTextSearcher</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>https://static.perimeter81.com/agents/mac/Harmony_SASE_%version1%.pkg</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>CodeSignatureVerifier</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_path</key>
-                <string>%RECIPE_CACHE_DIR%/downloads/Harmony_SASE_%version1%.pkg</string>
-                <key>expected_authority_names</key>
-                <array>
-                    <string>Developer ID Installer: Perimeter81 LTD (924635PD62)</string>
-                    <string>Developer ID Certification Authority</string>
-                    <string>Apple Root CA</string>
-                </array>
-            </dict>
-        </dict>
-    </array>
+
+    <!-- 2) Download that version from the static CDN -->
+    <dict>
+      <key>Processor</key><string>URLDownloader</string>
+      <key>Arguments</key>
+      <dict>
+        <key>url</key>
+        <string>https://static.perimeter81.com/agents/mac/Harmony_SASE_%version%.pkg</string>
+        <key>filename</key>
+        <string>Harmony_SASE_%version%.pkg</string>
+      </dict>
+    </dict>
+
+    <dict>
+      <key>Processor</key><string>EndOfCheckPhase</string>
+    </dict>
+
+    <!-- 3) Verify the installer signature (skipped if you pass DISABLE_CODE_SIGNATURE_VERIFICATION=true) -->
+    <dict>
+      <key>Processor</key><string>CodeSignatureVerifier</string>
+      <key>Arguments</key>
+      <dict>
+        <key>input_path</key><string>%pathname%</string>
+        <key>expected_authority_names</key>
+        <array>
+          <string>Developer ID Installer: Perimeter81 LTD (924635PD62)</string>
+          <string>Developer ID Certification Authority</string>
+          <string>Apple Root CA</string>
+        </array>
+      </dict>
+    </dict>
+  </array>
 </dict>
 </plist>
