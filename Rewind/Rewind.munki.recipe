@@ -28,7 +28,7 @@
 
   <key>Process</key>
   <array>
-    <!-- propagate version from AppDmgVersioner -->
+    <!-- Stamp version detected by AppDmgVersioner -->
     <dict>
       <key>Processor</key><string>MunkiPkginfoMerger</string>
       <key>Arguments</key>
@@ -40,6 +40,7 @@
       </dict>
     </dict>
 
+    <!-- Import the vendor DMG -->
     <dict>
       <key>Processor</key><string>MunkiImporter</string>
       <key>Arguments</key>
