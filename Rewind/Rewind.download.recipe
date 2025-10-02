@@ -20,19 +20,7 @@
 
   <key>Process</key>
   <array>
-    <!-- 0) Ensure we don't reuse a bad cached HTML file -->
-    <dict>
-      <key>Processor</key><string>PathDeleter</string>
-      <key>Arguments</key>
-      <dict>
-        <key>path_list</key>
-        <array>
-          <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.dmg</string>
-        </array>
-      </dict>
-    </dict>
-
-    <!-- 1) Download from vendor with headers CDNs commonly require -->
+    <!-- Download from vendor with headers CDNs often require -->
     <dict>
       <key>Processor</key><string>URLDownloader</string>
       <key>Arguments</key>
@@ -45,7 +33,6 @@
           <key>Referer</key><string>%REFERER%</string>
           <key>Accept</key><string>application/octet-stream</string>
         </dict>
-        <!-- Extra curl toughness -->
         <key>curl_opts</key>
         <array>
           <string>--location</string>
@@ -58,7 +45,7 @@
 
     <dict><key>Processor</key><string>EndOfCheckPhase</string></dict>
 
-    <!-- 2) Mount the DMG and set %version% from Rewind.app -->
+    <!-- Mount the DMG and set %version% from Rewind.app -->
     <dict>
       <key>Processor</key><string>AppDmgVersioner</string>
       <key>Arguments</key>
@@ -66,8 +53,6 @@
         <key>dmg_path</key><string>%pathname%</string>
       </dict>
     </dict>
-
-    <!-- (Optional) add CodeSignatureVerifier later if you want -->
   </array>
 </dict>
 </plist>
