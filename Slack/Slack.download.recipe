@@ -57,7 +57,7 @@
   <string>Downloads the latest Slack macOS PKG (arm64 only).</string>
 
   <key>Identifier</key>
-  <string>com.github.swifteaminc.recipes.download.slack-pkg-arm64</string>
+  <string>com.github.swifteaminc.recipes.download.slack</string>
 
   <key>MinimumVersion</key>
   <string>0.4.0</string>
