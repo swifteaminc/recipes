@@ -67,15 +67,12 @@
     <key>NAME</key>
     <string>Slack</string>
 
-    <!-- Slack's official deployment doc that includes PKG links -->
     <key>DEPLOY_DOC_URL</key>
     <string>https://slack.com/help/articles/360035635174-Deploy-Slack-for-macOS</string>
   </dict>
 
   <key>Process</key>
   <array>
-
-    <!-- 1) Find the latest arm64 PKG download URL and extract the version -->
     <dict>
       <key>Processor</key>
       <string>URLTextSearcher</string>
@@ -84,18 +81,13 @@
         <key>url</key>
         <string>%DEPLOY_DOC_URL%</string>
 
-        <!-- Captures:
-             group(1) = version
-             group(2) = full pkg URL
-        -->
+        <!-- group(1)=full URL, group(2)=version -->
         <key>re_pattern</key>
         <string>(https://downloads\.slack-edge\.com/desktop-releases/mac/arm64/([0-9.]+)/Slack-\2-macOS\.pkg)</string>
 
-        <!-- Put full URL into a variable -->
         <key>result_output_var_name</key>
         <string>download_url</string>
 
-        <!-- Also put version into %version% using capture group 2 -->
         <key>capture_groups</key>
         <dict>
           <key>version</key>
@@ -104,7 +96,6 @@
       </dict>
     </dict>
 
-    <!-- 2) Download the PKG -->
     <dict>
       <key>Processor</key>
       <string>URLDownloader</string>
@@ -122,7 +113,6 @@
       <key>Processor</key>
       <string>EndOfCheckPhase</string>
     </dict>
-
   </array>
 </dict>
 </plist>
