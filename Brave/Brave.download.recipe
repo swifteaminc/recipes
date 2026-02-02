@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads Brave Browser for macOS (universal DMG).</string>
+
+	<key>Identifier</key>
+	<string>com.github.swifteaminc.recipes.download.brave</string>
+
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Brave</string>
+
+		<key>DOWNLOAD_URL</key>
+		<string>https://referrals.brave.com/latest/BRV010/Brave-Browser.dmg</string>
+
+		<key>APP_NAME</key>
+		<string>Brave Browser.app</string>
+
+		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
+		<false/>
+	</dict>
+
+	<key>MinimumVersion</key>
+	<string>0.4.0</string>
+
+	<key>Process</key>
+	<array>
+
+		<!-- Download the DMG -->
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+			</dict>
+		</dict>
+
+		<!-- Early exit placeholder for versioning checks -->
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+
+
+		<!-- Verify code signature -->
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%mount_point%/%APP_NAME%</string>
+				<key>requirement</key>
+				<string>identifier "com.brave.Browser" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = KL8N8XSYF4</string>
+			</dict>
+		</dict>
+
+
+
+	</array>
+</dict>
+</plist>
