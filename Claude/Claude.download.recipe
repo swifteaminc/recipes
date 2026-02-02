@@ -14,7 +14,7 @@
 		<string>Claude</string>
 
 		<key>DOWNLOAD_URL</key>
-		<string>https://claude.ai/redirect/claudeai.v1.6708dc1b-5a15-4ebe-9be6-9def515ae1ae/api/desktop/darwin/universal/dmg/latest/redirect</string>
+		<string>https://downloads.claude.ai/releases/darwin/universal/1.1.1520/Claude-48ced7a78a74c4c1b03d1dab181d1b0dc21d8fc8.dmg</string>
 
 		<key>APP_NAME</key>
 		<string>Claude.app</string>
