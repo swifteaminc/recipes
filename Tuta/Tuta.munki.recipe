@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest 'Tuta' (Tuta Mail) and imports into Munki.</string>
+
+	<key>Identifier</key>
+	<string>com.github.swifteaminc.recipes.munki.tuta</string>
+
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Tuta</string>
+
+		<!-- Must match download recipe if you override -->
+		<key>APP_NAME</key>
+		<string>Tuta Mail.app</string>
+
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>communication</string>
+				<string>collaboration</string>
+				<string>messaging</string>
+				<string>email</string>
+				<string>security</string>
+			</array>
+
+			<key>description</key>
+			<string>Tuta Mail is an end-to-end encrypted email client for secure communication.</string>
+
+			<key>display_name</key>
+			<string>Tuta Mail</string>
+
+			<key>category</key>
+			<string>Internet &amp; Communication</string>
+
+			<key>developer</key>
+			<string>Tuta</string>
+
+			<key>installcheck_script</key>
+			<string>#!/bin/bash
+# Munki installcheck: verify the app bundle is present
+if [[ -d "/Applications/%APP_NAME%" ]]; then
+  exit 1
+else
+  exit 0
+fi
+</string>
+
+			<key>name</key>
+			<string>%NAME%</string>
+
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+
+	<key>ParentRecipe</key>
+	<string>com.github.swifteaminc.recipes.download.tuta</string>
+
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
