@@ -25,6 +25,8 @@
 			<string>Slack is a platform for team communication: everything in one place, instantly searchable, available wherever you go.</string>
 			<key>display_name</key>
 			<string>Slack</string>
+			<key>version</key>
+			<string>%version%</string>
 			<key>category</key>
 			<string>Internet &amp; Communication</string>
 			<key>developer</key>
@@ -34,6 +36,8 @@
 				<dict>
 					<key>CFBundleIdentifier</key>
 					<string>com.tinyspeck.slackmacgap</string>
+					<key>CFBundleShortVersionString</key>
+					<string>%version%</string>
 					<key>path</key>
 					<string>/Applications/Slack.app</string>
 					<key>type</key>
