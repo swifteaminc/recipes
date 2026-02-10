@@ -29,7 +29,7 @@
 			<string>Internet &amp; Communication</string>
 			<key>developer</key>
 			<string>Slack</string>
-			<!-- <key>installcheck_script</key>
+			<key>installcheck_script</key>
 			<string>#!/bin/bash
 # Munki installcheck: verify the app bundle is present
 if [[ -d "/Applications/Slack.app" ]]; then
@@ -37,7 +37,7 @@ if [[ -d "/Applications/Slack.app" ]]; then
 else
 	exit 0
 fi
-			</string> -->
+			</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
