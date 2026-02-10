@@ -14,7 +14,7 @@
   <dict>
     <!-- Point this at the exact DMG URL -->
     <key>DOWNLOAD_URL</key>
-    <string>https://downloads.cursor.com/production/5b19bac7a947f54e4caa3eb7e4c5fbf832389853/darwin/universal/Cursor-darwin-universal.dmg</string>
+    <string>https://downloads.cursor.com/production/d2bf8ec12017b1049f304ad3a5c8867b117ed836/darwin/universal/Cursor-darwin-universal.dmg</string>
     <!-- Optional: set a static version if you care -->
     <key>VERSION</key>
     <string>1.0</string>
