@@ -45,6 +45,11 @@ fi
 				<string>/Applications/Slack.app</string>
 				<key>type</key>
 				<string>application</string>
+				<key>CFBundleIdentifier</key>
+				<string>com.tinyspeck.slackmacgap</string>
+
+				<key>version_comparison_key</key>
+				<string>CFBundleShortVersionString</string>
 			</dict>
 			</array>
 			<key>name</key>
