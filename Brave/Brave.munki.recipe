@@ -58,59 +58,21 @@
 				<dict>
 					<key>version</key>
 					<string>%version%</string>
-					<key>installcheck_script</key>
-					<string>#!/bin/bash
-set -euo pipefail
-
-app="/Applications/%APP_NAME%"
-desired="%version%"
-
-if [ ! -d "$app" ]; then
-  /bin/echo "installcheck: app not found at $app"
-  exit 1
-fi
-
-if [ -z "$desired" ]; then
-  /bin/echo "installcheck: desired version is empty"
-  exit 1
-fi
-
-installed=$(/usr/bin/defaults read "$app/Contents/Info" CFBundleShortVersionString 2>/dev/null || true)
-if [ -z "$installed" ]; then
-  /bin/echo "installcheck: could not read installed version from $app"
-  exit 1
-fi
-
-ver_ge() {
-  local i=0
-  local a=(${1//./ })
-  local b=(${2//./ })
-  local len=${#a[@]}
-  if [ ${#b[@]} -gt $len ]; then
-    len=${#b[@]}
-  fi
-  while [ $i -lt $len ]; do
-    local ai=${a[i]:-0}
-    local bi=${b[i]:-0}
-    if [ $((10#$ai)) -gt $((10#$bi)) ]; then
-      return 0
-    fi
-    if [ $((10#$ai)) -lt $((10#$bi)) ]; then
-      return 1
-    fi
-    i=$((i+1))
-  done
-  return 0
-}
-
-if ver_ge "$installed" "$desired"; then
-  /bin/echo "installcheck: installed $installed meets desired $desired"
-  exit 0
-else
-  /bin/echo "installcheck: installed $installed is older than desired $desired"
-  exit 1
-fi
-</string>
+					<key>installs</key>
+					<array>
+						<dict>
+							<key>CFBundleIdentifier</key>
+							<string>com.brave.Browser</string>
+							<key>CFBundleShortVersionString</key>
+							<string>%version%</string>
+							<key>path</key>
+							<string>/Applications/Brave Browser.app</string>
+							<key>type</key>
+							<string>application</string>
+							<key>version_comparison_key</key>
+							<string>CFBundleShortVersionString</string>
+						</dict>
+					</array>
 				</dict>
 			</dict>
 		</dict>
