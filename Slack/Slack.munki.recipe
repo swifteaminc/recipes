@@ -50,19 +50,118 @@ fi
 	<string>com.github.swifteaminc.recipes.download.slack</string>
 	<key>Process</key>
 	<array>
-		        <!-- Merge the detected version into pkginfo -->
-        <dict>
-            <key>Processor</key>
-            <string>MunkiPkginfoMerger</string>
-            <key>Arguments</key>
-            <dict>
-                <key>additional_pkginfo</key>
-                <dict>
-                    <key>version</key>
-                    <string>%version%</string>
-                </dict>
-            </dict>
-        </dict>
+		    <!-- Unpack flat pkg -->
+		<dict>
+		<key>Arguments</key>
+		<dict>
+			<key>flat_pkg_path</key>
+			<string>%pathname%</string>
+			<key>destination_path</key>
+			<string>%RECIPE_CACHE_DIR%/unpacked</string>
+			<key>purge_destination</key>
+			<true/>
+		</dict>
+		<key>Processor</key>
+		<string>FlatPkgUnpacker</string>
+		</dict>
+
+		<!-- Extract payload that contains 1Password.app -->
+		<dict>
+		<key>Arguments</key>
+		<dict>
+			<key>pkg_payload_path</key>
+			<string>%RECIPE_CACHE_DIR%/unpacked/com.1password.1password.pkg/Payload</string>
+			<key>destination_path</key>
+			<string>%RECIPE_CACHE_DIR%/Applications</string>
+			<key>purge_destination</key>
+			<true/>
+		</dict>
+		<key>Processor</key>
+		<string>PkgPayloadUnpacker</string>
+		</dict>
+
+		<!-- Build installs array from extracted app -->
+		<dict>
+		<key>Arguments</key>
+		<dict>
+			<key>faux_root</key>
+			<string>%RECIPE_CACHE_DIR%</string>
+			<key>installs_item_paths</key>
+			<array>
+			<string>/Applications/1Password.app</string>
+			</array>
+		</dict>
+		<key>Processor</key>
+		<string>MunkiInstallsItemsCreator</string>
+		</dict>
+
+		<!-- Merge base pkginfo -->
+		<dict>
+		<key>Processor</key>
+		<string>MunkiPkginfoMerger</string>
+		</dict>
+
+		<!-- Read minimum OS version -->
+		<dict>
+		<key>Arguments</key>
+		<dict>
+			<key>info_path</key>
+			<string>%RECIPE_CACHE_DIR%/Applications/Slack.app</string>
+			<key>plist_keys</key>
+			<dict>
+			<key>LSMinimumSystemVersion</key>
+			<string>min_os_ver</string>
+			</dict>
+		</dict>
+		<key>Processor</key>
+		<string>PlistReader</string>
+		</dict>
+
+		<!-- Inject minimum OS -->
+		<dict>
+		<key>Arguments</key>
+		<dict>
+			<key>additional_pkginfo</key>
+			<dict>
+			<key>minimum_os_version</key>
+			<string>%min_os_ver%</string>
+			</dict>
+		</dict>
+		<key>Processor</key>
+		<string>MunkiPkginfoMerger</string>
+		</dict>
+
+		<!-- ✨ NEW: Read app version from Info.plist -->
+		<dict>
+		<key>Arguments</key>
+		<dict>
+			<key>info_path</key>
+			<string>%RECIPE_CACHE_DIR%/Applications/Slack.app</string>
+			<key>plist_keys</key>
+			<dict>
+			<key>CFBundleShortVersionString</key>
+			<string>app_version</string>
+			<key>CFBundleVersion</key>
+			<string>app_build</string>
+			</dict>
+		</dict>
+		<key>Processor</key>
+		<string>PlistReader</string>
+		</dict>
+
+		<!-- ✨ NEW: Set pkginfo.version so MunkiImporter names it correctly -->
+		<dict>
+		<key>Arguments</key>
+		<dict>
+			<key>additional_pkginfo</key>
+			<dict>
+			<key>version</key>
+			<string>%app_version%</string>
+			</dict>
+		</dict>
+		<key>Processor</key>
+		<string>MunkiPkginfoMerger</string>
+		</dict>
 
 		<!-- Import the downloaded vendor pkg -->
 		<dict>
