@@ -57,6 +57,10 @@ fi
 				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>installs_item_paths</key>
+				<array>
+				<string>/Applications/Slack.app</string>
+				</array>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
