@@ -29,15 +29,6 @@
 			<string>Internet &amp; Communication</string>
 			<key>developer</key>
 			<string>Slack</string>
-			<!-- <key>installcheck_script</key>
-			<string>#!/bin/bash
-# Munki installcheck: verify the app bundle is present
-if [[ -d "/Applications/Slack.app" ]]; then
-	exit 1
-else
-	exit 0
-fi
-			</string> -->
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -53,6 +44,110 @@ fi
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked/**/Payload</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_payload_path</key>
+				<string>%found_filename%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/Applications</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Slack.app</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>info_path</key>
+				<string>%RECIPE_CACHE_DIR%/Applications/Slack.app</string>
+				<key>plist_keys</key>
+				<dict>
+					<key>CFBundleShortVersionString</key>
+					<string>app_version</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PlistReader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%app_version%</string>
+					<key>installcheck_script</key>
+					<string>#!/bin/bash
+set -euo pipefail
+
+app="/Applications/Slack.app"
+desired="%app_version%"
+
+if [ ! -d "$app" ]; then
+  exit 1
+fi
+
+if [ -z "$desired" ]; then
+  exit 1
+fi
+
+installed=$(/usr/bin/defaults read "$app/Contents/Info" CFBundleShortVersionString 2>/dev/null || true)
+if [ -z "$installed" ]; then
+  exit 1
+fi
+
+if [ "$(/usr/bin/printf '%s\n' "$desired" "$installed" | /usr/bin/sort -V | /usr/bin/head -n1)" = "$desired" ]; then
+  exit 0
+else
+  exit 1
+fi
+</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>pkg_path</key>
 				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
@@ -60,6 +155,18 @@ fi
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/unpacked</string>
+					<string>%RECIPE_CACHE_DIR%/Applications</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 	</array>
 </dict>
