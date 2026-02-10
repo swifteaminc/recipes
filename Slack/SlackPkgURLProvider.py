@@ -44,6 +44,8 @@ class SlackPkgURLProvider(URLGetter):
         arch = self.env.get("arch", "arm64")
 
         html = self.download(deploy_doc_url)
+        if isinstance(html, (bytes, bytearray)):
+            html = html.decode("utf-8", "ignore")
 
         # Match e.g.:
         # https://downloads.slack-edge.com/desktop-releases/mac/arm64/4.47.72/Slack-4.47.72-macOS.pkg
