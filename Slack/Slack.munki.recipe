@@ -33,11 +33,11 @@
 			<string>#!/bin/bash
 # Munki installcheck: verify the app bundle is present
 if [[ -d "/Applications/Slack.app" ]]; then
-  exit 1
+	exit 1
 else
-  exit 0
-fi -->
-</string>	
+	exit 0
+fi
+			</string> -->
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -50,17 +50,33 @@ fi -->
 	<string>com.github.swifteaminc.recipes.download.slack</string>
 	<key>Process</key>
 	<array>
+		        <!-- Merge the detected version into pkginfo -->
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>version</key>
+                    <string>%version%</string>
+                </dict>
+            </dict>
+        </dict>
+
+		<!-- Import the downloaded vendor pkg -->
 		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_path</key>
-				<string>%pathname%</string>
-				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
-			</dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
+		<key>Arguments</key>
+		<dict>
+			<key>pkg_path</key>
+			<string>%pathname%</string>
+			<key>repo_subdirectory</key>
+			<string>%MUNKI_REPO_SUBDIR%</string>
 		</dict>
+		<key>Processor</key>
+		<string>MunkiImporter</string>
+		</dict>
+
 	</array>
 </dict>
 </plist>
