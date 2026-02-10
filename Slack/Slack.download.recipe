@@ -10,10 +10,8 @@
 	<dict>
 		<key>NAME</key>
 		<string>Slack</string>
-		<key>arch</key>
-		<string>arm64</string>
-		<key>deploy_doc_url</key>
-		<string>https://slack.com/help/articles/360035635174-Deploy-Slack-for-macOS</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://slack.com/api/desktop.latestRelease?redirect=1&amp;variant=pkg&amp;arch=arm64</string>
 		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
 		<false/>
 	</dict>
@@ -23,17 +21,13 @@
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>SlackPkgURLProvider</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%url%</string>
+				<string>%DOWNLOAD_URL%</string>
 				<key>filename</key>
-				<string>%NAME%-%version%.pkg</string>
+				<string>%NAME%.pkg</string>
 			</dict>
 		</dict>
 		<dict>
