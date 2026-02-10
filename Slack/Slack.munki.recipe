@@ -56,25 +56,15 @@ fi
 				<key>pkg_path</key>
 				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>installs_item_paths</key>
+				<array>
+				<string>/Applications/Slack.app</string>
+				</array>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
 		</dict>
-		    <!-- Build installs array from extracted app -->
-		<dict>
-		<key>Arguments</key>
-		<dict>
-			<key>faux_root</key>
-			<string>%RECIPE_CACHE_DIR%</string>
-			<key>installs_item_paths</key>
-			<array>
-			<string>/Applications/Slack.app</string>
-			</array>
-		</dict>
-		<key>Processor</key>
-		<string>MunkiInstallsItemsCreator</string>
-		</dict>
-
 	</array>
 </dict>
 </plist>
