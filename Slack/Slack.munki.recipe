@@ -25,27 +25,10 @@
 			<string>Slack is a platform for team communication: everything in one place, instantly searchable, available wherever you go.</string>
 			<key>display_name</key>
 			<string>Slack</string>
-			<key>version</key>
-			<string>%version%</string>
 			<key>category</key>
 			<string>Internet &amp; Communication</string>
 			<key>developer</key>
 			<string>Slack</string>
-			<key>installs</key>
-			<array>
-				<dict>
-					<key>CFBundleIdentifier</key>
-					<string>com.tinyspeck.slackmacgap</string>
-					<key>CFBundleShortVersionString</key>
-					<string>%version%</string>
-					<key>path</key>
-					<string>/Applications/Slack.app</string>
-					<key>type</key>
-					<string>application</string>
-					<key>version_comparison_key</key>
-					<string>CFBundleShortVersionString</string>
-				</dict>
-			</array>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -61,6 +44,106 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+			<dict>
+				<key>Arguments</key>
+				<dict>
+					<key>pattern</key>
+					<string>%RECIPE_CACHE_DIR%/unpacked/*[Ss]lack*.pkg</string>
+				</dict>
+				<key>Processor</key>
+				<string>FileFinder</string>
+			</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/Applications</string>
+				<key>pkgdirs</key>
+				<dict/>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_payload_path</key>
+				<string>%found_filename%/Payload</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/Applications</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/Applications/Slack.app</string>
+				<key>requirement</key>
+				<string>identifier "com.tinyspeck.slackmacgap" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BQR82RBBHL</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Slack.app</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>info_path</key>
+				<string>%RECIPE_CACHE_DIR%/Applications/Slack.app</string>
+				<key>plist_keys</key>
+				<dict>
+					<key>CFBundleShortVersionString</key>
+					<string>app_version</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PlistReader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%app_version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>pkg_path</key>
 				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
@@ -68,6 +151,18 @@
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/unpacked</string>
+					<string>%RECIPE_CACHE_DIR%/Applications</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 	</array>
 </dict>
