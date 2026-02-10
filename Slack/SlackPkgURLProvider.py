@@ -9,7 +9,6 @@ deployment/help article (which contains direct PKG links).
 from __future__ import absolute_import
 
 import re
-from distutils.version import LooseVersion
 from typing import List
 
 from autopkglib import URLGetter
@@ -50,25 +49,18 @@ class SlackPkgURLProvider(URLGetter):
 
         # Match e.g.:
         # https://downloads.slack-edge.com/desktop-releases/mac/arm64/4.47.72/Slack-4.47.72-macOS.pkg
-        # Allow flexible paths and extract version from filename.
-        pattern = r"(https://downloads\.slack-edge\.com/[^\s\"']*?Slack-([0-9.]+)-macOS\.pkg)"
+        pattern = (
+            r"(https://downloads\.slack-edge\.com/desktop-releases/mac/"
+            + re.escape(arch)
+            + r"/([0-9.]+)/Slack-\2-macOS\.pkg)"
+        )
 
         matches = re.findall(pattern, html)
         if not matches:
             raise Exception(f"Could not find Slack PKG URL for arch={arch} in {deploy_doc_url}")
 
         # re.findall gives list of tuples: (full_url, version)
-        candidates = matches
-        if arch:
-            arch_candidates = [
-                m for m in matches if f"/{arch}/" in m[0] or f"-{arch}-" in m[0]
-            ]
-            if arch_candidates:
-                candidates = arch_candidates
-            else:
-                self.output(f"No PKG URL matched arch={arch}; using best available match.")
-
-        url, version = max(candidates, key=lambda m: LooseVersion(m[1]))
+        url, version = matches[0]
 
         self.env["url"] = url
         self.env["version"] = version
