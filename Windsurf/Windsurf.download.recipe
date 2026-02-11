@@ -38,6 +38,19 @@
       <key>Processor</key>
       <string>EndOfCheckPhase</string>
     </dict>
+
+    <!-- Read app version from the mounted DMG -->
+    <dict>
+      <key>Processor</key>
+      <string>Versioner</string>
+      <key>Arguments</key>
+      <dict>
+        <key>input_plist_path</key>
+        <string>%pathname%/Windsurf.app/Contents/Info.plist</string>
+        <key>plist_version_key</key>
+        <string>CFBundleShortVersionString</string>
+      </dict>
+    </dict>
   </array>
 </dict>
 </plist>

@@ -1,25 +1,24 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Tuta (Tuta Mail) Desktop for macOS.</string>
+	<string>Downloads Dangerzone for macOS (Apple silicon).</string>
 
 	<key>Identifier</key>
-	<string>com.github.swifteaminc.recipes.download.tuta</string>
+	<string>com.github.swifteaminc.recipes.download.dangerzone</string>
 
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Tuta</string>
+		<string>Dangerzone</string>
 
-		<!-- DMG URL provided -->
 		<key>DOWNLOAD_URL</key>
-		<string>https://app.tuta.com/desktop/tutanota-desktop-mac.dmg</string>
+		<string>https://github.com/freedomofpress/dangerzone/releases/download/v0.10.0/Dangerzone-0.10.0-arm64.dmg</string>
 
-		<!-- App bundle name inside the DMG (adjust if your DMG contains a different .app name) -->
 		<key>APP_NAME</key>
-		<string>Tuta Mail.app</string>
+		<string>Dangerzone.app</string>
 
 		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
 		<false/>
@@ -46,29 +45,23 @@
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
+
+
 		<dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/%APP_NAME%</string>
+				<string>%mount_point%/%APP_NAME%</string>
 				<key>requirement</key>
-				<string>identifier "de.tutao.tutanota" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = JKCH89Z3M9</string>
+				<string>identifier "org.freedomofpress.dangerzone" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = V9B5K5S2T6</string>
 			</dict>
 		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%pathname%/%APP_NAME%/Contents/Info.plist</string>
-				<key>plist_version_key</key>
-				<string>CFBundleShortVersionString</string>
-			</dict>
-		</dict>
+
 
 	</array>
 </dict>
 </plist>
+
+-->

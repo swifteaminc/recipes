@@ -1,3 +1,4 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -38,19 +39,8 @@
       <key>Processor</key>
       <string>EndOfCheckPhase</string>
     </dict>
-
-    <!-- Read app version from the mounted DMG -->
-    <dict>
-      <key>Processor</key>
-      <string>Versioner</string>
-      <key>Arguments</key>
-      <dict>
-        <key>input_plist_path</key>
-        <string>%pathname%/Front.app/Contents/Info.plist</string>
-        <key>plist_version_key</key>
-        <string>CFBundleShortVersionString</string>
-      </dict>
-    </dict>
   </array>
 </dict>
 </plist>
+
+-->

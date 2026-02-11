@@ -65,32 +65,21 @@
 				<dict>
 					<key>version</key>
 					<string>%version%</string>
-					<key>installcheck_script</key>
-					<string>#!/bin/bash
-set -euo pipefail
-
-app="/Applications/%APP_NAME%"
-desired="%version%"
-
-if [ ! -d "$app" ]; then
-  exit 1
-fi
-
-if [ -z "$desired" ]; then
-  exit 1
-fi
-
-installed=$(/usr/bin/defaults read "$app/Contents/Info" CFBundleShortVersionString 2>/dev/null || true)
-if [ -z "$installed" ]; then
-  exit 1
-fi
-
-if [ "$(/usr/bin/printf '%s\n' "$desired" "$installed" | /usr/bin/sort -V | /usr/bin/head -n1)" = "$desired" ]; then
-  exit 0
-else
-  exit 1
-fi
-</string>
+					<key>installs</key>
+					<array>
+						<dict>
+							<key>CFBundleIdentifier</key>
+							<string>com.anthropic.claudefordesktop</string>
+							<key>CFBundleShortVersionString</key>
+							<string>%version%</string>
+							<key>path</key>
+							<string>/Applications/Claude.app</string>
+							<key>type</key>
+							<string>application</string>
+							<key>version_comparison_key</key>
+							<string>CFBundleShortVersionString</string>
+						</dict>
+					</array>
 				</dict>
 			</dict>
 		</dict>
