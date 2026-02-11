@@ -114,32 +114,21 @@
 				<dict>
 					<key>version</key>
 					<string>%app_version%</string>
-					<key>installcheck_script</key>
-					<string>#!/bin/bash
-set -euo pipefail
-
-app="/Applications/Slack.app"
-desired="%app_version%"
-
-if [ ! -d "$app" ]; then
-  exit 1
-fi
-
-if [ -z "$desired" ]; then
-  exit 1
-fi
-
-installed=$(/usr/bin/defaults read "$app/Contents/Info" CFBundleShortVersionString 2>/dev/null || true)
-if [ -z "$installed" ]; then
-  exit 1
-fi
-
-if [ "$(/usr/bin/printf '%s\n' "$desired" "$installed" | /usr/bin/sort -V | /usr/bin/head -n1)" = "$desired" ]; then
-  exit 0
-else
-  exit 1
-fi
-</string>
+					<key>installs</key>
+					<array>
+						<dict>
+							<key>CFBundleIdentifier</key>
+							<string>com.tinyspeck.slackmacgap</string>
+							<key>CFBundleShortVersionString</key>
+							<string>%app_version%</string>
+							<key>path</key>
+							<string>/Applications/Slack.app</string>
+							<key>type</key>
+							<string>application</string>
+							<key>version_comparison_key</key>
+							<string>CFBundleShortVersionString</string>
+						</dict>
+					</array>
 				</dict>
 			</dict>
 			<key>Processor</key>
