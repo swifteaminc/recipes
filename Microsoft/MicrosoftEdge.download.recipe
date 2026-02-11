@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Description</key>
+  <string>Downloads the latest Microsoft Edge package for the selected channel.</string>
+  <key>Identifier</key>
+  <string>com.github.swifteaminc.recipes.download.MicrosoftEdge</string>
+  <key>Input</key>
+  <dict>
+    <key>NAME</key><string>MicrosoftEdge</string>
+    <key>CHANNEL</key><string>Stable</string>
+  </dict>
+  <key>MinimumVersion</key>
+  <string>1.0.0</string>
+  <key>Process</key>
+  <array>
+    <dict>
+      <key>Processor</key>
+      <string>MicrosoftEdgeURLProvider</string>
+      <key>Arguments</key>
+      <dict>
+        <key>CHANNEL</key><string>%CHANNEL%</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>Processor</key>
+      <string>URLDownloader</string>
+      <key>Arguments</key>
+      <dict>
+        <key>url</key><string>%url%</string>
+        <key>filename</key><string>%NAME%-%CHANNEL%.pkg</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>Processor</key>
+      <string>EndOfCheckPhase</string>
+    </dict>
+  </array>
+</dict>
+</plist>
