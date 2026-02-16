@@ -14,7 +14,7 @@
 		<string>Brave</string>
 
 		<key>DOWNLOAD_URL</key>
-		<string>https://referrals.brave.com/latest/BRV010/Brave-Browser.dmg</string>
+		<string>https://referrals.brave.com/latest/Brave-Browser.dmg</string>
 
 		<key>APP_NAME</key>
 		<string>Brave Browser.app</string>
