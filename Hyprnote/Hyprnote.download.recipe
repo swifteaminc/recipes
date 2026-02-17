@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Hyprnote Desktop (Char) for macOS Apple Silicon.</string>
+
+	<key>Identifier</key>
+	<string>com.github.swifteaminc.recipes.download.hyprnote</string>
+
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Hyprnote</string>
+
+		<key>DOWNLOAD_URL</key>
+		<string>https://github.com/fastrepl/char/releases/download/desktop_v1.0.7/hyprnote-macos-aarch64.dmg</string>
+
+		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
+		<false/>
+	</dict>
+
+	<key>MinimumVersion</key>
+	<string>0.4.0</string>
+
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+
+		<dict>
+			<key>Processor</key>
+			<string>AppDmgVersioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_path</key>
+				<string>%pathname%</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
