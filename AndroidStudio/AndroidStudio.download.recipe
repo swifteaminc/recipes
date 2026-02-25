@@ -13,8 +13,11 @@
 		<key>NAME</key>
 		<string>AndroidStudio</string>
 
-		<key>DOWNLOAD_URL</key>
-		<string>https://edgedl.me.gvt1.com/android/studio/install/2025.3.1.8/android-studio-panda1-patch1-mac_arm.dmg</string>
+		<key>DOWNLOAD_PAGE_URL</key>
+		<string>https://developer.android.com/studio</string>
+
+		<key>RE_PATTERN</key>
+		<string>(?P&lt;url&gt;https://edgedl\.me\.gvt1\.com/android/studio/install/[0-9.]+/android-studio-[A-Za-z0-9-]+-mac_arm\.dmg)</string>
 
 		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
 		<false/>
@@ -27,11 +30,23 @@
 	<array>
 		<dict>
 			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_PAGE_URL%</string>
+				<key>re_pattern</key>
+				<string>%RE_PATTERN%</string>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
+				<string>%url%</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 			</dict>
