@@ -14,7 +14,7 @@
 		<string>Signal</string>
 
 		<key>DOWNLOAD_URL</key>
-		<string>https://updates.signal.org/desktop/signal-desktop-mac-universal-7.90.0.dmg</string>
+		<string>https://updates.signal.org/desktop/signal-desktop-mac-universal-8.0.0.dmg</string>
 
 		<key>APP_NAME</key>
 		<string>Signal.app</string>

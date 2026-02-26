@@ -14,7 +14,7 @@
   <dict>
     <!-- Direct URL to the Intel (x64) DMG -->
     <key>DOWNLOAD_URL</key>
-    <string>https://windsurf-stable.codeiumdata.com/darwin-x64-dmg/stable/2a329a0a513ed199397a4f9ebb1c8267575a7ef0/Windsurf-darwin-x64-1.9552.25.dmg</string>
+    <string>https://windsurf-stable.codeiumdata.com/darwin-x64-dmg/stable/8911695f6454083fd48c3422f4736eb88053357c/Windsurf-darwin-x64-1.9566.11.dmg</string>
     <!-- Optional static version -->
     <key>VERSION</key>
     <string>1.10.5</string>
