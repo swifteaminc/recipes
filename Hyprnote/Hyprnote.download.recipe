@@ -14,7 +14,7 @@
 		<string>Hyprnote</string>
 
 		<key>DOWNLOAD_URL</key>
-		<string>https://github.com/fastrepl/char/releases/download/desktop_v1.0.9/hyprnote-macos-aarch64.dmg</string>
+		<string>https://github.com/fastrepl/char/releases/download/desktop_v1.0.10/char-macos-aarch64.dmg</string>
 
 		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
 		<false/>
