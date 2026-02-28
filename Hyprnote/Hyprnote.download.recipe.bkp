@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -13,14 +13,8 @@
 		<key>NAME</key>
 		<string>Hyprnote</string>
 
-		<key>RELEASE_API_URL</key>
-		<string>https://api.github.com/repos/fastrepl/char/releases</string>
-
-		<key>TAG_PREFIX</key>
-		<string>desktop_v</string>
-
-		<key>ASSET_NAME</key>
-		<string>char-macos-aarch64.dmg</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://github.com/fastrepl/char/releases/download/desktop_v1.0.10/char-macos-aarch64.dmg</string>
 
 		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
 		<false/>
@@ -33,27 +27,13 @@
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>HyprnoteDownloadURLProvider</string>
-			<key>Arguments</key>
-			<dict>
-				<key>release_api_url</key>
-				<string>%RELEASE_API_URL%</string>
-				<key>tag_prefix</key>
-				<string>%TAG_PREFIX%</string>
-				<key>asset_name</key>
-				<string>%ASSET_NAME%</string>
-			</dict>
-		</dict>
-
-		<dict>
-			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%url%</string>
+				<string>%DOWNLOAD_URL%</string>
 				<key>filename</key>
-				<string>%NAME%-%version%.dmg</string>
+				<string>%NAME%.dmg</string>
 			</dict>
 		</dict>
 
@@ -73,4 +53,4 @@
 		</dict>
 	</array>
 </dict>
-</plist>
+</plist> -->
