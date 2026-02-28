@@ -2,14 +2,16 @@
 # -*- coding: utf-8 -*-
 """
 SlackPkgURLProvider
-Finds the latest Slack macOS arm64 PKG URL and version by scraping Slack's
-deployment/help article (which contains direct PKG links).
+Finds the latest Slack macOS PKG URL and version using Slack's
+desktop.latestRelease API.
 """
 
 from __future__ import absolute_import
 
+import json
 import re
 from typing import List
+from urllib.parse import urlencode
 
 from autopkglib import URLGetter
 
@@ -17,20 +19,25 @@ __all__: List[str] = ["SlackPkgURLProvider"]
 
 
 class SlackPkgURLProvider(URLGetter):
-    """Provides URL to the latest Slack macOS PKG (arm64)."""
+    """Provides URL to the latest Slack macOS PKG."""
 
     description = __doc__
 
     input_variables = {
-        "deploy_doc_url": {
+        "release_api_url": {
             "required": False,
-            "default": "https://slack.com/help/articles/360035635174-Deploy-Slack-for-macOS",
-            "description": "Slack help article that includes direct PKG download links.",
+            "default": "https://slack.com/api/desktop.latestRelease",
+            "description": "Slack latest release API endpoint.",
         },
         "arch": {
             "required": False,
             "default": "arm64",
-            "description": "Architecture to match in the Slack PKG URL. Use 'arm64'.",
+            "description": "Architecture to request. Use 'arm64'.",
+        },
+        "variant": {
+            "required": False,
+            "default": "pkg",
+            "description": "Slack installer variant to request.",
         },
     }
 
@@ -40,30 +47,47 @@ class SlackPkgURLProvider(URLGetter):
     }
 
     def main(self):
-        deploy_doc_url = self.env.get("deploy_doc_url")
+        release_api_url = self.env.get("release_api_url")
         arch = self.env.get("arch", "arm64")
+        variant = self.env.get("variant", "pkg")
+        if arch != "arm64":
+            raise Exception(f"Unsupported arch '{arch}'. This recipe is locked to arm64.")
 
-        html = self.download(deploy_doc_url)
+        params = urlencode({"redirect": "0", "variant": variant, "arch": arch})
+        separator = "&" if "?" in release_api_url else "?"
+        query_url = f"{release_api_url}{separator}{params}"
 
-        # Match e.g.:
-        # https://downloads.slack-edge.com/desktop-releases/mac/arm64/4.47.72/Slack-4.47.72-macOS.pkg
+        response = self.download(query_url)
+        if isinstance(response, bytes):
+            response = response.decode("utf-8", errors="replace")
+
+        try:
+            payload = json.loads(response)
+        except Exception as err:
+            raise Exception(f"Failed to parse Slack latest-release response from {query_url}: {err}")
+
+        if not payload.get("ok"):
+            raise Exception(f"Slack latest-release API returned failure payload: {payload}")
+
+        url = (payload.get("download_url") or "").replace("\\/", "/")
+        version = payload.get("version")
+        if not url or not version:
+            raise Exception(f"Slack latest-release API did not return url/version: {payload}")
+
+        # Validate expected URL shape to catch upstream API changes early.
         pattern = (
-            r"(https://downloads\.slack-edge\.com/desktop-releases/mac/"
+            r"^https://downloads\.slack-edge\.com/desktop-releases/mac/"
             + re.escape(arch)
-            + r"/([0-9.]+)/Slack-\2-macOS\.pkg)"
+            + r"/([0-9.]+)/Slack-\1-macOS\.pkg$"
         )
-
-        matches = re.findall(pattern, html)
-        if not matches:
-            raise Exception(f"Could not find Slack PKG URL for arch={arch} in {deploy_doc_url}")
-
-        # re.findall gives list of tuples: (full_url, version)
-        url, version = matches[0]
+        match = re.match(pattern, url)
+        if not match:
+            raise Exception(f"Unexpected Slack download URL format from API: {url}")
 
         self.env["url"] = url
-        self.env["version"] = version
+        self.env["version"] = match.group(1)
         self.output(f"Found Slack PKG URL: {url}")
-        self.output(f"Version: {version}")
+        self.output(f"Version: {self.env['version']}")
 
 
 if __name__ == "__main__":
