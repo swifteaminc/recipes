@@ -14,7 +14,7 @@
 		<string>Signal</string>
 
 		<key>DOWNLOAD_URL</key>
-		<string>https://updates.signal.org/desktop/signal-desktop-mac-universal-7.87.0.dmg</string>
+		<string>https://updates.signal.org/desktop/signal-desktop-mac-universal-8.0.0.dmg</string>
 
 		<key>APP_NAME</key>
 		<string>Signal.app</string>
@@ -51,9 +51,20 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%mount_point%/%APP_NAME%</string>
+				<string>%pathname%/%APP_NAME%</string>
 				<key>requirement</key>
 				<string>identifier "org.whispersystems.signal-desktop" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = U8HD7X3H4K</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/%APP_NAME%/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleShortVersionString</string>
 			</dict>
 		</dict>
 

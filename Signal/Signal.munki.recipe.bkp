@@ -40,16 +40,6 @@
 			<key>developer</key>
 			<string>Signal Foundation</string>
 
-			<!-- <key>installcheck_script</key>
-			<string>#!/bin/bash
-# Munki installcheck: verify the app bundle is present
-if [[ -d "/Applications/%APP_NAME%" ]]; then
-  exit 1
-else
-  exit 0
-fi
-</string> -->
-
 			<key>name</key>
 			<string>%NAME%</string>
 
@@ -66,6 +56,33 @@ fi
 
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+					<key>installs</key>
+					<array>
+						<dict>
+							<key>CFBundleIdentifier</key>
+							<string>org.whispersystems.signal-desktop</string>
+							<key>CFBundleShortVersionString</key>
+							<string>%version%</string>
+							<key>path</key>
+							<string>/Applications/Signal.app</string>
+							<key>type</key>
+							<string>application</string>
+							<key>version_comparison_key</key>
+							<string>CFBundleShortVersionString</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>

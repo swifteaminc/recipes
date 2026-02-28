@@ -13,8 +13,14 @@
 		<key>NAME</key>
 		<string>Signal</string>
 
-		<key>DOWNLOAD_URL</key>
-		<string>https://updates.signal.org/desktop/signal-desktop-mac-universal-8.0.0.dmg</string>
+		<key>DOWNLOADS_FEED_URL</key>
+		<string>https://updates.signal.org/desktop/latest-mac.yml</string>
+
+		<key>DOWNLOADS_BASE_URL</key>
+		<string>https://updates.signal.org/desktop/</string>
+
+		<key>RE_PATTERN</key>
+		<string>(?P&lt;DOWNLOAD_FILE&gt;signal-desktop-mac-universal-(?P&lt;version&gt;[0-9]+\.[0-9]+\.[0-9]+)\.dmg)</string>
 
 		<key>APP_NAME</key>
 		<string>Signal.app</string>
@@ -30,13 +36,25 @@
 	<array>
 		<dict>
 			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOADS_FEED_URL%</string>
+				<key>re_pattern</key>
+				<string>%RE_PATTERN%</string>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
+				<string>%DOWNLOADS_BASE_URL%%DOWNLOAD_FILE%</string>
 				<key>filename</key>
-				<string>%NAME%.dmg</string>
+				<string>%NAME%-%version%.dmg</string>
 			</dict>
 		</dict>
 
@@ -53,7 +71,7 @@
 				<key>input_path</key>
 				<string>%pathname%/%APP_NAME%</string>
 				<key>requirement</key>
-				<string>identifier "org.whispersystems.signal-desktop" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = U8HD7X3H4K</string>
+				<string>identifier "org.whispersystems.signal-desktop" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = U68MSDN6DR</string>
 			</dict>
 		</dict>
 		<dict>
