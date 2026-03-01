@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
   <key>Description</key>
-  <string>Downloads the latest Windsurf macOS Intel (x64) DMG.</string>
+  <string>Downloads the specified Windsurf macOS Intel DMG.</string>
   <key>Identifier</key>
   <string>com.github.swifteaminc.recipes.download.windsurf</string>
   <key>MinimumVersion</key>
@@ -12,9 +12,12 @@
 
   <key>Input</key>
   <dict>
-    <!-- Dynamic redirect URL for latest Intel (x64) stable DMG -->
-    <key>DOWNLOAD_REDIRECT_URL</key>
-    <string>https://windsurf.com/api/windsurf/download-redirect?build=darwin-x64-dmg&amp;isNext=false</string>
+    <!-- Direct URL to the Intel (x64) DMG -->
+    <key>DOWNLOAD_URL</key>
+    <string>https://windsurf-stable.codeiumdata.com/darwin-x64-dmg/stable/8911695f6454083fd48c3422f4736eb88053357c/Windsurf-darwin-x64-1.9566.11.dmg</string>
+    <!-- Optional static version -->
+    <key>VERSION</key>
+    <string>1.10.5</string>
   </dict>
 
   <key>Process</key>
@@ -26,9 +29,7 @@
       <key>Arguments</key>
       <dict>
         <key>url</key>
-        <string>%DOWNLOAD_REDIRECT_URL%</string>
-        <key>filename</key>
-        <string>Windsurf.dmg</string>
+        <string>%DOWNLOAD_URL%</string>
       </dict>
     </dict>
 
@@ -52,4 +53,4 @@
     </dict>
   </array>
 </dict>
-</plist>
+</plist> -->

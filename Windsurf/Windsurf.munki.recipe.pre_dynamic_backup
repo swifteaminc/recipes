@@ -1,0 +1,102 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Description</key>
+  <string>Imports the Windsurf macOS Intel DMG into a Munki repository.</string>
+  <key>Identifier</key>
+  <string>com.github.swifteaminc.recipes.munki.windsurf</string>
+  <key>ParentRecipe</key>
+  <string>com.github.swifteaminc.recipes.download.windsurf</string>
+  <key>MinimumVersion</key>
+  <string>1.0.0</string>
+
+  <key>Input</key>
+  <dict>
+    <key>MUNKI_REPO_SUBDIR</key>
+    <string>apps/windsurf</string>
+    <key>pkginfo</key>
+    <dict>
+      <key>catalogs</key>
+      <array>
+        <string>Development</string>
+      </array>
+      <key>description</key>
+      <string>Windsurf is a lightweight code editor by CodeiumData.</string>
+      <key>display_name</key>
+      <string>Windsurf</string>
+      <key>name</key>
+      <string>Windsurf</string>
+      <key>unattended_install</key>
+      <true/>
+      <key>developer</key>
+      <string>CodeiumData</string>
+      <key>preinstall_script</key>
+      <string>#!/bin/bash
+
+CURRENT_USER=$(stat -f "%Su" /dev/console)
+USER_ID=$(id -u "$CURRENT_USER")
+
+CTL_PATH="/Library/Developer/CommandLineTools"
+
+# If either the CLI tools or full Xcode are already installed, do nothing
+if [ -d "$CTL_PATH" ]; then
+echo "Developer tools already installed (CLI tools or Xcode)."
+exit 0
+fi
+
+echo "Command Line Tools not found. Triggering background install…"
+
+# Launch the install in background and return immediately
+/bin/launchctl asuser "$USER_ID" sudo xcode-select --install &amp;
+
+echo "Background install of Command Line Tools initiated; exiting preinstall so Munki can proceed."
+exit 1
+      </string>
+    </dict>
+  </dict>
+
+  <key>Process</key>
+  <array>
+    <dict>
+      <key>Processor</key>
+      <string>MunkiPkginfoMerger</string>
+      <key>Arguments</key>
+      <dict>
+        <key>additional_pkginfo</key>
+        <dict>
+          <key>version</key>
+          <string>%version%</string>
+          <key>installs</key>
+          <array>
+            <dict>
+              <key>CFBundleIdentifier</key>
+              <string>com.codeium.Windsurf</string>
+              <key>CFBundleShortVersionString</key>
+              <string>%version%</string>
+              <key>path</key>
+              <string>/Applications/Windsurf.app</string>
+              <key>type</key>
+              <string>application</string>
+              <key>version_comparison_key</key>
+              <string>CFBundleShortVersionString</string>
+            </dict>
+          </array>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>Processor</key>
+      <string>MunkiImporter</string>
+      <key>Arguments</key>
+      <dict>
+        <key>pkg_path</key>
+        <string>%pathname%</string>
+        <key>repo_subdirectory</key>
+        <string>%MUNKI_REPO_SUBDIR%</string>
+      </dict>
+    </dict>
+  </array>
+</dict>
+</plist> -->
