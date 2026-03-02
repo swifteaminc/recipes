@@ -13,13 +13,33 @@
 		<key>NAME</key>
 		<string>Antigravity</string>
 
-		<!-- Direct DMG URL you provided -->
-		<key>DOWNLOAD_URL</key>
-		<string>https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.19.6-6514342219874304/darwin-arm/Antigravity.dmg</string>
+		<key>RELEASES_API_URL</key>
+		<string>https://antigravity-auto-updater-974169037036.us-central1.run.app/releases</string>
+
+		<key>DOWNLOAD_BASE_URL</key>
+		<string>https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/</string>
+
+		<key>BUILD</key>
+		<string>darwin-arm</string>
+
+		<key>RE_PATTERN</key>
+		<string>\{"version":"(?P&lt;version&gt;[0-9]+\.[0-9]+\.[0-9]+)","execution_id":"(?P&lt;execution_id&gt;[0-9]+)"\}</string>
 	</dict>
 
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%RELEASES_API_URL%</string>
+				<key>re_pattern</key>
+				<string>%RE_PATTERN%</string>
+			</dict>
+		</dict>
+
 		<dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -28,7 +48,7 @@
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
+				<string>%DOWNLOAD_BASE_URL%%version%-%execution_id%/%BUILD%/Antigravity.dmg</string>
 			</dict>
 		</dict>
 
@@ -46,9 +66,8 @@
 				<key>input_path</key>
 				<string>%pathname%/Antigravity.app</string>
 
-				<!-- TODO: Replace with real requirement -->
 				<key>requirement</key>
-				<string>identifier "&lt;REPLACE_ME_BUNDLE_ID&gt;" and anchor apple generic and certificate leaf[subject.OU] = &lt;REPLACE_ME_TEAM_ID&gt;</string>
+				<string>identifier "com.google.antigravity" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = EQHXZ8M8AV</string>
 			</dict>
 		</dict>
 	</array>

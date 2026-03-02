@@ -1,0 +1,56 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Agent-first IDE for AI-native development (Antigravity)</string>
+
+	<key>Identifier</key>
+	<string>com.github.swifteaminc.recipes.download.Antigravity</string>
+
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Antigravity</string>
+
+		<!-- Direct DMG URL you provided -->
+		<key>DOWNLOAD_URL</key>
+		<string>https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.19.6-6514342219874304/darwin-arm/Antigravity.dmg</string>
+	</dict>
+
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<!-- Typical DMG layout: app at root once mounted -->
+				<key>input_path</key>
+				<string>%pathname%/Antigravity.app</string>
+
+				<!-- TODO: Replace with real requirement -->
+				<key>requirement</key>
+				<string>identifier "&lt;REPLACE_ME_BUNDLE_ID&gt;" and anchor apple generic and certificate leaf[subject.OU] = &lt;REPLACE_ME_TEAM_ID&gt;</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist> -->
