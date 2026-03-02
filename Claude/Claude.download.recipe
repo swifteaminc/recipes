@@ -14,7 +14,7 @@
 		<string>Claude</string>
 
 		<key>DOWNLOAD_URL</key>
-		<string>https://downloads.claude.ai/releases/darwin/universal/1.1.3189/Claude-1b7b58b8b5060b7d5d19c6863d8f0caef4f0fc97.dmg</string>
+		<string>https://downloads.claude.ai/releases/darwin/universal/1.1.4498/Claude-24f7682cc400dec8d91fc28e444aa02743ab79dd.dmg</string>
 
 		<key>APP_NAME</key>
 		<string>Claude.app</string>
@@ -54,7 +54,7 @@
 				<key>input_path</key>
 				<string>%pathname%/%APP_NAME%</string>
 				<key>requirement</key>
-				<string>identifier "ai.anthropic.claude" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = 7R5ZEU67FQ</string>
+				<string>identifier "com.anthropic.claudefordesktop" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Q6L2SF6YDW</string>
 			</dict>
 		</dict>
 		<dict>
