@@ -33,7 +33,7 @@ See the following URLs for more info:
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>
-            <false/>
+            <true/>
         </dict>
     </dict>
     <key>MinimumVersion</key>
