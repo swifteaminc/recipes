@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -32,17 +32,19 @@ See the following URLs for more info:
             <string>Mozilla Firefox</string>
             <key>name</key>
             <string>%NAME%</string>
-            <key>preinstall_script</key>
-            <string>#!/bin/bash
-
-if pgrep -xq -- "Firefox"; then
-    exit 1
-else
-    exit 0
-fi
-            </string>
             <key>unattended_install</key>
             <true/>
+            <key>postinstall_script</key>
+            <string>#!/bin/bash
+
+/usr/bin/defaults write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool true
+/usr/bin/defaults write /Library/Preferences/org.mozilla.firefox DisableAppUpdate -bool true
+/usr/bin/defaults delete /Library/Preferences/org.mozilla.firefox AppAutoUpdate 2&gt;/dev/null || true
+/usr/sbin/chown root:wheel /Library/Preferences/org.mozilla.firefox.plist
+/bin/chmod 644 /Library/Preferences/org.mozilla.firefox.plist
+
+exit 0
+            </string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
@@ -64,4 +66,4 @@ fi
         </dict>
     </array>
 </dict>
-</plist>
+</plist> -->
