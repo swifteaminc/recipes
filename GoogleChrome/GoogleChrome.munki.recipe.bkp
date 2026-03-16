@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -28,15 +28,6 @@
             <string>Google Chrome</string>
             <key>name</key>
             <string>%NAME%</string>
-            <key>preinstall_script</key>
-            <string>#!/bin/bash
-
-if pgrep -xq -- "Google Chrome"; then
-    exit 1
-else
-    exit 0
-fi
-            </string>
             <key>unattended_install</key>
             <true/>
         </dict>
@@ -75,4 +66,4 @@ fi
         </dict>
     </array>
 </dict>
-</plist>
+</plist> -->
