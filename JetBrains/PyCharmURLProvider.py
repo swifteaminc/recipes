@@ -1,16 +1,7 @@
 #!/usr/local/autopkg/python
-"""PyCharm URL Provider."""
-# Copyright (c) 2015-present, Facebook, Inc.
-# Modifications copyright 2018 IT Services University Basel
-# All rights reserved.
-#
-# This source code is licensed under the BSD-style license found in the
-# LICENSE file in the root directory of this source tree. An additional grant
-# of patent rights can be found in the PATENTS file in the same directory.
-#
-
 from __future__ import absolute_import
 
+import re
 import sys
 from xml.dom import minidom
 
@@ -18,89 +9,91 @@ from autopkglib import ProcessorError, URLGetter
 
 __all__ = ["PyCharmURLProvider"]
 
-pyCharm_version_url = "https://www.jetbrains.com/updates/updates.xml"
+PYCHARM_UPDATES_URL = "https://www.jetbrains.com/updates/updates.xml"
+PYCHARM_PRODUCT_NAME = "PyCharm"
+PYCHARM_DOWNLOAD_URL = "https://download-cdn.jetbrains.com/python/pycharm-%s-aarch64.dmg"
+VERSION_RE = re.compile(r"^\d+(?:\.\d+)+$")
 
 
 class PyCharmURLProvider(URLGetter):
-    """Provide URL for latest PyCharm IDEA build."""
+    """Provide URL for the latest stable Apple Silicon PyCharm build."""
 
-    description = "Provides URL and version for the latest release of PyCharm."
+    description = "Provides URL and version for the latest stable Apple Silicon PyCharm release."
     input_variables = {
         "base_url": {
             "required": False,
-            "description": (
-                "Default is " "https://www.jetbrains.com/updates/updates.xml"
-            ),
-        },
-        "edition": {
-            "required": False,
-            "description": (
-                'Either "community" for "community" or "professional" for "professional" '
-                'edition. Defaults to "community".'
-            ),
+            "description": "Default is https://www.jetbrains.com/updates/updates.xml",
         },
     }
-    output_variables = {"url": {"description": "URL to the latest release of PyCharm"}}
+    output_variables = {
+        "url": {"description": "URL to the latest Apple Silicon PyCharm release"},
+        "version": {"description": "Latest stable PyCharm version"},
+    }
 
     __doc__ = description
 
+    def _fetch_xml(self, version_url):
+        """Fetch update feed XML."""
+        try:
+            if sys.version_info.major < 3:
+                return self.download(version_url)
+            return self.download(version_url).decode("utf-8")
+        except Exception as err:
+            raise ProcessorError("Cannot download %s: %s" % (version_url, err))
+
+    @staticmethod
+    def _version_key(version):
+        """Sort versions numerically, not lexicographically."""
+        return tuple(int(part) for part in version.split("."))
+
     def get_pycharm_version(self, pycharm_version_url):
         """Retrieve version number from XML."""
-        # Read XML
-        try:
-            # Check Major Python version (2 or 3)
-            if sys.version_info.major < 3:
-                html = self.download(pyCharm_version_url)
-            else:
-                html = self.download(pyCharm_version_url).decode("utf-8")
-
-        except Exception as e:
-            raise ProcessorError("Can not download %s: %s" % (pycharm_version_url, e))
-
-        root = minidom.parseString(html)
-        # Get all products in the XML
+        root = minidom.parseString(self._fetch_xml(pycharm_version_url))
         products = root.childNodes[0].getElementsByTagName("product")
 
         pycharm_product = None
         for product in products:
             if (
                 product.hasAttribute("name")
-                and product.getAttribute("name") == "PyCharm"
+                and product.getAttribute("name") == PYCHARM_PRODUCT_NAME
             ):
                 pycharm_product = product
+                break
 
-        if pycharm_product is not None:
-            channels = pycharm_product.getElementsByTagName("channel")
-            for channel in channels:
-                if (
-                    channel.hasAttribute("licensing")
-                    and channel.getAttribute("licensing") == "release"
-                ):
-                    if channel.hasAttribute(
-                        "name"
-                    ) and "EAP" not in channel.getAttribute("name"):
-                        builds = channel.getElementsByTagName("build")
-                        available_versions = list()
-                        for build in builds:
-                            if build.hasAttribute("version"):
-                                available_versions.append(build.getAttribute("version"))
-                        available_versions.sort(reverse=True)
-                        # We can return here because we found the release channel.
-                        return str(available_versions[0])
-        else:
-            raise ProcessorError("Did not find PyCharm in version XML.")
+        if pycharm_product is None:
+            raise ProcessorError("Did not find %s in version XML." % PYCHARM_PRODUCT_NAME)
+
+        versions = []
+        for channel in pycharm_product.getElementsByTagName("channel"):
+            if not (
+                channel.hasAttribute("licensing")
+                and channel.getAttribute("licensing") == "release"
+                and channel.hasAttribute("status")
+                and channel.getAttribute("status") == "release"
+            ):
+                continue
+
+            for build in channel.getElementsByTagName("build"):
+                if build.hasAttribute("version"):
+                    version = build.getAttribute("version")
+                    if VERSION_RE.match(version):
+                        versions.append(version)
+
+        if not versions:
+            raise ProcessorError("No stable PyCharm versions found in version XML.")
+
+        return sorted(set(versions), key=self._version_key, reverse=True)[0]
 
     def main(self):
         """Main function."""
-        # Determine values.
-        version_url = self.env.get("version_url", pyCharm_version_url)
+        version_url = self.env.get("base_url", PYCHARM_UPDATES_URL)
         version = self.get_pycharm_version(version_url)
-        download_url = "https://download.jetbrains.com/python/pycharm-%s-%s.dmg" % (
-            self.env.get("edition", "community"),
-            version,
-        )
 
+        self.env["version"] = version
+        download_url = PYCHARM_DOWNLOAD_URL % version
         self.env["url"] = download_url
+
+        self.output("Version: %s" % self.env["version"])
         self.output("URL: %s" % self.env["url"])
 
 

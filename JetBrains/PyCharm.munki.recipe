@@ -3,7 +3,7 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Downloads the latest PyCharm disk image and imports into Munki.</string>
+        <string>Downloads the latest PyCharm Apple Silicon disk image and imports into Munki.</string>
         <key>Identifier</key>
         <string>com.github.swifteaminc.recipes.munki.PyCharm</string>
         <key>Input</key>
@@ -12,8 +12,6 @@
             <string>apps/JetBrains/PyCharm</string>
             <key>NAME</key>
             <string>PyCharm</string>
-            <key>edition</key>
-            <string>community</string>
             <key>pkginfo</key>
             <dict>
                 <key>catalogs</key>
@@ -43,6 +41,33 @@
         <string>com.github.swifteaminc.recipes.download.PyCharm</string>
         <key>Process</key>
         <array>
+            <dict>
+                <key>Processor</key>
+                <string>MunkiPkginfoMerger</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>additional_pkginfo</key>
+                    <dict>
+                        <key>version</key>
+                        <string>%version%</string>
+                        <key>installs</key>
+                        <array>
+                            <dict>
+                                <key>CFBundleIdentifier</key>
+                                <string>com.jetbrains.pycharm</string>
+                                <key>CFBundleShortVersionString</key>
+                                <string>%version%</string>
+                                <key>path</key>
+                                <string>/Applications/PyCharm.app</string>
+                                <key>type</key>
+                                <string>application</string>
+                                <key>version_comparison_key</key>
+                                <string>CFBundleShortVersionString</string>
+                            </dict>
+                        </array>
+                    </dict>
+                </dict>
+            </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>
