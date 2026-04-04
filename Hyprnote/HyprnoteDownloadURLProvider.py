@@ -35,7 +35,7 @@ class HyprnoteDownloadURLProvider(URLGetter):
         },
         "asset_name": {
             "required": False,
-            "default": "char-macos-aarch64.dmg",
+            "default": "hyprnote-macos-aarch64.dmg",
             "description": "Exact release asset name (Apple Silicon DMG).",
         },
     }
@@ -48,7 +48,7 @@ class HyprnoteDownloadURLProvider(URLGetter):
     def main(self):
         release_api_url = self.env.get("release_api_url")
         tag_prefix = self.env.get("tag_prefix", "desktop_v")
-        asset_name = self.env.get("asset_name", "char-macos-aarch64.dmg")
+        asset_name = self.env.get("asset_name", "hyprnote-macos-aarch64.dmg")
 
         response = self.download(release_api_url)
         if isinstance(response, bytes):

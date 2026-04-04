@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -20,7 +20,7 @@
 		<string>desktop_v</string>
 
 		<key>ASSET_NAME</key>
-		<string>hyprnote-macos-aarch64.dmg</string>
+		<string>char-macos-aarch64.dmg</string>
 
 		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
 		<false/>
@@ -73,4 +73,4 @@
 		</dict>
 	</array>
 </dict>
-</plist>
+</plist> -->
