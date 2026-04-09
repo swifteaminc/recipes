@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest Char desktop app and imports it into Munki.</string>
+	<string>Downloads the latest Hyprnote Desktop (Char) and imports it into Munki.</string>
 
 	<key>Identifier</key>
 	<string>com.github.swifteaminc.recipes.munki.hyprnote</string>
@@ -11,7 +11,7 @@
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Char</string>
+		<string>Hyprnote</string>
 
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
@@ -25,10 +25,10 @@
 			</array>
 
 			<key>description</key>
-			<string>Char is an AI note-taking and meeting assistant app.</string>
+			<string>Hyprnote (Char) is an AI note-taking and meeting assistant app.</string>
 
 			<key>display_name</key>
-			<string>Char</string>
+			<string>Hyprnote</string>
 
 			<key>category</key>
 			<string>Productivity</string>
@@ -92,4 +92,4 @@
 		</dict>
 	</array>
 </dict>
-</plist>
+</plist> -->
