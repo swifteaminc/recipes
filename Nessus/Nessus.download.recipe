@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest Tenable Nessus macOS disk image.</string>
+    <key>Identifier</key>
+    <string>com.github.swifteaminc.recipes.download.Nessus</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Nessus</string>
+        <key>DOWNLOADS_API_URL</key>
+        <string>https://www.tenable.com/downloads/api/v2/pages/nessus</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.4.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>NessusDownloadURLProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>downloads_api_url</key>
+                <string>%DOWNLOADS_API_URL%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>filename</key>
+                <string>%NAME%-%version%.dmg</string>
+                <key>url</key>
+                <string>%url%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>expected_authority_names</key>
+                <array>
+                    <string>Developer ID Installer: Tenable, Inc. (4B8J598M7U)</string>
+                    <string>Developer ID Certification Authority</string>
+                    <string>Apple Root CA</string>
+                </array>
+                <key>input_path</key>
+                <string>%pathname%/Install Nessus.pkg</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
