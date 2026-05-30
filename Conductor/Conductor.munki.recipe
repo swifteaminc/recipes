@@ -63,12 +63,10 @@
 					<key>installs</key>
 					<array>
 						<dict>
-							<key>CFBundleIdentifier</key>
-							<string>%bundleid%</string>
 							<key>CFBundleShortVersionString</key>
 							<string>%version%</string>
 							<key>path</key>
-							<string>/Applications/%app_name%</string>
+							<string>/Applications/Conductor.app</string>
 							<key>type</key>
 							<string>application</string>
 							<key>version_comparison_key</key>

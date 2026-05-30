@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest Char desktop app and imports it into Munki.</string>
+	<string>Downloads the latest Anarlog (formerly Hyprnote) desktop app and imports it into Munki.</string>
 
 	<key>Identifier</key>
 	<string>com.github.swifteaminc.recipes.munki.hyprnote</string>
@@ -11,7 +11,7 @@
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Char</string>
+		<string>Anarlog</string>
 
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
@@ -25,10 +25,10 @@
 			</array>
 
 			<key>description</key>
-			<string>Char is an AI note-taking and meeting assistant app.</string>
+			<string>Anarlog (formerly Hyprnote) is a local-first AI note-taking and meeting assistant app.</string>
 
 			<key>display_name</key>
-			<string>Char</string>
+			<string>Anarlog</string>
 
 			<key>category</key>
 			<string>Productivity</string>
@@ -65,11 +65,11 @@
 					<array>
 						<dict>
 							<key>CFBundleIdentifier</key>
-							<string>%bundleid%</string>
+							<string>com.hyprnote.stable</string>
 							<key>CFBundleShortVersionString</key>
 							<string>%version%</string>
 							<key>path</key>
-							<string>/Applications/%app_name%</string>
+							<string>/Applications/Anarlog.app</string>
 							<key>type</key>
 							<string>application</string>
 							<key>version_comparison_key</key>

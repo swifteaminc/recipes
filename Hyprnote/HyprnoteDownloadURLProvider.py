@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 HyprnoteDownloadURLProvider
-Finds the latest stable Hyprnote (Char) macOS Apple Silicon DMG URL and version
-from GitHub releases.
+Finds the latest stable Anarlog (formerly Hyprnote) macOS Apple Silicon DMG URL
+and version from GitHub releases.
 """
 
 from __future__ import absolute_import
@@ -18,14 +18,14 @@ __all__: List[str] = ["HyprnoteDownloadURLProvider"]
 
 
 class HyprnoteDownloadURLProvider(URLGetter):
-    """Provides URL to the latest stable Hyprnote Apple Silicon DMG."""
+    """Provides the latest stable Anarlog Apple Silicon DMG URL."""
 
     description = __doc__
 
     input_variables = {
         "release_api_url": {
             "required": False,
-            "default": "https://api.github.com/repos/fastrepl/char/releases",
+            "default": "https://api.github.com/repos/fastrepl/anarlog/releases",
             "description": "GitHub releases API endpoint.",
         },
         "tag_prefix": {
@@ -41,7 +41,7 @@ class HyprnoteDownloadURLProvider(URLGetter):
     }
 
     output_variables = {
-        "url": {"description": "Direct download URL of the latest stable Hyprnote DMG."},
+        "url": {"description": "Direct download URL of the latest stable Anarlog DMG."},
         "version": {"description": "Version extracted from the stable desktop tag."},
     }
 
@@ -82,7 +82,7 @@ class HyprnoteDownloadURLProvider(URLGetter):
 
                 self.env["url"] = download_url
                 self.env["version"] = match.group(1)
-                self.output(f"Found Hyprnote DMG URL: {download_url}")
+                self.output(f"Found Anarlog DMG URL: {download_url}")
                 self.output(f"Version: {self.env['version']}")
                 return
 

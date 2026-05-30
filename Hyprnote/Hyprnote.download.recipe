@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Char for macOS Apple Silicon.</string>
+	<string>Downloads the latest Anarlog (formerly Hyprnote) for macOS Apple Silicon.</string>
 
 	<key>Identifier</key>
 	<string>com.github.swifteaminc.recipes.download.hyprnote</string>
@@ -11,10 +11,10 @@
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Char</string>
+		<string>Anarlog</string>
 
 		<key>RELEASE_API_URL</key>
-		<string>https://api.github.com/repos/fastrepl/char/releases</string>
+		<string>https://api.github.com/repos/fastrepl/anarlog/releases</string>
 
 		<key>TAG_PREFIX</key>
 		<string>desktop_v</string>
