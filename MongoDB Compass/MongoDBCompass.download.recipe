@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest stable release of MongoDB Compass for macOS.
+
+For Apple Silicon, use DOWNLOAD_ARCH "arm64" and SUPPORTED_ARCH "arm64" (default).
+For Intel, use DOWNLOAD_ARCH "x64" and SUPPORTED_ARCH "x86_64".</string>
+
+	<key>Identifier</key>
+	<string>com.github.swifteaminc.recipes.download.mongodbcompass</string>
+
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>MongoDBCompass</string>
+		<key>APP_NAME</key>
+		<string>MongoDB Compass.app</string>
+		<key>DOWNLOAD_ARCH</key>
+		<string>arm64</string>
+		<key>DOWNLOAD_PAGE_URL</key>
+		<string>https://www.mongodb.com/try/download/compass</string>
+		<key>RE_PATTERN</key>
+		<string>(?P&lt;url&gt;https://downloads\.mongodb\.com/compass/mongodb-compass-(?P&lt;version&gt;[0-9]+(?:\.[0-9]+)+)-darwin-%DOWNLOAD_ARCH%\.dmg)</string>
+	</dict>
+
+	<key>MinimumVersion</key>
+	<string>2.7.2</string>
+
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_PAGE_URL%</string>
+				<key>re_pattern</key>
+				<string>%RE_PATTERN%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%url%</string>
+				<key>filename</key>
+				<string>%NAME%-%DOWNLOAD_ARCH%-%version%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/%APP_NAME%</string>
+				<key>requirement</key>
+				<string>identifier "com.mongodb.compass" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4XWMY46275"</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
