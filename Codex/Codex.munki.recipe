@@ -14,7 +14,7 @@
 		<string>Codex</string>
 
 		<key>APP_NAME</key>
-		<string>Codex.app</string>
+		<string>ChatGPT.app</string>
 
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
@@ -68,11 +68,11 @@
 					<array>
 						<dict>
 							<key>CFBundleIdentifier</key>
-							<string>com.codex.ai</string>
+							<string>com.openai.codex</string>
 							<key>CFBundleShortVersionString</key>
 							<string>%version%</string>
 							<key>path</key>
-							<string>/Applications/Codex.app</string>
+							<string>/Applications/ChatGPT.app</string>
 							<key>type</key>
 							<string>application</string>
 							<key>version_comparison_key</key>
