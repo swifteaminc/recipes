@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest CrashPlan agent installer for macOS and verifies its package signature.</string>
+
+	<key>Identifier</key>
+	<string>com.github.swifteaminc.recipes.download.crashplan</string>
+
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>CrashPlan</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://console.us2.crashplan.com/api/v3/download/agent/macos</string>
+		<key>INSTALLER_NAME</key>
+		<string>Install CrashPlan.pkg</string>
+	</dict>
+
+	<key>MinimumVersion</key>
+	<string>2.7.2</string>
+
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/%INSTALLER_NAME%</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: CrashPlan Group, LLC (UGHXR79U6M)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
