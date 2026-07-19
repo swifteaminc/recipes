@@ -31,6 +31,10 @@
 	          <key>user-agent</key>
 	          <string>%USER_AGENT%</string>
 	        </dict>
+	        <key>curl_opts</key>
+	        <array>
+	          <string>--http1.1</string>
+	        </array>
 	        <key>filename</key>
 	        <string>%NAME%.pkg</string>
 	      </dict>
@@ -38,6 +42,21 @@
 	    <dict>
 	      <key>Processor</key>
 	      <string>EndOfCheckPhase</string>
+	    </dict>
+	    <dict>
+	      <key>Processor</key>
+	      <string>CodeSignatureVerifier</string>
+	      <key>Arguments</key>
+	      <dict>
+	        <key>input_path</key>
+	        <string>%pathname%</string>
+	        <key>expected_authority_names</key>
+	        <array>
+	          <string>Developer ID Installer: Zoom Video Communications, Inc. (BJ4HAAB9B3)</string>
+	          <string>Developer ID Certification Authority</string>
+	          <string>Apple Root CA</string>
+	        </array>
+	      </dict>
 	    </dict>
 	  </array>
 	</dict>

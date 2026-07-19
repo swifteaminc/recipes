@@ -24,6 +24,10 @@
 			<dict>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<key>curl_opts</key>
+				<array>
+					<string>--http1.1</string>
+				</array>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 			</dict>
