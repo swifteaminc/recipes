@@ -38,6 +38,17 @@
 			<array>
 				<string>%SUPPORTED_ARCH%</string>
 			</array>
+			<key>uninstallable</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/zsh
+
+/usr/bin/pkill -x "Lark" 2&gt;/dev/null || true
+/bin/rm -rf "/Applications/LarkSuite.app"
+
+exit 0</string>
 			<key>unattended_install</key>
 			<true/>
 			<key>unattended_uninstall</key>
