@@ -18,6 +18,8 @@
 		<string>apps/%NAME%</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>blocking_applications</key>
+			<array/>
 			<key>catalogs</key>
 			<array>
 				<string>Backup</string>
@@ -35,7 +37,25 @@
 			<string>%NAME%</string>
 			<key>minimum_os_version</key>
 			<string>14.0.0</string>
+			<key>uninstallable</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/zsh
+
+UNINSTALLER="/Library/Application Support/CrashPlan/Uninstall.app/Contents/Resources/uninstall.sh"
+
+if [[ ! -x "${UNINSTALLER}" ]]; then
+	echo "CrashPlan uninstaller was not found at ${UNINSTALLER}" &gt;&amp;2
+	exit 1
+fi
+
+/bin/zsh "${UNINSTALLER}"
+exit $?</string>
 			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
 			<true/>
 		</dict>
 	</dict>
