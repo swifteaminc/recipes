@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
   <key>Description</key>
-  <string>Downloads the current macOS Harmony SASE (Perimeter 81) agent .pkg by reading the latest version from Check Point release notes.</string>
+  <string>Downloads the current macOS Harmony SASE (Perimeter 81) agent .pkg by reading the latest version from Check Point SASE agent release notes.</string>
   <key>Identifier</key>
   <string>com.github.swifteaminc.recipes.download.Perimeter81</string>
 
@@ -16,16 +16,15 @@
 
   <key>Process</key>
   <array>
-    <!-- Find the first 4-part version anywhere on the page -->
+    <!-- Find the latest macOS 4-part version from the Check Point SASE Agent release notes landing page. -->
     <dict>
       <key>Processor</key><string>URLTextSearcher</string>
       <key>Arguments</key>
       <dict>
         <key>url</key>
-        <string>https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/SASE-Admin-Guide/Content/Topics-SASE-AG/Release-Notes/HS-Agent/MacOS.htm</string>
-        <!-- DOTALL inline flag (?s) so we match across newlines/tags -->
+        <string>https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/SASE-Admin-Guide/SASE_Security/Topics/agent_release_notes/check_point_sase_agent.html</string>
         <key>re_pattern</key>
-        <string>(?s)([0-9]+(?:\.[0-9]+){3})</string>
+        <string>macOS release (?P&lt;full_version&gt;(?P&lt;version&gt;[0-9]+(?:\.[0-9]+){2})\.(?P&lt;build&gt;[0-9]+))</string>
         <key>result_output_var_name</key>
         <string>version</string>
       </dict>
@@ -37,9 +36,9 @@
       <key>Arguments</key>
       <dict>
         <key>url</key>
-        <string>https://static.perimeter81.com/agents/mac/Harmony_SASE_%version%.pkg</string>
+        <string>https://static.perimeter81.com/agents/mac/Harmony_SASE_%full_version%.pkg</string>
         <key>filename</key>
-        <string>Harmony_SASE_%version%.pkg</string>
+        <string>Harmony_SASE_%full_version%.pkg</string>
       </dict>
     </dict>
 
@@ -53,7 +52,7 @@
         <key>input_path</key><string>%pathname%</string>
         <key>expected_authority_names</key>
         <array>
-          <string>Developer ID Installer: Perimeter81 LTD (924635PD62)</string>
+          <string>Developer ID Installer: Perimeter 81 LTD (924635PD62)</string>
           <string>Developer ID Certification Authority</string>
           <string>Apple Root CA</string>
         </array>
