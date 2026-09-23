@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of Perimeter81 and builds a package.</string>
+    <string>Downloads the current release version of Check Point SASE and builds a package.</string>
     <key>Identifier</key>
     <string>com.github.swifteaminc.recipes.pkg.Perimeter81</string>
     <key>Input</key>
@@ -21,7 +21,7 @@
             <key>Arguments</key>
             <dict>
                 <key>flat_pkg_path</key>
-                <string>%RECIPE_CACHE_DIR%/downloads/Harmony_SASE_%full_version%.pkg</string>
+                <string>%RECIPE_CACHE_DIR%/downloads/%download_filename%</string>
                 <key>destination_path</key>
                 <string>%RECIPE_CACHE_DIR%/installer_unpack</string>
                 <key>purge_destination</key>
@@ -36,7 +36,7 @@
                 <key>destination_path</key>
                 <string>%RECIPE_CACHE_DIR%/installer_payload/Applications</string>
                 <key>pkg_payload_path</key>
-                <string>%RECIPE_CACHE_DIR%/installer_unpack/Harmony SASE_unsigned.pkg/Payload</string>
+                <string>%RECIPE_CACHE_DIR%/installer_unpack/%pkg_component_name%_unsigned.pkg/Payload</string>
                 <key>purge_destination</key>
                 <true/>
             </dict>
@@ -47,7 +47,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/installer_payload/Applications/Harmony SASE.app/Contents/Info.plist</string>
+                <string>%RECIPE_CACHE_DIR%/installer_payload/Applications/%app_name%.app/Contents/Info.plist</string>
                 <key>plist_version_key</key>
                 <string>CFBundleShortVersionString</string>
             </dict>
@@ -60,7 +60,7 @@
             <key>Arguments</key>
             <dict>
                 <key>source_pkg</key>
-                <string>%RECIPE_CACHE_DIR%/downloads/Harmony_SASE_%full_version%.pkg</string>
+                <string>%RECIPE_CACHE_DIR%/downloads/%download_filename%</string>
                 <key>pkg_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%-%full_version%.pkg</string>
             </dict>

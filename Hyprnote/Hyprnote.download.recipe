@@ -20,7 +20,7 @@
 		<string>desktop_v</string>
 
 		<key>ASSET_NAME</key>
-		<string>hyprnote-macos-aarch64.dmg</string>
+		<string>anarlog-macos-aarch64.dmg</string>
 
 		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
 		<false/>

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
   <key>Description</key>
-  <string>Downloads the current Harmony SASE (Perimeter81) macOS .pkg and imports it into Munki with correct version and installs metadata.</string>
+  <string>Downloads the current Check Point SASE macOS .pkg and imports it into Munki with correct version and installs metadata.</string>
   <key>Identifier</key>
   <string>com.github.swifteaminc.recipes.munki.Perimeter81</string>
 
@@ -21,9 +21,9 @@
       </array>
       <key>category</key><string>Applications</string>
       <key>description</key>
-      <string>Harmony SASE (formerly Perimeter 81) client.</string>
+      <string>Check Point SASE (formerly Perimeter 81) client.</string>
       <key>developer</key><string>Check Point Software Technologies Ltd.</string>
-      <key>display_name</key><string>Harmony SASE (Perimeter 81)</string>
+      <key>display_name</key><string>Check Point SASE</string>
       <key>name</key><string>%NAME%</string>
       <key>unattended_install</key><true/>
       <key>unattended_uninstall</key><true/>
@@ -58,7 +58,7 @@
               <key>CFBundleVersion</key>
               <string>%build%</string>
               <key>path</key>
-              <string>/Applications/Harmony SASE.app</string>
+              <string>/Applications/%app_name%.app</string>
               <key>type</key>
               <string>application</string>
               <key>version_comparison_key</key>

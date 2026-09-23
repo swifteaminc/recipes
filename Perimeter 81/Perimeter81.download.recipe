@@ -3,30 +3,31 @@
 <plist version="1.0">
 <dict>
   <key>Description</key>
-  <string>Downloads the current macOS Harmony SASE (Perimeter 81) agent .pkg by reading the latest version from Check Point SASE agent release notes.</string>
+  <string>Downloads the current macOS Check Point SASE agent .pkg by reading the latest version from Check Point SASE agent release notes.</string>
   <key>Identifier</key>
   <string>com.github.swifteaminc.recipes.download.Perimeter81</string>
 
   <key>Input</key>
   <dict>
     <key>NAME</key><string>Perimeter81</string>
+    <key>RELEASE_NOTES_URL</key>
+    <string>https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/SASE-Admin-Guide/SASE_Security/Topics/macos/macos_agent_release_notes.html</string>
+    <key>CDN_BASE_URL</key>
+    <string>https://static.perimeter81.com/agents/mac</string>
   </dict>
 
   <key>MinimumVersion</key><string>1.1</string>
 
   <key>Process</key>
   <array>
-    <!-- Find the latest macOS 4-part version from the Check Point SASE Agent release notes landing page. -->
     <dict>
-      <key>Processor</key><string>URLTextSearcher</string>
+      <key>Processor</key><string>Perimeter81DownloadURLProvider</string>
       <key>Arguments</key>
       <dict>
-        <key>url</key>
-        <string>https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/SASE-Admin-Guide/SASE_Security/Topics/agent_release_notes/check_point_sase_agent.html</string>
-        <key>re_pattern</key>
-        <string>macOS release (?P&lt;full_version&gt;(?P&lt;version&gt;[0-9]+(?:\.[0-9]+){2})\.(?P&lt;build&gt;[0-9]+))</string>
-        <key>result_output_var_name</key>
-        <string>version</string>
+        <key>release_notes_url</key>
+        <string>%RELEASE_NOTES_URL%</string>
+        <key>cdn_base_url</key>
+        <string>%CDN_BASE_URL%</string>
       </dict>
     </dict>
 
@@ -36,9 +37,9 @@
       <key>Arguments</key>
       <dict>
         <key>url</key>
-        <string>https://static.perimeter81.com/agents/mac/Harmony_SASE_%full_version%.pkg</string>
+        <string>%url%</string>
         <key>filename</key>
-        <string>Harmony_SASE_%full_version%.pkg</string>
+        <string>%download_filename%</string>
       </dict>
     </dict>
 
