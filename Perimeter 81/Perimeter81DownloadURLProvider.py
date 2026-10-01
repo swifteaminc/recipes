@@ -8,8 +8,7 @@ Finds the newest public Check Point SASE / Harmony SASE macOS package URL.
 from __future__ import absolute_import
 
 import re
-import urllib.error
-import urllib.request
+import subprocess
 from typing import List
 
 from autopkglib import URLGetter
@@ -87,14 +86,25 @@ class Perimeter81DownloadURLProvider(URLGetter):
         ]
 
     def _cdn_url_exists(self, url):
-        request = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "AutoPkg"})
+        # Python's own ssl module doesn't fetch missing intermediates via AIA,
+        # so a urllib HEAD request can fail with CERTIFICATE_VERIFY_FAILED
+        # against a CloudFront edge that (transiently) serves an incomplete
+        # chain. curl builds the chain correctly and is what the rest of
+        # AutoPkg's downloads already rely on, so use it here too.
+        cmd = [
+            "curl", "--silent", "--show-error", "--head", "--fail",
+            "--location", "--max-time", "20", "--retry", "2", "--retry-delay", "2",
+            "--user-agent", "AutoPkg",
+            url,
+        ]
         try:
-            with urllib.request.urlopen(request, timeout=20) as response:
-                return 200 <= response.status < 400
-        except urllib.error.HTTPError as err:
-            self.output(f"Skipping unavailable package URL ({err.code}): {url}")
-        except urllib.error.URLError as err:
-            self.output(f"Skipping unavailable package URL ({err.reason}): {url}")
+            subprocess.run(cmd, check=True, capture_output=True, timeout=30)
+            return True
+        except subprocess.CalledProcessError as err:
+            stderr = err.stderr.decode("utf-8", errors="replace").strip()
+            self.output(f"Skipping unavailable package URL ({stderr or 'curl exit ' + str(err.returncode)}): {url}")
+        except subprocess.TimeoutExpired:
+            self.output(f"Skipping unavailable package URL (timeout): {url}")
         return False
 
     def main(self):
