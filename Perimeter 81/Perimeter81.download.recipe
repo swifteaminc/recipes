@@ -3,13 +3,15 @@
 <plist version="1.0">
 <dict>
   <key>Description</key>
-  <string>Downloads the current macOS Check Point SASE agent .pkg by reading the latest version from Check Point SASE agent release notes.</string>
+  <string>Downloads the current macOS Check Point SASE agent .pkg linked from the Check Point SASE Downloads page, falling back to the latest version in the agent release notes.</string>
   <key>Identifier</key>
   <string>com.github.swifteaminc.recipes.download.Perimeter81</string>
 
   <key>Input</key>
   <dict>
     <key>NAME</key><string>Perimeter81</string>
+    <key>DOWNLOADS_PAGE_URL</key>
+    <string>https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/SASE-Admin-Guide/SASE_Security/Topics/download/introduction_to_the_downloads_page.html</string>
     <key>RELEASE_NOTES_URL</key>
     <string>https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/SASE-Admin-Guide/SASE_Security/Topics/macos/macos_agent_release_notes.html</string>
     <key>CDN_BASE_URL</key>
@@ -24,6 +26,8 @@
       <key>Processor</key><string>Perimeter81DownloadURLProvider</string>
       <key>Arguments</key>
       <dict>
+        <key>downloads_page_url</key>
+        <string>%DOWNLOADS_PAGE_URL%</string>
         <key>release_notes_url</key>
         <string>%RELEASE_NOTES_URL%</string>
         <key>cdn_base_url</key>
