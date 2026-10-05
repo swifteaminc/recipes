@@ -39,6 +39,19 @@
 				<string>%DOWNLOAD_URL%</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<!-- The ~750MB DMG occasionally stalls mid-transfer; AutoPkg's default
+				     aborts after 30s at <1 byte/s with no retry, failing the whole recipe. -->
+				<key>curl_opts</key>
+				<array>
+					<string>--speed-limit</string>
+					<string>1</string>
+					<string>--speed-time</string>
+					<string>120</string>
+					<string>--retry</string>
+					<string>3</string>
+					<string>--retry-delay</string>
+					<string>15</string>
+				</array>
 			</dict>
 		</dict>
 
