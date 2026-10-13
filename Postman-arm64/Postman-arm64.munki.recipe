@@ -59,6 +59,8 @@ For Apple Silicon set both DOWNLOAD_ARCH and SUPPORTED_ARCH to "arm64"</string>
                 <string>%RECIPE_CACHE_DIR%/%NAME%-%SUPPORTED_ARCH%.dmg</string>
                 <key>dmg_root</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>dmg_filesystem</key>
+                <string>HFS+</string>
             </dict>
         </dict>
         <dict>
