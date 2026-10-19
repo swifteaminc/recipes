@@ -12,6 +12,15 @@
         <string>apps/googledrive</string>
         <key>NAME</key>
         <string>STGoogleDrive</string>
+        <!-- GoogleDrive.pkg installs only one of arm64/x86_64 (Distribution: active="is_arm()" / "is_intel()").
+             com.google.Keystone has version 0 and GoogleUpdater deletes its own staged files, so it is not a reliable install signal.
+             com.google.drivefs.shortcuts stays required and carries the Drive version. -->
+        <key>pkg_ids_set_optional_true</key>
+        <array>
+            <string>com.google.drivefs.arm64</string>
+            <string>com.google.drivefs.x86_64</string>
+            <string>com.google.Keystone</string>
+        </array>
     	<key>pkginfo</key>
     	<dict>
     		<key>catalogs</key>
@@ -48,6 +57,19 @@
             </dict>
             <key>Processor</key>
             <string>MunkiImporter</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>predicate</key>
+                <string>munki_repo_changed == FALSE</string>
+            </dict>
+            <key>Processor</key>
+            <string>StopProcessingIf</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiOptionalReceiptEditor</string>
         </dict>
     </array>
 </dict>
