@@ -57,6 +57,24 @@ fi
                 <dict>
                     <key>version</key>
                     <string>%version%</string>
+                    <!-- Swif's agent runs Munki 6 with -installonly, which ignores
+                         blocking apps, so an outdated Chrome that is open hit the
+                         preinstall_script guard and failed on every cycle (ST-9143).
+                         Report Chrome as installed while it is open; Munki updates
+                         it on the next cycle where it is closed. -->
+                    <key>installcheck_script</key>
+                    <string>#!/bin/bash
+# Munki: exit 0 = install needed, any other exit = installed.
+app="/Applications/Google Chrome.app"
+required="%version%"
+
+installed=$(/usr/bin/defaults read "$app/Contents/Info" CFBundleShortVersionString 2>/dev/null) || exit 0
+newest=$( { echo "$installed"; echo "$required"; } | /usr/bin/sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | /usr/bin/tail -1)
+[ "$installed" = "$newest" ] &amp;&amp; exit 1
+
+/usr/bin/pgrep -xq -- "Google Chrome" &amp;&amp; exit 1
+exit 0
+</string>
                 </dict>
             </dict>
         </dict>
