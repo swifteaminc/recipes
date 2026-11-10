@@ -13,8 +13,8 @@
 		<key>NAME</key>
 		<string>Dangerzone</string>
 
-		<key>DOWNLOAD_URL</key>
-		<string>https://github.com/freedomofpress/dangerzone/releases/download/v0.10.0/Dangerzone-0.10.0-arm64.dmg</string>
+		<key>GITHUB_REPO</key>
+		<string>freedomofpress/dangerzone</string>
 
 		<key>APP_NAME</key>
 		<string>Dangerzone.app</string>
@@ -30,11 +30,22 @@
 	<array>
 		<dict>
 			<key>Processor</key>
+			<string>GitHubReleasesInfoProvider</string>
+			<key>Arguments</key>
+			<dict>
+				<key>github_repo</key>
+				<string>%GITHUB_REPO%</string>
+				<key>asset_regex</key>
+				<string>^Dangerzone-[0-9.]+-arm64\.dmg$</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
+				<string>%url%</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 			</dict>
@@ -54,7 +65,7 @@
 				<key>input_path</key>
 				<string>%pathname%/%APP_NAME%</string>
 				<key>requirement</key>
-				<string>identifier "org.freedomofpress.dangerzone" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = V9B5K5S2T6</string>
+				<string>identifier "press.freedom.dangerzone" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "94ZZGGGJ3W"</string>
 			</dict>
 		</dict>
 		<dict>

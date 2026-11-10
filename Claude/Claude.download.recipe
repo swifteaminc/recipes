@@ -13,8 +13,11 @@
 		<key>NAME</key>
 		<string>Claude</string>
 
-		<key>DOWNLOAD_URL</key>
-		<string>https://downloads.claude.ai/releases/darwin/universal/1.1.4498/Claude-24f7682cc400dec8d91fc28e444aa02743ab79dd.dmg</string>
+		<!-- The update feed Claude Desktop itself polls. Each release is published as
+		     Claude-<hash>.zip and Claude-<hash>.dmg side by side; a pinned URL here kept
+		     the catalog on 1.1.4498 while devices self-updated past it. -->
+		<key>RELEASES_URL</key>
+		<string>https://downloads.claude.ai/releases/darwin/universal/RELEASES.json</string>
 
 		<key>APP_NAME</key>
 		<string>Claude.app</string>
@@ -30,11 +33,24 @@
 	<array>
 		<dict>
 			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%RELEASES_URL%</string>
+				<key>re_pattern</key>
+				<string>"url"\s*:\s*"(https://downloads\.claude\.ai/releases/darwin/universal/[^"]+)\.zip"</string>
+				<key>result_output_var_name</key>
+				<string>release_base_url</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
+				<string>%release_base_url%.dmg</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 			</dict>
