@@ -31,6 +31,19 @@
                 <dict>
                     <key>filename</key>
                     <string>%NAME%.dmg</string>
+                    <!-- GitHub downloads occasionally stall mid-transfer; AutoPkg's default
+                         aborts after 30s at <1 byte/s with no retry, failing the recipe. -->
+                    <key>curl_opts</key>
+                    <array>
+                        <string>--speed-limit</string>
+                        <string>1</string>
+                        <string>--speed-time</string>
+                        <string>120</string>
+                        <string>--retry</string>
+                        <string>3</string>
+                        <string>--retry-delay</string>
+                        <string>15</string>
+                    </array>
                 </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>
