@@ -14,6 +14,12 @@
         <string>apps/msoffice</string>
         <key>pkginfo</key>
         <dict>
+			<key>description</key>
+			<string>Supports Apple Silicon (M-series) Macs only.</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>catalogs</key>
             <array>
                 <string>Microsoft Excel 365</string>

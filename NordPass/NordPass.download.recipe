@@ -14,7 +14,7 @@ For Apple Silicon use "arm/" in ARCH_TYPE</string>
         <key>NAME</key>
         <string>NordPass</string>
         <key>ARCH_TYPE</key>
-        <string></string>
+        <string>arm/</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.1</string>

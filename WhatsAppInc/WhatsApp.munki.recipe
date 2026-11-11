@@ -16,6 +16,10 @@
 		<string>WhatsApp</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>Communication</string>
@@ -25,7 +29,7 @@
 			<key>description</key>
 			<string>WhatsApp Messenger is a cross-platform mobile messaging app which allows you to exchange messages without having to pay for SMS. WhatsApp Messenger is available for iPhone, BlackBerry, Android, Windows Phone and Nokia and yes, those phones can all message each other! Because WhatsApp Messenger uses the same internet data plan that you use for email and web browsing, there is no cost to message and stay in touch with your friends.
 
-In addition to basic messaging WhatsApp users can create groups, send each other unlimited images, video and audio media messages.</string>
+In addition to basic messaging WhatsApp users can create groups, send each other unlimited images, video and audio media messages. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>developer</key>
 			<string>WhatsApp Inc.</string>
 			<key>display_name</key>

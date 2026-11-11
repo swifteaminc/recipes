@@ -34,7 +34,7 @@ https://github.com/autopkg/recipes/issues/196
                 <string>Utilities</string>
             </array>
             <key>description</key>
-            <string>Spotify is a music streaming service offering unlimited streaming of selected music from a range of major and independent record labels.</string>
+            <string>Spotify is a music streaming service offering unlimited streaming of selected music from a range of major and independent record labels. Supports Apple Silicon (M-series) Macs only.</string>
             <key>display_name</key>
             <string>Spotify</string>
             <key>name</key>
@@ -46,9 +46,7 @@ https://github.com/autopkg/recipes/issues/196
                 /bin/chmod -R go+rX /Applications/Spotify.app
             </string>
             <key>supported_architectures</key>
-            <array>
-                <string>%SUPPORTED_ARCH%</string>
-            </array>
+            <array><string>arm64</string></array>
             <key>unattended_install</key>
             <true/>
         </dict>

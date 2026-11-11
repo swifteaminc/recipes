@@ -25,7 +25,7 @@
 			<key>category</key>
 			<string>Productivity</string>
 			<key>description</key>
-			<string>Lark is a collaboration platform that combines messaging, meetings, calendar, documents, and other workplace tools.</string>
+			<string>Lark is a collaboration platform that combines messaging, meetings, calendar, documents, and other workplace tools. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>developer</key>
 			<string>Lark Technologies Pte. Ltd.</string>
 			<key>display_name</key>

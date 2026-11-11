@@ -13,6 +13,10 @@
     <key>MUNKI_REPO_SUBDIR</key><string>apps/%NAME%</string>
     <key>pkginfo</key>
     <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
       <key>catalogs</key>
       <array>
         <string>VPN</string>
@@ -21,7 +25,7 @@
       </array>
       <key>category</key><string>Applications</string>
       <key>description</key>
-      <string>Check Point SASE (formerly Perimeter 81) client.</string>
+      <string>Check Point SASE (formerly Perimeter 81) client. Supports Apple Silicon (M-series) Macs only.</string>
       <key>developer</key><string>Check Point Software Technologies Ltd.</string>
       <key>display_name</key><string>Check Point SASE</string>
       <key>name</key><string>%NAME%</string>

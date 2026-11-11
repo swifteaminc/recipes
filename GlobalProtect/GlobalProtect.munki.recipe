@@ -14,6 +14,10 @@
         <string>GlobalProtect</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>blocking_applications</key>
             <array>
                 <string>GlobalProtect.app</string>
@@ -27,7 +31,7 @@
             <key>category</key>
             <string>Security</string>
             <key>description</key>
-            <string>GlobalProtect provides secure VPN connectivity to Palo Alto Networks GlobalProtect portals and gateways.</string>
+            <string>GlobalProtect provides secure VPN connectivity to Palo Alto Networks GlobalProtect portals and gateways. Supports Apple Silicon (M-series) Macs only.</string>
             <key>developer</key>
             <string>Palo Alto Networks</string>
             <key>display_name</key>

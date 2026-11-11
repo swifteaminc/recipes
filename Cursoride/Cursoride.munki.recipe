@@ -18,12 +18,16 @@
     <string>apps/cursor</string>
     <key>pkginfo</key>
     <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
       <key>catalogs</key>
       <array>
         <string>Development</string>
       </array>
       <key>description</key>
-      <string>Cursor IDE is an AI-powered code editor for macOS (universal build).</string>
+      <string>Cursor IDE is an AI-powered code editor for macOS (universal build). Supports Apple Silicon (M-series) Macs only.</string>
       <key>display_name</key>
       <string>Cursor IDE</string>
       <key>name</key>

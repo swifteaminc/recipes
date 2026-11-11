@@ -3,12 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads latest VLC disk image.
-
-Note that while VLC used to provide multiple Sparkle feeds for different architectures,
-they now support only a single OS X build architecture (Intel 64-bit) starting from
-version 2.1.0. For this reason, the appcast_url variable is now hardcoded in the recipe.
-</string>
+    <string>Downloads the latest VLC Apple Silicon (arm64) disk image.</string>
     <key>Identifier</key>
     <string>com.github.swifteaminc.recipes.download.VLC</string>
     <key>Input</key>
@@ -34,6 +29,11 @@ version 2.1.0. For this reason, the appcast_url variable is now hardcoded in the
             <string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
+                <!-- The intel64 appcast is only used to learn the latest version: VLC's
+                     arm64 appcast stopped at 3.0.14, but every release still publishes
+                     vlc-<version>-arm64.dmg next to the Intel one. -->
+                <key>url</key>
+                <string>https://get.videolan.org/vlc/%version%/macosx/vlc-%version%-arm64.dmg</string>
                 <key>filename</key>
                 <string>%NAME%.dmg</string>
             </dict>

@@ -28,6 +28,10 @@ to quit Dropbox.</string>
         <string>Dropbox</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>catalogs</key>
             <array>
                 <string>Cloud Storage</string>
@@ -35,7 +39,7 @@ to quit Dropbox.</string>
                 <string>Collaboration</string>
             </array>
             <key>description</key>
-            <string>Dropbox is a free service that lets you bring all your photos, docs, and videos anywhere. This means that any file you save to your Dropbox will automatically save to all your computers, phones and even the Dropbox website.</string>
+            <string>Dropbox is a free service that lets you bring all your photos, docs, and videos anywhere. This means that any file you save to your Dropbox will automatically save to all your computers, phones and even the Dropbox website. Supports Apple Silicon (M-series) Macs only.</string>
             <key>display_name</key>
             <string>Dropbox</string>
             <key>name</key>

@@ -14,6 +14,10 @@
         <string>ChatGPTAtlas</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>catalogs</key>
             <array>
                 <string>AI Tools</string>
@@ -25,7 +29,7 @@
             <key>developer</key>
             <string>OpenAI</string>
             <key>description</key>
-            <string>ChatGPT Atlas — advanced AI workspace companion for macOS.</string>
+            <string>ChatGPT Atlas — advanced AI workspace companion for macOS. Supports Apple Silicon (M-series) Macs only.</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>

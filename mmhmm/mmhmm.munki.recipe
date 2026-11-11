@@ -14,6 +14,10 @@
         <string>Mmhmm</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>catalogs</key>
             <array>
                 <string>Compliance Automation</string>
@@ -25,7 +29,7 @@
                       <key>developer</key>
                       <string>Mmhmm</string>
             <key>description</key>
-            <string>Mmhmm is a virtual presentation software that allows users to create, present, and record interactive presentations with a range of dynamic features</string>
+            <string>Mmhmm is a virtual presentation software that allows users to create, present, and record interactive presentations with a range of dynamic features. Supports Apple Silicon (M-series) Macs only.</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>

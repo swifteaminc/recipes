@@ -16,7 +16,7 @@ For Apple Silicon use: "arm64" in the SUPPORTED_ARCH variable</string>
         <key>NAME</key>
         <string>NordPass</string>
         <key>SUPPORTED_ARCH</key>
-        <string></string>
+        <string>arm64</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -28,7 +28,7 @@ For Apple Silicon use: "arm64" in the SUPPORTED_ARCH variable</string>
             <key>description</key>
             <string>NordPass — your digital life manager
 
-Organize online life with NordPass — a secure solution for passwords, passkeys, credit cards, and more.</string>
+Organize online life with NordPass — a secure solution for passwords, passkeys, credit cards, and more. Supports Apple Silicon (M-series) Macs only.</string>
             <key>developer</key>
             <string>Tefincom SA</string>
             <key>display_name</key>

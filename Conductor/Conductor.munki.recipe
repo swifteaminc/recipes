@@ -18,6 +18,10 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>developer-tools</string>
@@ -27,7 +31,7 @@
 			<string>Developer Tools</string>
 
 			<key>description</key>
-			<string>Conductor is a macOS app to orchestrate parallel coding agents in isolated workspaces.</string>
+			<string>Conductor is a macOS app to orchestrate parallel coding agents in isolated workspaces. Supports Apple Silicon (M-series) Macs only.</string>
 
 			<key>developer</key>
 			<string>Melty Labs</string>

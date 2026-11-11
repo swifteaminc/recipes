@@ -18,6 +18,10 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>productivity</string>
@@ -25,7 +29,7 @@
 			</array>
 
 			<key>description</key>
-			<string>Affinity is a design and productivity desktop application.</string>
+			<string>Affinity is a design and productivity desktop application. Supports Apple Silicon (M-series) Macs only.</string>
 
 			<key>display_name</key>
 			<string>Affinity</string>

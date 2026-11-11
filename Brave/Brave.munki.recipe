@@ -21,13 +21,17 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>browsers</string>
 				<string>internet</string>
 			</array>
 			<key>description</key>
-			<string>Brave Browser – a privacy-centric web browser with built-in ad and tracker blocking.</string>
+			<string>Brave Browser – a privacy-centric web browser with built-in ad and tracker blocking. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>display_name</key>
 			<string>Brave Browser</string>
 			<key>category</key>

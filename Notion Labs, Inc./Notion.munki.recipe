@@ -14,6 +14,10 @@
         <string>Notion</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>blocking_applications</key>
             <array>
                 <string>Notion</string>
@@ -27,7 +31,7 @@
             <key>category</key>
             <string>Productivity</string>
             <key>description</key>
-            <string>A unified workspace for modern teams.</string>
+            <string>A unified workspace for modern teams. Supports Apple Silicon (M-series) Macs only.</string>
             <key>developer</key>
             <string>Notion Labs, Inc.</string>
             <key>display_name</key>

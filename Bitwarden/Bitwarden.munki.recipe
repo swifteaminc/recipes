@@ -16,6 +16,10 @@
 		<string>Bitwarden</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>Security</string>
@@ -25,7 +29,7 @@
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
-			<string>Bitwarden is a secure and open-source password manager for personal and enterprise use.</string>
+			<string>Bitwarden is a secure and open-source password manager for personal and enterprise use. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>developer</key>
 			<string>Bitwarden Inc.</string>
 			<key>display_name</key>

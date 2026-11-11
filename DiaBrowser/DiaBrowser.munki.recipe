@@ -18,6 +18,10 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>browsers</string>
@@ -27,7 +31,7 @@
 			<string>Internet &amp; Communication</string>
 
 			<key>description</key>
-			<string>Dia Browser is a web browser for macOS.</string>
+			<string>Dia Browser is a web browser for macOS. Supports Apple Silicon (M-series) Macs only.</string>
 
 			<key>developer</key>
 			<string>Dia Browser</string>

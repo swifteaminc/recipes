@@ -21,13 +21,17 @@ See the following URLs for more info:
         <string>Firefox</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>catalogs</key>
             <array>
                 <string>Browser</string>
                 <string>Productivity</string>
             </array>
             <key>description</key>
-            <string>Mozilla Firefox is a free and open source web browser.</string>
+            <string>Mozilla Firefox is a free and open source web browser. Supports Apple Silicon (M-series) Macs only.</string>
             <key>display_name</key>
             <string>Mozilla Firefox</string>
             <key>name</key>

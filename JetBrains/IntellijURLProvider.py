@@ -38,6 +38,13 @@ class IntellijURLProvider(URLGetter):
                 'edition. Defaults to "C".'
             ),
         },
+        "arch_suffix": {
+            "required": False,
+            "description": (
+                'Appended to the DMG name. Defaults to "-aarch64" (Apple Silicon); '
+                'set to "" for the Intel build.'
+            ),
+        },
     }
     output_variables = {"url": {"description": "URL to the latest release of Intellij"}}
 
@@ -93,9 +100,10 @@ class IntellijURLProvider(URLGetter):
         # Determine values.
         version_url = self.env.get("version_url", intellij_version_url)
         version = self.get_intellij_version(version_url)
-        download_url = "https://download.jetbrains.com/idea/" "ideaI%s-%s.dmg" % (
+        download_url = "https://download.jetbrains.com/idea/" "ideaI%s-%s%s.dmg" % (
             self.env.get("edition", "C"),
             version,
+            self.env.get("arch_suffix", "-aarch64"),
         )
 
         self.env["url"] = download_url

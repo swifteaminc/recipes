@@ -14,6 +14,10 @@
         <string>Nessus</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>catalogs</key>
             <array>
                 <string>Security</string>
@@ -22,7 +26,7 @@
             <key>category</key>
             <string>Security</string>
             <key>description</key>
-            <string>Tenable Nessus is a vulnerability scanner and assessment platform for macOS.</string>
+            <string>Tenable Nessus is a vulnerability scanner and assessment platform for macOS. Supports Apple Silicon (M-series) Macs only.</string>
             <key>developer</key>
             <string>Tenable, Inc.</string>
             <key>display_name</key>

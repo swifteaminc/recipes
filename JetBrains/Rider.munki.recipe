@@ -18,6 +18,10 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>IDE</string>
@@ -28,7 +32,7 @@
 			<string>Productivity</string>
 
 			<key>description</key>
-			<string>JetBrains Rider is a cross-platform IDE for .NET, Unity, and Unreal Engine development.</string>
+			<string>JetBrains Rider is a cross-platform IDE for .NET, Unity, and Unreal Engine development. Supports Apple Silicon (M-series) Macs only.</string>
 
 			<key>developer</key>
 			<string>JetBrains</string>

@@ -18,6 +18,10 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>productivity</string>
@@ -28,7 +32,7 @@
 			<string>Productivity</string>
 
 			<key>description</key>
-			<string>Linear is an issue tracking and project management app.</string>
+			<string>Linear is an issue tracking and project management app. Supports Apple Silicon (M-series) Macs only.</string>
 
 			<key>developer</key>
 			<string>Linear Orbit, Inc.</string>

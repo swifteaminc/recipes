@@ -16,12 +16,16 @@
 		<string>Microsoft Remote Desktop Beta</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>Remote Access</string>
 			</array>
 			<key>description</key>
-			<string>Connect to Windows machines.</string>
+			<string>Connect to Windows machines. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>developer</key>
 			<string>Microsoft Corporation</string>
 			<key>display_name</key>

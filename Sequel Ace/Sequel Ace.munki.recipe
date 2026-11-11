@@ -16,6 +16,10 @@
 		<string>Sequel Ace</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>Developer Tools</string>
@@ -23,7 +27,7 @@
 				<string>SQL Tools</string>
 			</array>
 			<key>description</key>
-			<string>MySQL/MariaDB database management for macOS</string>
+			<string>MySQL/MariaDB database management for macOS. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>developer</key>
 			<string>Moballo, LLC</string>
 			<key>display_name</key>

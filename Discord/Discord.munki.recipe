@@ -14,6 +14,10 @@
         <string>Discord</string>
     	<key>pkginfo</key>
     	<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
     		<key>catalogs</key>
     		<array>
     			<string>Communication</string>
@@ -28,7 +32,7 @@
                       <key>developer</key>
                       <string>Discord</string>
     		<key>description</key>
-    		<string>Discord is a freeware proprietary VoIP application designed for gaming communities. Discord runs on Microsoft Windows, macOS, Android, iOS, Linux, and in a web browser. In December 2016, the developers announced that Discord had over 25 million users.</string>
+    		<string>Discord is a freeware proprietary VoIP application designed for gaming communities. Discord runs on Microsoft Windows, macOS, Android, iOS, Linux, and in a web browser. In December 2016, the developers announced that Discord had over 25 million users. Supports Apple Silicon (M-series) Macs only.</string>
     		<key>name</key>
     		<string>%NAME%</string>
     		<key>unattended_install</key>

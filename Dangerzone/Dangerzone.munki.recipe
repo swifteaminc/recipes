@@ -21,6 +21,10 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>security</string>
@@ -29,7 +33,7 @@
 			</array>
 
 			<key>description</key>
-			<string>Dangerzone safely converts suspicious documents into PDFs to protect against malicious content.</string>
+			<string>Dangerzone safely converts suspicious documents into PDFs to protect against malicious content. Supports Apple Silicon (M-series) Macs only.</string>
 
 			<key>display_name</key>
 			<string>Dangerzone</string>

@@ -22,6 +22,10 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>communication</string>
@@ -32,7 +36,7 @@
 			</array>
 
 			<key>description</key>
-			<string>Tuta Mail is an end-to-end encrypted email client for secure communication.</string>
+			<string>Tuta Mail is an end-to-end encrypted email client for secure communication. Supports Apple Silicon (M-series) Macs only.</string>
 
 			<key>display_name</key>
 			<string>Tuta Mail</string>

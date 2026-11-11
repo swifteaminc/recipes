@@ -14,6 +14,10 @@
 		<string>app</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>catalogs</key>
             <array>
                 <string>Remote Access</string>
@@ -21,7 +25,7 @@
             <key>description</key>
             <string>Connect to a computer remotely, be it from the other end of the office or halfway around the world.
             AnyDesk ensures secure and reliable remote desktop connections for IT professionals and on-the-go
-            individuals alike.</string>
+            individuals alike. Supports Apple Silicon (M-series) Macs only.</string>
             <key>category</key>
             <string>%MUNKI_CATEGORY%</string>
             <key>developer</key>

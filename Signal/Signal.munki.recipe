@@ -21,6 +21,10 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>communication</string>
@@ -29,7 +33,7 @@
 			</array>
 
 			<key>description</key>
-			<string>Signal Desktop is a secure messaging client for messaging, voice, and video.</string>
+			<string>Signal Desktop is a secure messaging client for messaging, voice, and video. Supports Apple Silicon (M-series) Macs only.</string>
 
 			<key>display_name</key>
 			<string>Signal</string>

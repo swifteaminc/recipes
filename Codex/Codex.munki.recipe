@@ -21,6 +21,10 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>developer</string>
@@ -28,7 +32,7 @@
 			</array>
 
 			<key>description</key>
-			<string>Codex – a native macOS app for working with OpenAI Codex.</string>
+			<string>Codex – a native macOS app for working with OpenAI Codex. Supports Apple Silicon (M-series) Macs only.</string>
 
 			<key>display_name</key>
 			<string>Codex</string>

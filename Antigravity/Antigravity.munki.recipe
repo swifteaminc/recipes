@@ -21,13 +21,17 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>Developer Tools</string>
 			</array>
 
 			<key>description</key>
-			<string>Antigravity is an agent-first AI IDE for building software with autonomous coding agents and Gemini integration.</string>
+			<string>Antigravity is an agent-first AI IDE for building software with autonomous coding agents and Gemini integration. Supports Apple Silicon (M-series) Macs only.</string>
 
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>

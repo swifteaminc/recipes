@@ -18,13 +18,17 @@
 		<string>U</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>IDE</string>
 				<string>Developer Tools</string>
 			</array>
 			<key>description</key>
-			<string>Lightweight IDE for Java SE, Groovy and Scala development.</string>
+			<string>Lightweight IDE for Java SE, Groovy and Scala development. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>display_name</key>
 			<string>Intellij Ultimate Edition</string>
 			<key>name</key>

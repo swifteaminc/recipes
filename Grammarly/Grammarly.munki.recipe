@@ -16,6 +16,10 @@
 		<string>Grammarly</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>Productivity</string>
@@ -23,7 +27,7 @@
 				<string>Writing Tools</string>
 			</array>
 			<key>description</key>
-			<string>App and web service for correcting grammatical issues and detecting plagarism.</string>
+			<string>App and web service for correcting grammatical issues and detecting plagarism. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>developer</key>
 			<string>Grammarly, Inc</string>
 			<key>display_name</key>

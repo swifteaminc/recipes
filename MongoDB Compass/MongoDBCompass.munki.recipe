@@ -30,7 +30,7 @@ For Intel, use DOWNLOAD_ARCH "x64" and SUPPORTED_ARCH "x86_64".</string>
 			<key>category</key>
 			<string>Developer Tools</string>
 			<key>description</key>
-			<string>MongoDB Compass is a graphical interface for querying, aggregating, and analyzing MongoDB data.</string>
+			<string>MongoDB Compass is a graphical interface for querying, aggregating, and analyzing MongoDB data. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>developer</key>
 			<string>MongoDB, Inc.</string>
 			<key>display_name</key>

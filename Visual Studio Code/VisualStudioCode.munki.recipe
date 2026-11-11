@@ -14,6 +14,10 @@
 		<string>Visual Studio Code</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>IDE</string>
@@ -23,7 +27,7 @@
 			<key>category</key>
 			<string>Text Editors</string>
 			<key>description</key>
-			<string>Code combines the streamlined UI of a modern editor with rich code assistance and navigation, and an integrated debugging experience – without the need for a full IDE.</string>
+			<string>Code combines the streamlined UI of a modern editor with rich code assistance and navigation, and an integrated debugging experience – without the need for a full IDE. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>developer</key>
 			<string>Microsoft</string>
 			<key>name</key>

@@ -16,6 +16,10 @@
 			<string>KeePassXC</string>
 			<key>pkginfo</key>
 			<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 				<key>catalogs</key>
 				<array>
 					<string>Password Manager</string>
@@ -26,7 +30,7 @@
 				<key>description</key>
 				<string>KeePassXC can store your passwords safely and auto-type them into your everyday websites and applications.
 
-				This is the latest stable version of KeePassXC</string>
+				This is the latest stable version of KeePassXC. Supports Apple Silicon (M-series) Macs only.</string>
 				<key>developer</key>
 				<string>%NAME%</string>
 				<key>display_name</key>

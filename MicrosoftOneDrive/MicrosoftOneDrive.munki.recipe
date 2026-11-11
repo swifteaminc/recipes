@@ -16,12 +16,16 @@
         <string>apps/Microsoft</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>catalogs</key>
             <array>
                 <string>Cloud Storage</string>
             </array>
             <key>description</key>
-            <string>Microsoft Onedrive</string>
+            <string>Microsoft Onedrive. Supports Apple Silicon (M-series) Macs only.</string>
             <key>display_name</key>
             <string>Microsoft Onedrive</string>
             <key>developer</key>

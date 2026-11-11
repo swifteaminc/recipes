@@ -18,6 +18,10 @@ Set the DERIVE_MIN_OS variable to a non-empty string to set the minimum_os_versi
         <string>YES</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
            <key>blocking_applications</key>
             <array/>
             <key>catalogs</key>
@@ -29,7 +33,7 @@ Set the DERIVE_MIN_OS variable to a non-empty string to set the minimum_os_versi
             <key>description</key>
             <string>The Cloudflare WARP client allows individuals and organizations to have a faster, more secure, and more private experience online.
 
-The WARP client sits between your device and the Internet, and has several connection modes to better suit different needs.</string>
+The WARP client sits between your device and the Internet, and has several connection modes to better suit different needs. Supports Apple Silicon (M-series) Macs only.</string>
             <key>developer</key>
             <string>Cloudflare Inc</string>
             <key>display_name</key>

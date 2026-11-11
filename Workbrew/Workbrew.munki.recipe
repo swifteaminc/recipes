@@ -14,6 +14,10 @@
         <string>Workbrew</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>catalogs</key>
             <array>
                 <string>Productivity</string>
@@ -26,7 +30,7 @@
             <key>developer</key>
             <string>Workbrew</string>
             <key>description</key>
-            <string>Workbrew, What if you had perfect memory. Requires Xcode Command Line Tools; a popup will automatically appear prompting you to install them</string>
+            <string>Workbrew, What if you had perfect memory. Requires Xcode Command Line Tools; a popup will automatically appear prompting you to install them. Supports Apple Silicon (M-series) Macs only.</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>

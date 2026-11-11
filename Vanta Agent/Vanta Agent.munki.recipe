@@ -16,6 +16,10 @@
         <string>VantaAgent</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>blocking_applications</key>
             <array>
                 <string>Vanta Agent.app</string>
@@ -28,7 +32,7 @@
             <key>description</key>
             <string>Automate compliance. Simplify security.
 
-Vanta helps companies scale security practices and automate compliance for the industry’s most sought after standards - SOC 2, ISO 27001, HIPAA, GDPR, and other in-demand security and privacy frameworks.</string>
+Vanta helps companies scale security practices and automate compliance for the industry’s most sought after standards - SOC 2, ISO 27001, HIPAA, GDPR, and other in-demand security and privacy frameworks. Supports Apple Silicon (M-series) Macs only.</string>
             <key>developer</key>
             <string>Vanta Inc</string>
             <key>display_name</key>

@@ -22,6 +22,10 @@ Set the DERIVE_MIN_OS variable to a non-empty string to set the minimum_os_versi
         <string></string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>catalogs</key>
             <array>
                 <string>Browser</string>
@@ -29,7 +33,7 @@ Set the DERIVE_MIN_OS variable to a non-empty string to set the minimum_os_versi
             <key>category</key>
             <string>%MUNKI_CATEGORY%</string>
             <key>description</key>
-            <string>Microsoft's Chromium-based browser</string>
+            <string>Microsoft's Chromium-based browser. Supports Apple Silicon (M-series) Macs only.</string>
             <key>developer</key>
             <string>Microsoft</string>
             <key>display_name</key>

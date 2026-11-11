@@ -14,6 +14,10 @@
         <string>Asana</string>
         <key>pkginfo</key>
         <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
             <key>catalogs</key>
             <array>
                 <string>Team-Tools</string>
@@ -21,7 +25,7 @@
                 <string>Project Management</string>
             </array>
             <key>description</key>
-            <string>Asana’s native desktop app removes distractions so you can focus on what’s important. Just download according to your OS, login with your email on the web, and you’ll be guided to your new favorite app.</string>
+            <string>Asana’s native desktop app removes distractions so you can focus on what’s important. Just download according to your OS, login with your email on the web, and you’ll be guided to your new favorite app. Supports Apple Silicon (M-series) Macs only.</string>
             <key>developer</key>
             <string>Asana Inc</string>
             <key>display_name</key>

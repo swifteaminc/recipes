@@ -18,6 +18,10 @@
 
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>productivity</string>
@@ -28,7 +32,7 @@
 			<string>Productivity</string>
 
 			<key>description</key>
-			<string>Raycast is a launcher and productivity tool for macOS.</string>
+			<string>Raycast is a launcher and productivity tool for macOS. Supports Apple Silicon (M-series) Macs only.</string>
 
 			<key>developer</key>
 			<string>Raycast Technologies Ltd.</string>

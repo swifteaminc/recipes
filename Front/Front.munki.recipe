@@ -18,12 +18,16 @@
     <string>apps/front</string>
     <key>pkginfo</key>
     <dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
       <key>catalogs</key>
       <array>
         <string>Development</string>
       </array>
       <key>description</key>
-      <string>Front is a collaborative email and messaging platform for teams.</string>
+      <string>Front is a collaborative email and messaging platform for teams. Supports Apple Silicon (M-series) Macs only.</string>
       <key>display_name</key>
       <string>Front</string>
       <key>name</key>

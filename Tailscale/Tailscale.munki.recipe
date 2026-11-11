@@ -16,13 +16,17 @@
 		<string>Tailscale</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>VPN</string>
 				<string>Security</string>
 			</array>
 			<key>description</key>
-			<string>A secure network that just works - Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works from anywhere.</string>
+			<string>A secure network that just works - Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works from anywhere. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>developer</key>
 			<string>Tailscale</string>
 			<key>display_name</key>
