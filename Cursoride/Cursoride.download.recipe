@@ -4,7 +4,7 @@
 <plist version="1.0">
 <dict>
   <key>Description</key>
-  <string>Downloads the specified Cursor IDE universal macOS DMG directly.</string>
+  <string>Downloads the latest stable Cursor IDE universal macOS DMG.</string>
   <key>Identifier</key>
   <string>com.github.swifteaminc.recipes.download.cursoride</string>
   <key>MinimumVersion</key>
@@ -12,25 +12,49 @@
 
   <key>Input</key>
   <dict>
-    <!-- Point this at the exact DMG URL -->
-    <key>DOWNLOAD_URL</key>
-    <string>https://downloads.cursor.com/production/d2bf8ec12017b1049f304ad3a5c8867b117ed836/darwin/universal/Cursor-darwin-universal.dmg</string>
-    <!-- Optional: set a static version if you care -->
-    <key>VERSION</key>
-    <string>1.0</string>
+    <key>NAME</key>
+    <string>Cursor</string>
+    <!-- Cursor's official download API; returns the current stable build's DMG URL.
+         A pinned build URL kept the catalog on 2.4.35. -->
+    <key>DOWNLOAD_API_URL</key>
+    <string>https://cursor.com/api/download?platform=darwin-universal&amp;releaseTrack=stable</string>
   </dict>
 
   <key>Process</key>
   <array>
-
-    <!-- Simply download the DMG -->
+    <dict>
+      <key>Processor</key>
+      <string>URLTextSearcher</string>
+      <key>Arguments</key>
+      <dict>
+        <key>url</key>
+        <string>%DOWNLOAD_API_URL%</string>
+        <key>re_pattern</key>
+        <string>"downloadUrl"\s*:\s*"(https://downloads\.cursor\.com/[^"]+/darwin/universal/Cursor-darwin-universal\.dmg)"</string>
+        <key>result_output_var_name</key>
+        <string>url</string>
+      </dict>
+    </dict>
     <dict>
       <key>Processor</key>
       <string>URLDownloader</string>
       <key>Arguments</key>
       <dict>
         <key>url</key>
-        <string>%DOWNLOAD_URL%</string>
+        <string>%url%</string>
+        <key>filename</key>
+        <string>%NAME%.dmg</string>
+        <key>curl_opts</key>
+        <array>
+          <string>--speed-limit</string>
+          <string>1</string>
+          <string>--speed-time</string>
+          <string>120</string>
+          <string>--retry</string>
+          <string>3</string>
+          <string>--retry-delay</string>
+          <string>15</string>
+        </array>
       </dict>
     </dict>
 
@@ -38,6 +62,18 @@
     <dict>
       <key>Processor</key>
       <string>EndOfCheckPhase</string>
+    </dict>
+
+    <dict>
+      <key>Processor</key>
+      <string>CodeSignatureVerifier</string>
+      <key>Arguments</key>
+      <dict>
+        <key>input_path</key>
+        <string>%pathname%/Cursor.app</string>
+        <key>requirement</key>
+        <string>identifier "com.todesktop.230313mzl4w4u92" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "VDXQ22DGB9"</string>
+      </dict>
     </dict>
 
     <!-- Read app version from the mounted DMG -->
