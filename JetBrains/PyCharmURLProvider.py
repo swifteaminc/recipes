@@ -11,7 +11,7 @@ __all__ = ["PyCharmURLProvider"]
 
 PYCHARM_UPDATES_URL = "https://www.jetbrains.com/updates/updates.xml"
 PYCHARM_PRODUCT_NAME = "PyCharm"
-PYCHARM_DOWNLOAD_URL = "https://download-cdn.jetbrains.com/python/pycharm-%s-aarch64.dmg"
+PYCHARM_DOWNLOAD_URL = "https://download.jetbrains.com/python/pycharm-%s-aarch64.dmg"
 VERSION_RE = re.compile(r"^\d+(?:\.\d+)+$")
 
 

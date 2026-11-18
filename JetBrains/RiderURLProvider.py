@@ -13,7 +13,7 @@ __all__ = ["RiderURLProvider"]
 
 RIDER_UPDATES_URL = "https://www.jetbrains.com/updates/updates.xml"
 RIDER_PRODUCT_NAME = "Rider"
-RIDER_DOWNLOAD_URL = "https://download-cdn.jetbrains.com/rider/JetBrains.Rider-%s-aarch64.dmg"
+RIDER_DOWNLOAD_URL = "https://download.jetbrains.com/rider/JetBrains.Rider-%s-aarch64.dmg"
 VERSION_RE = re.compile(r"^\d+(?:\.\d+)+$")
 
 
