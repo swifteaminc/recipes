@@ -23,12 +23,12 @@ To download Intel leave the DOWNLOAD_ARCH variable empty</string>
         <dict>
             <key>Arguments</key>
             <dict>
+                <!-- Use the app's own update feed. The vimcal.com download
+                     page lagged months behind (still 1.0.46 when 1.0.48 was out). -->
                 <key>re_pattern</key>
-                <string>href=\"(https://vimcal-[A-Za-z0-9]+.[A-Za-z0-9]+.us-west-1.amazonaws.com/Vimcal-([0-9]+(\.[0-9]+)+)%DOWNLOAD_ARCH%.dmg)\"</string>
-                <key>result_output_var_name</key>
-                <string>DOWNLOAD_URL</string>
+                <string>url: (?P&lt;vimcal_dmg&gt;Vimcal-(?P&lt;vimcal_version&gt;[0-9]+(?:\.[0-9]+)+)%DOWNLOAD_ARCH%\.dmg)</string>
                 <key>url</key>
-                <string>https://www.vimcal.com/downloads/mac</string>
+                <string>https://vimcal-m1.s3.amazonaws.com/latest-mac.yml</string>
             </dict>
             <key>Processor</key>
             <string>URLTextSearcher</string>
@@ -39,7 +39,7 @@ To download Intel leave the DOWNLOAD_ARCH variable empty</string>
                 <key>filename</key>
                 <string>%NAME%.dmg</string>
                 <key>url</key>
-                <string>%DOWNLOAD_URL%</string>
+                <string>https://vimcal-m1.s3.amazonaws.com/%vimcal_dmg%</string>
             </dict>
             <key>Processor</key>
             <string>URLDownloader</string>

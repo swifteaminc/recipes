@@ -13,8 +13,11 @@
 		<key>NAME</key>
 		<string>Antigravity</string>
 
+		<!-- Antigravity 2.x moved to the "hub" updater. The old
+		     antigravity-auto-updater.../releases endpoint stopped at 2.0.0,
+		     so it must not be used. This is the feed the app itself polls. -->
 		<key>RELEASES_API_URL</key>
-		<string>https://antigravity-auto-updater-974169037036.us-central1.run.app/releases</string>
+		<string>https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/manifest/latest-arm64-mac.yml</string>
 
 		<key>DOWNLOAD_BASE_URL</key>
 		<string>https://storage.googleapis.com/antigravity-public/antigravity-hub/</string>
@@ -23,7 +26,7 @@
 		<string>darwin-arm</string>
 
 		<key>RE_PATTERN</key>
-		<string>\{"version":"(?P&lt;version&gt;[0-9]+\.[0-9]+\.[0-9]+)","execution_id":"(?P&lt;execution_id&gt;[0-9]+)"\}</string>
+		<string>antigravity-hub/(?P&lt;version&gt;[0-9]+(?:\.[0-9]+)+)-(?P&lt;execution_id&gt;[0-9]+)/darwin-arm/Antigravity\.(?:zip|dmg)</string>
 	</dict>
 
 	<key>Process</key>
