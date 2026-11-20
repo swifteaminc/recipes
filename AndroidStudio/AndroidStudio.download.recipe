@@ -3,7 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads Android Studio for macOS Apple Silicon and reads its version.</string>
+	<string>Downloads Android Studio for macOS Apple Silicon and reads its version.
+
+Every patch release of a feature version shares the same CFBundleShortVersionString
+(e.g. 2026.2 for 2026.2.2.9 and 2026.2.2.10), so the full release version is taken from
+the download URL (release_version) and the build number from CFBundleVersion
+(build_version, e.g. AI-262.10968.63.2622.16975389) for the munki installs check.</string>
 
 	<key>Identifier</key>
 	<string>com.github.swifteaminc.recipes.download.androidstudio</string>
@@ -17,7 +22,7 @@
 		<string>https://developer.android.com/studio</string>
 
 		<key>RE_PATTERN</key>
-		<string>(?P&lt;url&gt;https://edgedl\.me\.gvt1\.com/android/studio/install/[0-9.]+/android-studio-[A-Za-z0-9-]+-mac_arm\.dmg)</string>
+		<string>(?P&lt;url&gt;https://edgedl\.me\.gvt1\.com/android/studio/install/(?P&lt;release_version&gt;[0-9]+(?:\.[0-9]+)+)/android-studio-[A-Za-z0-9-]+-mac_arm\.dmg)</string>
 
 		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
 		<false/>
@@ -64,6 +69,21 @@
 			<dict>
 				<key>dmg_path</key>
 				<string>%pathname%</string>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>Processor</key>
+			<string>PlistReader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>info_path</key>
+				<string>%pathname%/%app_name%</string>
+				<key>plist_keys</key>
+				<dict>
+					<key>CFBundleVersion</key>
+					<string>build_version</string>
+				</dict>
 			</dict>
 		</dict>
 	</array>

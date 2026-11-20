@@ -63,7 +63,7 @@
 				<key>additional_pkginfo</key>
 				<dict>
 					<key>version</key>
-					<string>%version%</string>
+					<string>%release_version%</string>
 					<key>installs</key>
 					<array>
 						<dict>
@@ -71,12 +71,14 @@
 							<string>%bundleid%</string>
 							<key>CFBundleShortVersionString</key>
 							<string>%version%</string>
+							<key>CFBundleVersion</key>
+							<string>%build_version%</string>
 							<key>path</key>
 							<string>/Applications/%app_name%</string>
 							<key>type</key>
 							<string>application</string>
 							<key>version_comparison_key</key>
-							<string>CFBundleShortVersionString</string>
+							<string>CFBundleVersion</string>
 						</dict>
 					</array>
 				</dict>
