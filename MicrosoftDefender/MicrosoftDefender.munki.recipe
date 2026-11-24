@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Installing the app is not enough for protection: Defender for Endpoint needs the customer's
+onboarding file, and silent operation needs MDM profiles approving its system extensions, Full Disk
+Access, network filter, notifications and background items. Without onboarding it runs as consumer
+Defender (Microsoft 365 Personal/Family sign-in).
+Uninstall uses Microsoft's own uninstaller, which also removes the system extensions.</string>
+	<key>Description</key>
+	<string>Downloads Microsoft Defender for macOS and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.swifteaminc.recipes.munki.MicrosoftDefender</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>MicrosoftDefender</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>Security</string>
+			</array>
+			<key>category</key>
+			<string>Security</string>
+			<key>description</key>
+			<string>Microsoft Defender protects your Mac against viruses, malware and other threats. Requires a Microsoft Defender for Endpoint (business) or Microsoft 365 Personal/Family (home) subscription. Supports Apple Silicon (M-series) Macs only.</string>
+			<key>developer</key>
+			<string>Microsoft</string>
+			<key>display_name</key>
+			<string>Microsoft Defender</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>minimum_os_version</key>
+			<string>14.0</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>uninstallable</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/bash
+# Microsoft's uninstaller also removes Defender's system extensions, daemons and DLP components.
+for u in "/Applications/Microsoft Defender.app/Contents/Resources/Tools/uninstall/uninstall" \
+         "/Library/Application Support/Microsoft/Defender/uninstall/uninstall"; do
+    if [ -x "$u" ]; then
+        "$u"
+        exit $?
+    fi
+done
+echo "Microsoft Defender uninstaller not found"
+exit 1
+</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.swifteaminc.recipes.download.MicrosoftDefender</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+					<key>installs</key>
+					<array>
+						<dict>
+							<key>CFBundleIdentifier</key>
+							<string>com.microsoft.wdav</string>
+							<key>CFBundleShortVersionString</key>
+							<string>%version%</string>
+							<key>path</key>
+							<string>/Applications/Microsoft Defender.app</string>
+							<key>type</key>
+							<string>application</string>
+							<key>version_comparison_key</key>
+							<string>CFBundleShortVersionString</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

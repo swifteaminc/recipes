@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>wdav.pkg is a distribution package (Defender, Purview DLP components, Microsoft AutoUpdate).
+The version is read from the Defender component's PackageInfo (com.microsoft.wdav), which
+FlatPkgUnpacker extracts without the 1.3 GB payload, so it always matches the downloaded package.</string>
+	<key>Description</key>
+	<string>Downloads the latest Microsoft Defender for macOS (wdav.pkg, production channel) from Microsoft.</string>
+	<key>Identifier</key>
+	<string>com.github.swifteaminc.recipes.download.MicrosoftDefender</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>MicrosoftDefender</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://go.microsoft.com/fwlink/?linkid=2097502</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.0.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+				<key>filename</key>
+				<string>%NAME%.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: Microsoft Corporation (UBF8T346G9)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>purge_destination</key>
+				<true/>
+				<key>skip_payload</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>file://%RECIPE_CACHE_DIR%/unpack/wdav-pkg.pkg/PackageInfo</string>
+				<key>re_pattern</key>
+				<string>identifier="com\.microsoft\.wdav"[^&gt;]*?\sversion="(?P&lt;version&gt;[0-9]+(?:\.[0-9]+)+)"</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/unpack</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
