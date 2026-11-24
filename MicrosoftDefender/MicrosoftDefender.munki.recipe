@@ -27,7 +27,7 @@ Uninstall uses Microsoft's own uninstaller, which also removes the system extens
 			<key>category</key>
 			<string>Security</string>
 			<key>description</key>
-			<string>Microsoft Defender protects your Mac against viruses, malware and other threats. Requires a Microsoft Defender for Endpoint (business) or Microsoft 365 Personal/Family (home) subscription. Supports Apple Silicon (M-series) Macs only.</string>
+			<string>Microsoft Defender protects your Mac against viruses, malware and other threats. It needs a Microsoft 365 Personal/Family subscription (sign in after installing) or your company's Microsoft Defender for Endpoint setup. After installing, Defender asks you to allow its system extensions, Full Disk Access and notifications, and shows "Action needed" until you do. Allowing system extensions needs an administrator account: if you are a standard user, contact your IT admin. Full protection on company Macs also needs your company's Defender for Endpoint license and onboarding, set up by your IT admin. Supports Apple Silicon (M-series) Macs only.</string>
 			<key>developer</key>
 			<string>Microsoft</string>
 			<key>display_name</key>
